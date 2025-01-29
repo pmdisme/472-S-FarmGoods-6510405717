@@ -29,7 +29,7 @@ model OrderDetail {
 model Order {
   orderId          Int           @id @default(autoincrement())
   purchaseDatetime DateTime      @default(now())
-  orderStatus      String        @db.Char(1)
+  orderStatus      Int
   orderDetails     OrderDetail[]
 }
 
