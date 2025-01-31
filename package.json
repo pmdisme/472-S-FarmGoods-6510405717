@@ -9,7 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@prisma/client": "^6.2.1",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.2",
+    "@prisma/client": "^6.3.0",
     "farmgoods": "file:",
     "next": "15.1.6",
     "react": "^19.0.0",
@@ -20,7 +23,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.6",
     "postcss": "^8",
-    "prisma": "^6.2.1",
+    "prisma": "^6.3.0",
     "tailwindcss": "^3.4.1"
   }
 }
