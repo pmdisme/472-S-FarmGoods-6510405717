@@ -24,4 +24,24 @@ export class OrderController {
             )
         }
     }
+
+    async getCart() {
+        try {
+            const cartDetails = await this.orderService.getCartDetails()
+            
+            if (!cartDetails) {
+                return Response.json(
+                    { message: "No active cart found" },
+                    { status: 404 }
+                )
+            }
+
+            return Response.json(cartDetails, { status: 200 })
+        } catch (error) {
+            return Response.json(
+                { error: error.message || "Failed to retrieve cart" },
+                { status: 500 }
+            )
+        }
+    }
 }

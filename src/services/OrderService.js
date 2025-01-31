@@ -63,4 +63,41 @@ export class OrderService {
             }
         })
     }
+
+    #transformCartToDetails(cart) {
+        return {
+            orderId: cart.orderId,
+            orderStatus: cart.orderStatus,
+            purchaseDate: cart.purchaseDatetime,
+            products: cart.orderDetails.map(detail => ({
+                productId: detail.product.productId,
+                productName: detail.product.productName,
+                price: detail.product.productPrice,
+                quantity: detail.quantity,
+                totalAmount: detail.orderTotalAmount
+            })),
+            totalCartAmount: cart.orderDetails.reduce((total, detail) => 
+                total + detail.orderTotalAmount, 0)
+        };
+    }
+
+    async getOrderDetails(orderId) {
+        const cart = await this.orderRepo.findById(orderId);
+        
+        if (!cart) {
+            return null;
+        }
+
+        return this.#transformCartToDetails(cart);
+    }
+
+    async getCartDetails() {
+        const cart = await this.getActiveCart();
+        
+        if (!cart) {
+            return null;
+        }
+
+        return this.#transformCartToDetails(cart);
+    }
 }

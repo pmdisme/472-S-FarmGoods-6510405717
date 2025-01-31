@@ -17,4 +17,12 @@ export class OrderRepository {
             }
         })
     }
+
+    async findById(orderId) {
+        return await this.prisma.order.findUnique({
+            where: {
+                where: { orderId: parseInt(orderId) }       
+            }
+        })
+    }
 }
