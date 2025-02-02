@@ -69,6 +69,7 @@ export class OrderService {
             orderId: cart.orderId,
             orderStatus: cart.orderStatus,
             purchaseDate: cart.purchaseDatetime,
+            purchaseOption: cart.purchaseOption,
             products: cart.orderDetails.map(detail => ({
                 productId: detail.product.productId,
                 productName: detail.product.productName,
