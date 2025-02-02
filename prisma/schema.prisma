@@ -32,6 +32,7 @@ model Order {
   purchaseDatetime DateTime      @default(now())
   orderStatus      Int
   orderDetails     OrderDetail[]
+  purchaseOption   Int?
 }
 
 model Product {
