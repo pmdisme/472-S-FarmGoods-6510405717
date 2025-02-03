@@ -29,9 +29,10 @@ model OrderDetail {
 
 model Order {
   orderId          Int           @id @default(autoincrement())
-  purchaseDatetime DateTime      @default(now())
-  orderStatus      Int
+  purchaseDatetime DateTime?
+  orderStatus      Int           @default(0)
   orderDetails     OrderDetail[]
+  purchaseOption   Int?
 }
 
 model Product {

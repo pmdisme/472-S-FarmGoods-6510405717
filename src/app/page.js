@@ -9,13 +9,11 @@ import Cart from "./components/Cart";
 const Home = () => {
   return (
     <Container sx={{ paddingTop: "3rem" }}>
-      <Typography variant="h1" sx={{ color: "#BC8F8F", fontSize: "2rem", fontWeight: 600}}>
+      <Typography variant="h1" sx={{ color: "#148575", fontSize: "2rem", fontWeight: 600}}>
         FARM GOODS
       </Typography>
 
-      <Typography variant="h1" sx={{ color: "#BC8F8F", fontSize: "2rem", marginTop: "2rem" }}>
-        Search Bar
-      </Typography>
+      {/*<Search/>*/}
 
       <Box sx={{display: "flex", justifyContent: "space-between"}}>
         <Box sx={{display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
