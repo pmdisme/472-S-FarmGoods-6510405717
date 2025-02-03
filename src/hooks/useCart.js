@@ -1,4 +1,3 @@
-// hooks/useCart.js
 import { useEffect } from 'react';
 import { useAppDispatch } from '@/utile/hooks';
 import { initializeCart, setLoading, setError } from '@/store/cartSlice';
