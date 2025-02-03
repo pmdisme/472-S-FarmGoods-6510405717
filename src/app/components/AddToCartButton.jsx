@@ -3,11 +3,19 @@
 import { Box, Button } from '@mui/material'
 import React from 'react'
 import Image from 'next/image'
+import { useAppDispatch, useAppSelector } from '@/utile/hooks';
+import { addToCart, increaseQuantity, decreaseQuantity } from '@/store/cartSlice';
 
 
-const AddToCartButton = ({isItemInCart}) => {
-  return (
-    <Box
+const AddToCartButton = ({ isItemInCart, id, price, name }) => {
+    const dispatch = useAppDispatch();
+    const { cart } = useAppSelector((state) => state.cart);
+
+    const isItem = (item) => item.id === id;
+
+    const itemIndex = cart.findIndex(isItem);
+    return (
+        <Box
             sx={{
                 border: isItemInCart ? "none" : "1px solid #48c9b0",
                 backgroundColor: isItemInCart ? "#79CDCD" : "#FFFFFF",
@@ -33,22 +41,26 @@ const AddToCartButton = ({isItemInCart}) => {
                     <button
                         style={{
                             backgroundColor: "transparent",
-                            border: "1px soild #FFFFFF",
+                            border: "1px solid #FFFFFF",
                             borderRadius: "4rem",
                             color: "#FFFFFF",
                             marginLeft: "0.5rem",
                         }}
+                        onClick={() => dispatch(decreaseQuantity(itemIndex))}
                     >
                         -
                     </button>
-                    0
+
+                    {cart[itemIndex].quantity}
+
                     <button style={{
                         backgroundColor: "transparent",
-                        border: "1px soild #FFFFFF",
+                        border: "1px solid #FFFFFF",
                         borderRadius: "4rem",
                         color: "#FFFFFF",
                         marginRight: "0.5rem",
                     }}
+                    onClick={() => dispatch(increaseQuantity(itemIndex))}
                     >
                         +
                     </button>
@@ -57,10 +69,12 @@ const AddToCartButton = ({isItemInCart}) => {
                 <Button
                     style={{
                         width: "100%",
-                        background: "transparent", 
+                        background: "transparent",
                         border: "none",
-                         
-                    }}>
+
+                    }}
+                    onClick={() => dispatch(addToCart({id: id, price: price, name: name, quantity: 1}))}
+                    >
                     <Image
                         src="/images/icon-add-to-cart.svg"
                         alt="cart"
@@ -72,7 +86,7 @@ const AddToCartButton = ({isItemInCart}) => {
                 </Button>
             )}
         </Box>
-  )
+    )
 }
 
 export default AddToCartButton
