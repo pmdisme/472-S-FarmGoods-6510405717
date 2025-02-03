@@ -8,7 +8,6 @@ import { useCart } from '@/hooks/useCart'
 const Cart = () => {
   useCart();
   const cartItems = useAppSelector((state) => state.cart.cart);
-  // const isLoading = useAppSelector(state => state.cart.isLoading);
   // const error = useAppSelector(state => state.cart.error);
   const [orderTotal, setOrderTotal] = useState(0);
   const [numberOfItem, setNumberOfItem] = useState(0);
@@ -36,14 +35,10 @@ const Cart = () => {
     getNumberOfItem();
   }, [cartItems]);
 
-  // if (isLoading) {
-  // }
 
   // if (error) {
   // }
 
-  // if (!cartItems.length) {
-  // }
 
   return (
     <Box sx={{

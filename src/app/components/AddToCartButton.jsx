@@ -5,15 +5,40 @@ import React from 'react'
 import Image from 'next/image'
 import { useAppDispatch, useAppSelector } from '@/utile/hooks';
 import { addToCart, increaseQuantity, decreaseQuantity } from '@/store/cartSlice';
-
+import { useAddToCart } from '@/hooks/useAddToCart';
 
 const AddToCartButton = ({ isItemInCart, id, price, name }) => {
     const dispatch = useAppDispatch();
     const { cart } = useAppSelector((state) => state.cart);
+    const { addItemToCart } = useAddToCart();
 
     const isItem = (item) => item.id === id;
-
     const itemIndex = cart.findIndex(isItem);
+
+    const handleAddToCart = async () => {
+        const success = await addItemToCart(id, 1);
+        
+        if (success) {
+            dispatch(addToCart({
+                id: id, 
+                price: price, 
+                name: name, 
+                quantity: 1
+            }));
+        }
+    };
+
+    const handleIncreaseQuantity = async () => {
+        const success = await addItemToCart(id, 1);
+        if (success) {
+            dispatch(increaseQuantity(itemIndex));
+        }
+    };
+
+    const handleDecreaseQuantity = () => {
+        dispatch(decreaseQuantity(itemIndex));
+    };
+
     return (
         <Box
             sx={{
@@ -46,7 +71,7 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                             color: "#FFFFFF",
                             marginLeft: "0.5rem",
                         }}
-                        onClick={() => dispatch(decreaseQuantity(itemIndex))}
+                        onClick={handleDecreaseQuantity}
                     >
                         -
                     </button>
@@ -60,7 +85,7 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                         color: "#FFFFFF",
                         marginRight: "0.5rem",
                     }}
-                    onClick={() => dispatch(increaseQuantity(itemIndex))}
+                    onClick={handleIncreaseQuantity}
                     >
                         +
                     </button>
@@ -73,7 +98,7 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                         border: "none",
 
                     }}
-                    onClick={() => dispatch(addToCart({id: id, price: price, name: name, quantity: 1}))}
+                    onClick={id, price: price, name: name, quantity: 1}))}
                     >
                     <Image
                         src="/images/icon-add-to-cart.svg"
