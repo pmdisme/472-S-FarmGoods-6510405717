@@ -39,8 +39,6 @@ model Product {
   productId       Int           @id @default(autoincrement())
   productName     String
   productPrice    Float
-  productExpdate  DateTime
-  productMfgdate  DateTime
   productImage    String
   orderDetails    OrderDetail[]
 }
