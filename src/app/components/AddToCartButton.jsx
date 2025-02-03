@@ -98,7 +98,7 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                         border: "none",
 
                     }}
-                    onClick={id, price: price, name: name, quantity: 1}))}
+                    onClick={handleAddToCart}
                     >
                     <Image
                         src="/images/icon-add-to-cart.svg"
@@ -114,4 +114,4 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
     )
 }
 
-export default AddToCartButton
+export default AddToCartButton;
