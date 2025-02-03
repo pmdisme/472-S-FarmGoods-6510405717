@@ -12,11 +12,14 @@
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^6.4.2",
+    "@mui/material-nextjs": "^6.4.2",
     "@prisma/client": "^6.3.0",
+    "@reduxjs/toolkit": "^2.5.1",
     "farmgoods": "file:",
     "next": "15.1.6",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "react-redux": "^9.2.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
