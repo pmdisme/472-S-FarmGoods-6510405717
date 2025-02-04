@@ -5,11 +5,12 @@ export class ProductController {
         this.productService = new ProductService()
     }
 
-    async showProduct(req, res) {
+    async showProduct() {
         try {
-            return await this.productService.getAllProducts(req, res)
+            const products = await this.productService.getAllProducts()
+            return Response.json({ success:true, data: products }, { status: 200 })
         } catch (error) {
-            return res.status(500).json(
+            return Response.json(
                 { error: error.message || "Error displaying products" },
                 { status: 500 }
             )

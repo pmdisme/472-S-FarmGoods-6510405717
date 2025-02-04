@@ -8,23 +8,13 @@ export class ProductService {
     }
 
     // get products
-    async getAllProducts(req, res) {
+    async getAllProducts() {
         try {
-            const products = await prisma.product.findMany({
-                orderBy: {
-                    productName: 'asc' // sort order by product name (a-z)
-                }
+            return await this.prisma.product.findMany({
+                orderBy: { productName: 'asc' }
             })
-
-        return res.status(200).json({
-            success: true,
-            data: products
-        })
         } catch (error) {
-            return res.status(500).json({
-                success: false,
-                error: 'Failed to fetch products'
-            })
+            throw new Error("Failed to fetch products")
         }
     }
 
