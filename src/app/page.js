@@ -49,8 +49,8 @@ const Home = () => {
             {Array.isArray(products) && products.length > 0 ? (
               products.map((item) => (
                 <Product 
-                  key={item.id} 
-                  productId={item.id}
+                  key={item.id}
+                  id={item.id}
                   image={item.image}  
                   name={item.name} 
                   price={item.price} 
