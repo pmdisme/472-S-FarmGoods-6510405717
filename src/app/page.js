@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Product from "../app/components/Product";
 import data from "../../data/data.json"
 import Cart from "./components/Cart";
+import Search from "./components/Search";
 
 const Home = () => {
   return (
@@ -13,7 +14,7 @@ const Home = () => {
         FARM GOODS
       </Typography>
 
-      {/*<Search/>*/}
+      <Search/>
 
       <Box sx={{display: "flex", justifyContent: "space-between"}}>
         <Box sx={{display: "flex", flexWrap: "wrap", justifyContent: "space-between"}}>
