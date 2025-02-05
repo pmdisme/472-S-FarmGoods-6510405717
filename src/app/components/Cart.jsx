@@ -71,6 +71,7 @@ const Cart = () => {
         borderRadius: "0.5rem",
         padding: "1.5rem",
         overflowY: "auto",
+        zIndex: 1000
       }}>
         <Typography
           sx={{

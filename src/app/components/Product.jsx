@@ -16,13 +16,27 @@ const Product = ({ id, image, name, price }) => {
     const isItemInCart = !!cart.find((item) => item.id === id);
 
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", marginTop: "4rem" }}>
+        <Box 
+        sx={{ 
+            display: "flex", 
+            flexDirection: "column",
+            alignItems: "center",
+            minWidth: "200px",
+            backgroundColor: "#f5f5f5",
+            border: "1px solid #9ac4e9",
+            borderRadius: "1rem",
+            padding: "1rem",
+            }}>
             <Image
                 src={image}
                 alt="product-image"
-                height={200}
-                width={200}
-                style={{ borderRadius: "0.5rem"}}
+                height={170}
+                width={170}
+                style={{ 
+                    borderRadius: "0.5rem", 
+                    marginBottom: "1rem",
+                    objectFit: "contain"
+                }}
             />
 
             <AddToCartButton

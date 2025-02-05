@@ -38,30 +38,58 @@ const Home = () => {
 
   return (
     <Container>
+
       {/* header section */}
-      <Box sx={{position: "fixed", top: "0", left: "0", right: "350px", padding: "2rem", zIndex: "10"}}>
-        <Typography variant="h1" sx={{ color: "#148575", fontSize: "2rem", fontWeight: 600 }}>
-          FARM GOODS
-        </Typography>
+
+      <Box
+        sx={{
+          position: "fixed",
+          top: "0",
+          left: "0",
+          gap: "100px",
+          width: "100%",
+          padding: "1rem",
+          display: "flex",
+          backgroundColor: "#F8F8FF",
+          zIndex: 100
+        }}>
+        <Image
+          src="/images/logo.png"
+          alt="logo"
+          height={140}
+          width={260}
+          style={{ marginLeft: "1rem" }} />
 
         <Search />
+
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px", width: "calc(100% - 340px)" }}>
-          {Array.isArray(products) && products.length > 0 ? (
-            products.map((item) => (
-              <Product
-                key={item.id}
-                id={item.id}
-                image={item.image}
-                name={item.name}
-                price={item.price}
-              />
-            ))
+      {/* scrollable product section */}
+      
+      <Box sx={{ display: "flex", justifyContent: "space-between"}}>
+        <Box 
+        sx={{ 
+          marginTop: "200px", 
+          marginRight: "200px", 
+          marginLeft: "-8rem",
+          display: "flex", 
+          flexWrap: "wrap",
+          gap: "20px",
+          }}>
+            {Array.isArray(products) && products.length > 0 ? (
+              products.map((item) => (
+                <Product
+                  key={item.id}
+                  id={item.id}
+                  image={item.image}
+                  name={item.name}
+                  price={item.price}
+                />
+          ))
           ) : (
-            <Typography>No products available</Typography>
+          <Typography>No products available</Typography>
           )}
+
         </Box>
         <Cart />
       </Box>

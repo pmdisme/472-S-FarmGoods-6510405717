@@ -38,7 +38,15 @@ const CartItem = ({ id, name, price, quantity }) => {
                     height: "1.7rem",
                     display: "flex",
                     justifyContent: "center",
-                    alignItems: "center"
+                    alignItems: "center",
+                    cursor: "pointer",
+                    transition: "all 0.2s ease-in-out"
+                }}
+                onMouseEnter={(e) => {
+                    e.target.style.background = "#fbd0c5"
+                }}
+                onMouseLeave={(e) => {
+                    e.target.style.background = "transparent";
                 }}
                 onClick={() => dispatch(removeFromCart(id))}
             >
