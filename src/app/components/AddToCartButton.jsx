@@ -19,12 +19,12 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
 
     const handleAddToCart = async () => {
         const success = await addItemToCart(id, 1)
-        
+
         if (success) {
             dispatch(addToCart({
-                id: id, 
-                price: price, 
-                name: name, 
+                id: id,
+                price: price,
+                name: name,
                 quantity: 1
             }))
         } else {
@@ -73,7 +73,12 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                     padding: "0.2rem",
                     width: "70%",
                     alignSelf: "center",
-                    position: "relative"
+                    position: "flex",
+                    zIndex: "1",
+                    transition: "all 0.2s ease-in-out",
+                    '&:hover': {
+                        boxShadow: '0 5px 9px rgba(0,0,0,0.2)',
+                    }
                 }}
             >
                 {isItemInCart ? (
@@ -83,7 +88,7 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                         width: "100%",
                         alignItems: "center",
                         height: "100%",
-                        marginBottom: "0.5rem"
+                        marginBottom: "0.5rem",
                     }}>
                         <button
                             style={{
@@ -92,6 +97,8 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                                 borderRadius: "4rem",
                                 color: "#FFFFFF",
                                 marginLeft: "0.5rem",
+                                padding: "4px 10px",
+
                             }}
                             onClick={handleDecreaseQuantity}
                         >
@@ -106,8 +113,9 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                             borderRadius: "4rem",
                             color: "#FFFFFF",
                             marginRight: "0.5rem",
+                            padding: "4px 8px",
                         }}
-                        onClick={handleIncreaseQuantity}
+                            onClick={handleIncreaseQuantity}
                         >
                             +
                         </button>
@@ -120,7 +128,7 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                             border: "none",
                         }}
                         onClick={handleAddToCart}
-                        >
+                    >
                         <Image
                             src="/images/icon-add-to-cart.svg"
                             alt="cart"

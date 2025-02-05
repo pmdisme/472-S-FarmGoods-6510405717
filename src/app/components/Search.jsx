@@ -8,12 +8,13 @@ const Search = () => {
       sx={{
         marginTop: "3rem",
         display: "flex",
+        width: "100%"
       }}
     >
       <Typography component="input" placeholder=" Search somethings... "
         sx={{
-          width: "40%",
           height: "3rem",
+          width: "30%",
           border: 'none',
           color: "text.secondary",
           padding: "0 1rem",
