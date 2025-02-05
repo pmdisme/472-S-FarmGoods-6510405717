@@ -54,7 +54,7 @@ const Home = () => {
           zIndex: 100
         }}>
         <Image
-          src="/images/logo.png"
+          src="/images/icons/logo.png"
           alt="logo"
           height={140}
           width={260}

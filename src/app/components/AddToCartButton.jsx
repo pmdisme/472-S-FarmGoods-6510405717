@@ -130,7 +130,7 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                         onClick={handleAddToCart}
                     >
                         <Image
-                            src="/images/icon-add-to-cart.svg"
+                            src="/images/icons/icon-add-to-cart.svg"
                             alt="cart"
                             height={16}
                             width={16}

@@ -41,7 +41,7 @@ const Search = () => {
         marginLeft: "0.5rem"
         }}>
         <Image
-          src="/images/icon-search.svg"
+          src="/images/icons/icon-search.svg"
           alt="Search"
           width={20}
           height={20}
