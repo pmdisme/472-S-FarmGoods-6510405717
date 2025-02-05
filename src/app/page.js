@@ -37,30 +37,33 @@ const Home = () => {
   }, []);
 
   return (
-    <Container sx={{ paddingTop: "3rem" }}>
-      <Typography variant="h1" sx={{ color: "#148575", fontSize: "2rem", fontWeight: 600}}>
-        FARM GOODS
-      </Typography>
+    <Container>
+      {/* header section */}
+      <Box sx={{position: "fixed", top: "0", left: "0", right: "350px", padding: "2rem", zIndex: "10"}}>
+        <Typography variant="h1" sx={{ color: "#148575", fontSize: "2rem", fontWeight: 600 }}>
+          FARM GOODS
+        </Typography>
 
-      <Search/>
+        <Search />
+      </Box>
 
-      <Box sx={{display: "flex", justifyContent: "space-between"}}>
-      <Box sx={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between" }}>
-            {Array.isArray(products) && products.length > 0 ? (
-              products.map((item) => (
-                <Product 
-                  key={item.id}
-                  id={item.id}
-                  image={item.image}  
-                  name={item.name} 
-                  price={item.price} 
-                />
-              ))
-            ) : (
-              <Typography>No products available</Typography>
-            )}
-          </Box>
-        <Cart/>
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box sx={{ display: "flex", flexWrap: "wrap", gap: "20px", width: "calc(100% - 340px)" }}>
+          {Array.isArray(products) && products.length > 0 ? (
+            products.map((item) => (
+              <Product
+                key={item.id}
+                id={item.id}
+                image={item.image}
+                name={item.name}
+                price={item.price}
+              />
+            ))
+          ) : (
+            <Typography>No products available</Typography>
+          )}
+        </Box>
+        <Cart />
       </Box>
     </Container>
   );

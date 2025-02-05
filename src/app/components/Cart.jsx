@@ -63,13 +63,14 @@ const Cart = () => {
 
       <Box sx={{
         backgroundColor: "#f8f5db",
-        width: "70vw",
-        position: "relative", 
-        bottom: "40px",
+        width: "350px",
+        position: "fixed",
+        right: "10px",
+        top: "10px",
+        bottom: "10px",
         borderRadius: "0.5rem",
-        marginLeft: "2rem",
         padding: "1.5rem",
-        height: "fit-content"
+        overflowY: "auto",
       }}>
         <Typography
           sx={{
