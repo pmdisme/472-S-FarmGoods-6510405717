@@ -6,17 +6,17 @@ import { OrderDetailRepository } from '@/repositories/OrderDetailRepository'
 export class OrderService {
     constructor() {
         this.prisma = new PrismaClient()
-        this.productRepo = new ProductRepository()
-        this.orderRepo = new OrderRepository()
-        this.orderDetailRepo = new OrderDetailRepository()
+        this.productRepository = new ProductRepository()
+        this.orderRepository = new OrderRepository()
+        this.orderDetailRepository = new OrderDetailRepository()
     }
 
     async getActiveCart() {
-        return await this.orderRepo.findByStatusEqualO()
+        return await this.orderRepository.findByStatusEqualO()
     }
 
     async addToCart(productId, quantity) {
-        const product = await this.productRepo.findById(productId)
+        const product = await this.productRepository.findById(productId)
 
         if (!product) {
             throw new Error("Product not found")
@@ -42,7 +42,7 @@ export class OrderService {
     }
 
     async updateOrCreateOrderDetail(orderId, productId, quantity, totalAmount) {
-        const existingDetail = await this.orderDetailRepo.findByProductIdAndOrderId(orderId, productId)
+        const existingDetail = await this.orderDetailRepository.findByProductIdAndOrderId(orderId, productId)
         
         if (existingDetail) {
             return await this.prisma.orderDetail.update({
@@ -83,7 +83,7 @@ export class OrderService {
     }
 
     async getOrderDetails(orderId) {
-        const cart = await this.orderRepo.findById(orderId);
+        const cart = await this.orderRepository.findById(orderId);
         
         if (!cart) {
             return null;
