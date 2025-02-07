@@ -83,9 +83,12 @@ const Cart = () => {
           Your Order({numberOfItem})
         </Typography>
 
-        {cartItems.map((item) => {
-          return <CartItem key={item.id} {...item} />;
-        })}
+        {[...cartItems]
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .map((item) => {
+            return <CartItem key={item.id} {...item} />;
+          })
+        }
 
         <Box
           sx={{
