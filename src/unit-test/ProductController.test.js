@@ -37,15 +37,15 @@ describe('ProductController', () => {
         const response = await productController.showProduct()
 
         expect(response).toEqual({ success: true, data: testProducts, status: 200 }) // เช็คว่าถูก format ไหม
-        expect(productService.getAllProducts).toHaveBeenCalledTimes(1); // เช็คว่าโดนเรียกหนึ่งครั้งไหม
+        expect(productService.getAllProducts).toHaveBeenCalledTimes(1) // เช็คว่าโดนเรียกหนึ่งครั้งไหม
     })
 
-    test('showProduct should thrown an error 500 if can not get products', async () => {
+    test('showProduct should throw an error 500 if can not get products', async () => {
         productService.getAllProducts.mockRejectedValue(new Error("Database error"))
 
         const response = await productController.showProduct()
 
-        expect(response).toEqual({ error: "Database error", status: 500 });
-        expect(productService.getAllProducts).toHaveBeenCalledTimes(1);
+        expect(response).toEqual({ error: "Database error", status: 500 })
+        expect(productService.getAllProducts).toHaveBeenCalledTimes(1)
     })
 })
