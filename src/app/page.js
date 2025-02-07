@@ -65,29 +65,29 @@ const Home = () => {
       </Box>
 
       {/* scrollable product section */}
-      
-      <Box sx={{ display: "flex", justifyContent: "space-between"}}>
-        <Box 
-        sx={{ 
-          marginTop: "200px", 
-          marginRight: "200px", 
-          marginLeft: "-8rem",
-          display: "flex", 
-          flexWrap: "wrap",
-          gap: "20px",
+
+      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Box data-testid="product-section"
+          sx={{
+            marginTop: "200px",
+            marginRight: "200px",
+            marginLeft: "-8rem",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px",
           }}>
-            {Array.isArray(products) && products.length > 0 ? (
-              products.map((item) => (
-                <Product
-                  key={item.id}
-                  id={item.id}
-                  image={item.image}
-                  name={item.name}
-                  price={item.price}
-                />
-          ))
+          {Array.isArray(products) && products.length > 0 ? (
+            products.map((item) => (
+              <Product
+                key={item.id}
+                id={item.id}
+                image={item.image}
+                name={item.name}
+                price={item.price}
+              />
+            ))
           ) : (
-          <Typography>No products available</Typography>
+            <Typography>No products available</Typography>
           )}
 
         </Box>

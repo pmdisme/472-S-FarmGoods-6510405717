@@ -73,7 +73,6 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                     padding: "0.2rem",
                     width: "70%",
                     alignSelf: "center",
-                    position: "flex",
                     zIndex: "1",
                     transition: "all 0.2s ease-in-out",
                     '&:hover': {
