@@ -17,32 +17,4 @@ export class ProductService {
             throw new Error("Failed to fetch products")
         }
     }
-
-    // get order details
-    async getProductDetails(req, res) {
-        try {
-            const {id} = req.query // get id from request query
-
-            const product = await prisma.product.findUnique({
-                where: {
-                    productId: Number(id)
-                }
-            })
-            if (!product) {
-                return res.status(404).json({
-                    success: false,
-                    error: 'Product not found'
-                })
-            }
-            return res.status(200).json({
-                success: true,
-                data: product
-            })
-        } catch (error) {
-            return res.status(500).json({
-                success: false,
-                error: 'Failed to fetch product details'
-            })
-        }
-    }
 }

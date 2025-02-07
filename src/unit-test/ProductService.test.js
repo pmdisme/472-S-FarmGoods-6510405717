@@ -1,5 +1,5 @@
-import { PrismaClient } from "@prisma/client";
 import { ProductService } from "@/services/ProductService"; 
+import { PrismaClient } from "@prisma/client";
 
 // Mock เพื่อป้องกันจากการเชื่อมต่อฐานข้อมูลจริง
 jest.mock('@prisma/client', () => {
@@ -40,5 +40,14 @@ describe('ProductService', () => {
         expect(prismaTest.product.findMany).toHaveBeenCalledWith({
             orderBy: { productName: 'asc' }
         })
+    })
+
+    test('getAllProducts should throw an error when can not fetch product', async () => {
+        // Mock Prisma's findMany() ในการ throw error
+        prismaTest.product.findMany.mockRejectedValue(new Error("Database Error"));
+
+        // เรีัยก method ตรง ๆ ทำให้ try-catch ใน getAllProducts() ทำงาน
+        await expect(productService.getAllProducts()).rejects.toThrow("Failed to fetch products");
+        expect(prismaTest.product.findMany).toHaveBeenCalledTimes(1);
     })
 })

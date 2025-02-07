@@ -1,5 +1,5 @@
 import { ProductRepository } from '@/repositories/ProductRepository'
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient } from "@prisma/client";
 
 // Mock เพื่อป้องกันจากการเชื่อมต่อฐานข้อมูลจริง
 jest.mock('@prisma/client', () => {
