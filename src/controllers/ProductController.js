@@ -16,16 +16,4 @@ export class ProductController {
             )
         }
     }
-
-    // display single product details
-    async showProductDetails(req, res) {
-        try {
-            return await this.productService.getProductDetails(req, res)
-        } catch (error) {
-            return res.status(500).json(
-                { error: error.message || "Error displaying product details" },
-                { status: 500 }
-            )
-        }
-    }
 }
