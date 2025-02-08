@@ -2,12 +2,13 @@ import { render, screen} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import Cart from '@/app/components/Cart';
-import  {useCart}  from '@/hooks/useCart';
+import '@testing-library/jest-dom';
 
-
-jest.mock('@/hooks/useCart', () => ({
-    useCart: jest.fn()
+jest.mock('../src/hooks/useCart', () => ({
+  useCart: jest.fn()
 }));
+
+global.fetch = jest.fn();
 
 jest.spyOn(global, "fetch").mockImplementation( 
     jest.fn(
@@ -70,6 +71,6 @@ describe('Shopping Cart Acceptance Tests', () => {
     );
 
     expect(screen.getByText('Unexpected Error')).toBeInTheDocument();
-    expect(screen.getByText('/Oops! Something went wrong/')).toBeInTheDocument();
+    expect(screen.getByText(/Oops! Something went wrong/)).toBeInTheDocument();
   });
 });
