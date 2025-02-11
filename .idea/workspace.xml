@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/products/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/products/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/ProductController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ProductController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/repositories/ProductRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/ProductRepository.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/ProductService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ProductService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,7 +39,7 @@
     "Jest.Tests in unit-test\\.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/unit-testing-add-product",
+    "git-widget-placeholder": "feature/add-product",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -47,7 +51,21 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
+    </key>
+  </component>
   <component name="RunManager" selected="npm.dev">
+    <configuration name="OrderDetailRepository.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/unit-test/OrderDetailRepository.test.js" />
+      <method v="2" />
+    </configuration>
     <configuration name="OrderRepository.findById" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -99,6 +117,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Jest.OrderDetailRepository.test.js" />
       <item itemvalue="Jest.OrderRepository.findById" />
       <item itemvalue="Jest.OrderRepository.test.js" />
       <item itemvalue="Jest.OrderService.test.js" />
@@ -107,6 +126,7 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.OrderDetailRepository.test.js" />
         <item itemvalue="Jest.Tests in unit-test\" />
         <item itemvalue="Jest.OrderRepository.findById" />
         <item itemvalue="Jest.OrderRepository.test.js" />
@@ -131,6 +151,7 @@
       <updated>1738051899976</updated>
       <workItem from="1738051901482" duration="333000" />
       <workItem from="1738933211823" duration="5281000" />
+      <workItem from="1739286412715" duration="4935000" />
     </task>
     <servers />
   </component>
@@ -155,6 +176,12 @@
           <url>file://$PROJECT_DIR$/src/unit-test/OrderRepository.test.js</url>
           <line>71</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/controllers/ProductController.js</url>
+          <line>19</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
