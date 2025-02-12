@@ -24,6 +24,9 @@ export const cartSlice = createSlice({
         decreaseQuantity: (state, action) => {
             state.cart[action.payload].quantity -= 1;
         },
+        clearCard: (state) => {
+            state.cart = [];
+        },
         setLoading: (state, action) => {
             state.isLoading = action.payload;
         },
@@ -39,6 +42,7 @@ export const {
     removeFromCart,
     increaseQuantity,
     decreaseQuantity,
+    clearCard,
     setLoading,
     setError
 } = cartSlice.actions

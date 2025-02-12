@@ -4,10 +4,6 @@ import configureStore from 'redux-mock-store';
 import Cart from '@/app/components/Cart';
 import '@testing-library/jest-dom';
 
-jest.mock('../src/hooks/useCart', () => ({
-  useCart: jest.fn()
-}));
-
 global.fetch = jest.fn();
 
 jest.spyOn(global, "fetch").mockImplementation( 
@@ -15,7 +11,6 @@ jest.spyOn(global, "fetch").mockImplementation(
       () => Promise.resolve({ json: () => Promise.resolve({ data: 100 }), 
     }), 
   )) 
-  
 describe('Shopping Cart Acceptance Tests', () => {
     
 
