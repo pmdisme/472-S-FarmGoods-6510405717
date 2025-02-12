@@ -6,6 +6,8 @@ import { useAppSelector } from '@/utile/hooks'
 import CartItem from './CartItem'
 import { useCart } from '@/hooks/useCart'
 
+import OrderSummary from './OrderSummary'
+
 const Cart = () => {
   useCart();
   const cartItems = useAppSelector((state) => state.cart.cart);
@@ -13,9 +15,12 @@ const Cart = () => {
   const [orderTotal, setOrderTotal] = useState(0);
   const [numberOfItem, setNumberOfItem] = useState(0);
   const [open, setOpen] = useState(false);
+  const [isHover, setIsHover] = useState(false);
+  const [openOrderSummary, setOpenOrderSummary] = useState(false);
 
   const handleClose = () => setOpen(false);
 
+  // calcuate price
   const getOrderTotal = () => {
     let tempOrderTotal = 0;
     cartItems.map((item) => {
@@ -44,6 +49,15 @@ const Cart = () => {
     }
   }, [error]);
 
+  // set open payment
+  const handleClickConfirmOrder = () => {
+    setOpenOrderSummary(true);
+  };
+
+  const handleCloseOrderSummary = () => {
+    setOpenOrderSummary(false);
+  }
+
   return (
     <>
       <Dialog
@@ -60,6 +74,7 @@ const Cart = () => {
           <Button onClick={handleClose}>OK</Button>
         </DialogActions>
       </Dialog>
+
 
       <Box sx={{
         backgroundColor: "#f8f5db",
@@ -104,7 +119,33 @@ const Cart = () => {
             ฿{orderTotal.toFixed(2)}
           </Typography>
         </Box>
+        <Box>
+          <button
+            style={{
+              border: "1px solid #e74c3c",
+              backgroundColor: isHover? "#cb4335" :"#e74c3c",
+              borderRadius: "1rem",
+              color: "#ffffff",
+              padding: "0.8rem",
+              width: "100%",
+              fontSize: "1.3rem",
+              fontWeight: 600,
+              alignSelf: "center",
+              transition: "all 0.2s ease-in-out",
+              
+            }}
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
+            onClick={handleClickConfirmOrder}
+          > Confirm Order
+          </button>
+
+        </Box>
       </Box>
+
+      
+
+      <OrderSummary openOrderSummary={openOrderSummary} handleClose={handleCloseOrderSummary} orderTotal={orderTotal}/>
     </>
   )
 }
