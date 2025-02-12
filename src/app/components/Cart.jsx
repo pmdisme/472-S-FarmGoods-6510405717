@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react'
 import { useAppSelector } from '@/utile/hooks'
 import CartItem from './CartItem'
 import { useCart } from '@/hooks/useCart'
-import Payment from './Payment'
+
+import OrderSummary from './OrderSummary'
 
 const Cart = () => {
   useCart();
@@ -15,7 +16,7 @@ const Cart = () => {
   const [numberOfItem, setNumberOfItem] = useState(0);
   const [open, setOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
-  const [openPayment, setOpenPayment] = useState(false);
+  const [openOrderSummary, setOpenOrderSummary] = useState(false);
 
   const handleClose = () => setOpen(false);
 
@@ -50,11 +51,11 @@ const Cart = () => {
 
   // set open payment
   const handleClickConfirmOrder = () => {
-    setOpenPayment(true);
+    setOpenOrderSummary(true);
   };
 
-  const handleClosePayment = () => {
-    setOpenPayment(false);
+  const handleCloseOrderSummary = () => {
+    setOpenOrderSummary(false);
   }
 
   return (
@@ -142,8 +143,9 @@ const Cart = () => {
         </Box>
       </Box>
 
-      <Payment 
-      open={openPayment} handleClose={handleClosePayment} orderTotal={orderTotal}/>
+      
+
+      <OrderSummary openOrderSummary={openOrderSummary} handleClose={handleCloseOrderSummary} orderTotal={orderTotal}/>
     </>
   )
 }
