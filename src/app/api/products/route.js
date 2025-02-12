@@ -1,5 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import {OrderController} from "@/controllers/OrderController";
 import {ProductController} from "@/controllers/ProductController";
 
 const prisma = new PrismaClient();

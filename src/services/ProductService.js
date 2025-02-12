@@ -1,5 +1,5 @@
-import { PrismaClient } from '@prisma/client'
-import { ProductRepository } from '@/repositories/ProductRepository'
+import {PrismaClient} from '@prisma/client'
+import {ProductRepository} from '@/repositories/ProductRepository'
 
 export class ProductService {
     constructor() {
@@ -18,19 +18,44 @@ export class ProductService {
         }
     }
 
-    // create product
+    #validateProduct(productName, productPrice, imageFile) {
+        if (!imageFile) {
+            throw new Error('Product image is required');
+        }
+
+        // Validate image type
+        if (!imageFile.type.startsWith('image/')) {
+            throw new Error('Please upload an image file');
+        }
+    }
+
+    // Handle image upload and return image path
+    async #handleImageUpload(imageFile, productId) {
+        const bytes = await imageFile.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+
+        const originalExtension = imageFile.name.split('.').pop().toLowerCase();
+        const fileName = `${productId}.${originalExtension}`;
+        const imagePath = `/images/products/${fileName}`;
+
+        const fs = require('fs').promises;
+        const path = require('path');
+        const fullPath = path.join(process.cwd(), 'public', 'images', 'products', fileName);
+
+        // Create directory if not exists
+        await fs.mkdir(path.dirname(fullPath), { recursive: true });
+
+        // Save file
+        await fs.writeFile(fullPath, buffer);
+
+        return imagePath;
+    }
+
+    // Main create product method
     async createProduct(productName, productPrice, imageFile) {
         try {
-
-            if (!imageFile) {
-                throw new Error('Product image is required');
-            }
-
-            // Validate image
-            const allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
-            if (!allowedTypes.includes(imageFile.type)) {
-                throw new Error('Invalid file type.');
-            }
+            // Validate inputs
+            this.#validateProduct(productName, productPrice, imageFile);
 
             // Check duplicate name
             const existingProduct = await this.productRepo.findByName(productName.trim());
@@ -46,29 +71,12 @@ export class ProductService {
             });
 
             // Handle image upload
-            const bytes = await imageFile.arrayBuffer();
-            const buffer = Buffer.from(bytes);
-
-            const originalExtension = imageFile.name.split('.').pop().toLowerCase();
-            const fileName = `${newProduct.productId}.${originalExtension}`;
-            const imagePath = `/images/products/${fileName}`;
-
-            const fs = require('fs').promises;
-            const path = require('path');
-            const fullPath = path.join(process.cwd(), 'public', 'images', 'products', fileName);
-
-            // Create directory if not exists
-            await fs.mkdir(path.dirname(fullPath), { recursive: true });
-
-            // Save file
-            await fs.writeFile(fullPath, buffer);
+            const imagePath = await this.#handleImageUpload(imageFile, newProduct.productId);
 
             // Update product with image path
-            const updatedProduct = await this.productRepo.update(newProduct.productId, {
+            return await this.productRepo.update(newProduct.productId, {
                 productImage: imagePath
             });
-
-            return updatedProduct;
 
         } catch (error) {
             const errorMessage = error.code ? `Database error: ${error.message}` : error.message;

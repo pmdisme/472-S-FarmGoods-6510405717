@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/api/products/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/products/route.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/ProductController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/ProductController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/ProductRepository.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/ProductRepository.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/ProductService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ProductService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,30 +28,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Jest.OrderDetailRepository.test.js.executor": "Run",
-    "Jest.OrderRepository.executor": "Run",
-    "Jest.OrderRepository.findById.executor": "Run",
-    "Jest.OrderRepository.test.js.executor": "Run",
-    "Jest.OrderService.test.js.executor": "Run",
-    "Jest.ProductRepository.test.js.executor": "Run",
-    "Jest.Tests in unit-test\\.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "feature/add-product",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "C:/Users/jitla/OneDrive/Documents/3term2/agile/472-FarmGoods-Sprints-and-Giggles/node_modules/jest",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\jitla\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.OrderDetailRepository.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderRepository.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderRepository.findById.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderRepository.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderService.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ProductRepository.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Tests in unit-test\\.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/add-product&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jitla/OneDrive/Documents/3term2/agile/472-FarmGoods-Sprints-and-Giggles/public/images/products&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/jitla/OneDrive/Documents/3term2/agile/472-FarmGoods-Sprints-and-Giggles/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\jitla\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
     </key>
@@ -151,7 +155,8 @@
       <updated>1738051899976</updated>
       <workItem from="1738051901482" duration="333000" />
       <workItem from="1738933211823" duration="5281000" />
-      <workItem from="1739286412715" duration="4935000" />
+      <workItem from="1739286412715" duration="6431000" />
+      <workItem from="1739350861816" duration="12331000" />
     </task>
     <servers />
   </component>
@@ -176,12 +181,6 @@
           <url>file://$PROJECT_DIR$/src/unit-test/OrderRepository.test.js</url>
           <line>71</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/controllers/ProductController.js</url>
-          <line>19</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
