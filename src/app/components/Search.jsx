@@ -3,6 +3,12 @@ import Image from 'next/image';
 import { Box, TextField } from '@mui/material';
 
 const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch(); // trigger search when enter
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -17,6 +23,7 @@ const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
         placeholder=" Search for products... "
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={handleKeyPress}
         sx={{
           height: "3rem",
           width: "30%",
