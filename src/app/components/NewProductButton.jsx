@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
 import { CirclePlus } from "lucide-react";
-import NewProductDialog from "@/app/components/creat_product_dialog/NewProductDialog";
+import NewProductDialog from "@/app/components/creat-product-dialog/NewProductDialog";
 
 const NewProductButton = ({ onProductCreated }) => {
     const [openCreate, setOpenCreate] = useState(false);
