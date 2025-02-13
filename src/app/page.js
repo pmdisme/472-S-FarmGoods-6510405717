@@ -14,6 +14,8 @@ const Home = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -23,6 +25,7 @@ const Home = () => {
 
         if (data.success) {
           setProducts(data.data);
+          setFilteredProducts(data.data);
         } else {
           setError(data.error || "Failed to fetch products")
         }
@@ -36,6 +39,20 @@ const Home = () => {
     fetchProducts();
   }, []);
 
+  const handleSearch = () => {
+    const trimmedSearchTerm = searchTerm.trim().toLowerCase();
+    if (trimmedSearchTerm === "") {
+      setFilteredProducts(products); // ถ้าเสิร์ชว่างจะแสดงสินค้าทั้งหมด
+      return;
+    }
+  
+    const filtered = products.filter((product) =>
+      product.name.toLowerCase().includes(trimmedSearchTerm)
+    );
+  
+    setFilteredProducts(filtered);
+  };
+  
   return (
     <Container>
 
@@ -60,7 +77,7 @@ const Home = () => {
           width={260}
           style={{ marginLeft: "1rem" }} />
 
-        <Search />
+        < Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} handleSearch={handleSearch} />
 
       </Box>
 
@@ -77,7 +94,7 @@ const Home = () => {
             gap: "20px",
           }}>
           {Array.isArray(products) && products.length > 0 ? (
-            products.map((item) => (
+            filteredProducts.map((item) => (
               <Product
                 key={item.id}
                 id={item.id}
@@ -87,7 +104,7 @@ const Home = () => {
               />
             ))
           ) : (
-            <Typography>No products available</Typography>
+            <Typography>No products found</Typography>
           )}
 
         </Box>

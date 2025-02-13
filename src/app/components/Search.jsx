@@ -1,8 +1,14 @@
 import React from 'react'
 import Image from 'next/image';
-import { Box, Typography } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 
-const Search = () => {
+const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch(); // trigger search when enter
+    }
+  };
+
   return (
     <Box
       sx={{
@@ -11,7 +17,13 @@ const Search = () => {
         width: "100%"
       }}
     >
-      <Typography component="input" placeholder=" Search somethings... "
+      <TextField 
+        fullWidth
+        variant="outlined"
+        placeholder=" Search for products... "
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={handleKeyPress}
         sx={{
           height: "3rem",
           width: "30%",
@@ -19,16 +31,19 @@ const Search = () => {
           color: "text.secondary",
           padding: "0 1rem",
           backgroundColor: "#ffffff",
-          border: "1px",
           borderRadius: "1rem",
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-          border: 'none',
-          '&:focus': {
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { border: "none" }, 
+            "&:hover fieldset": { border: "none" },
+            "&.Mui-focused fieldset": { border: "none" },
+          },
+          '&:focus-within': {
             outline: 'none',
             boxShadow: '0 0 0 2px rgba(0,0,0,0.1)'
           }
         }}>
-      </Typography>
+      </TextField>
 
       <Box 
       sx={{ 
@@ -38,8 +53,11 @@ const Search = () => {
         border: "1px", 
         borderRadius: "1rem",
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        marginLeft: "0.5rem"
-        }}>
+        marginLeft: "0.5rem",
+        cursor: "pointer"
+        }}
+        onClick={handleSearch}
+        >
         <Image
           src="/images/icons/icon-search.svg"
           alt="Search"
