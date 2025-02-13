@@ -8,7 +8,7 @@ const ERROR_MESSAGES = {
     IMAGE_SIZE: "File size exceeds 10MB limit."
 };
 
-export const useProductForm = (handleClose) => {
+export const useProductForm = (onSuccess) => {
     const [formData, setFormData] = useState({
         productName: '',
         productPrice: '',
@@ -109,7 +109,9 @@ export const useProductForm = (handleClose) => {
             const data = await response.json();
 
             if (data.success) {
-                handleClose();
+                if (onSuccess) {
+                    onSuccess(data.data);
+                }
             } else {
                 if (data.error.includes('name already exists')) {
                     setErrors(prev => ({ ...prev, productName: ERROR_MESSAGES.NAME }));

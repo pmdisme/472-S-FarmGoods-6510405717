@@ -11,10 +11,17 @@ import { ProductForm } from './ProductForm';
 import { ConfirmDialog } from './ConfirmDialog';
 import { SuccessDialog } from './SuccessDialog';
 
-const NewProductDialog = ({ open, handleClose }) => {
+const NewProductDialog = ({ open, handleClose, onProductCreated }) => {
     const [showConfirm, setShowConfirm] = useState(false);
     const [confirmAction, setConfirmAction] = useState('');
     const [showSuccess, setShowSuccess] = useState(false);
+
+    const handleSuccess = (newProduct) => {
+        if (onProductCreated) {
+            onProductCreated(newProduct);
+        }
+        setShowSuccess(true);
+    };
 
     const {
         formData,
@@ -27,9 +34,7 @@ const NewProductDialog = ({ open, handleClose }) => {
         truncateFileName,
         isFormValid,
         resetForm
-    } = useProductForm(() => {
-        setShowSuccess(true);
-    });
+    } = useProductForm(handleSuccess);
 
     const handleConfirmSubmit = () => {
         setShowConfirm(false);
