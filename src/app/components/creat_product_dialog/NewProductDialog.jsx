@@ -122,7 +122,7 @@ const NewProductDialog = ({ open, handleClose, onProductCreated }) => {
                     }}
                     disabled={!isFormValid}
                 >
-                    Create
+                    New
                 </Button>
             </DialogActions>
 
