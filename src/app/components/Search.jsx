@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image';
 import { Box, TextField } from '@mui/material';
+import {SearchIcon} from "lucide-react";
 
 const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
   const handleKeyPress = (event) => {
@@ -12,9 +13,9 @@ const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
   return (
     <Box
       sx={{
-        marginTop: "3rem",
+        marginTop: "1.5rem",
         display: "flex",
-        width: "100%"
+        alignItems: "center",
       }}
     >
       <TextField 
@@ -26,7 +27,7 @@ const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
         onKeyDown={handleKeyPress}
         sx={{
           height: "3rem",
-          width: "30%",
+          width: "23rem",
           border: 'none',
           color: "text.secondary",
           padding: "0 1rem",
@@ -45,27 +46,30 @@ const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
         }}>
       </TextField>
 
-      <Box 
-      sx={{ 
-        backgroundColor: "#98ddc3",
-        height: "3rem",
-        width: "3rem", 
-        border: "1px", 
-        borderRadius: "1rem",
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        marginLeft: "0.5rem",
-        cursor: "pointer"
-        }}
-        onClick={handleSearch}
+        <Box
+            sx={{
+                backgroundColor: "#79CDCD",
+                height: "3rem",
+                width: "3rem",
+                border: "1px",
+                borderRadius: "1rem",
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                marginLeft: "0.5rem",
+                cursor: "pointer",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}
+            onClick={handleSearch}
         >
-        <Image
-          src="/images/icons/icon-search.svg"
-          alt="Search"
-          width={20}
-          height={20}
-          style={{ margin: "15px"}}
-        />
-      </Box>
+            <SearchIcon
+                size={24}
+                style={{
+                    color: "white",
+                    strokeWidth: 2.25
+                }}
+            />
+        </Box>
 
     </Box>
   );

@@ -1,6 +1,9 @@
 import { PrismaClient } from "@prisma/client";
+import {ProductController} from "@/controllers/ProductController";
 
 const prisma = new PrismaClient();
+
+const productController = new ProductController()
 
 export async function GET() {
     try {
@@ -24,4 +27,8 @@ export async function GET() {
             error: "Failed to fetch products"
         }, { status: 500 });
     }
+}
+
+export async function POST(request) {
+    return await productController.createProduct(request)
 }

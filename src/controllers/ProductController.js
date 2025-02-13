@@ -16,4 +16,30 @@ export class ProductController {
             )
         }
     }
+
+    async createProduct(req) {
+        try {
+            const formData = await req.formData();
+            const productName = formData.get('productName');
+            const productPrice = parseFloat(formData.get('productPrice'));
+            const imageFile = formData.get('productImage');
+
+            const newProduct = await this.productService.createProduct(
+                productName,
+                productPrice,
+                imageFile
+            );
+
+            return Response.json({
+                success: true,
+                data: newProduct
+            }, { status: 201 });
+
+        } catch (error) {
+            return Response.json({
+                success: false,
+                error: error.message
+            }, { status: 500 });
+        }
+    }
 }
