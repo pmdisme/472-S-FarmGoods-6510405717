@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Box } from "@mui/material";
-import Newww from "@/app/components/NewProductDialog";
+import Newww from "@/app/components/creat_product_dialog/NewProductDialog";
 
 export default function SomePage() {
     const [openPayment, setOpenPayment] = useState(false);

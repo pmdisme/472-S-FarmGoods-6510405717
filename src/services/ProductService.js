@@ -18,17 +18,6 @@ export class ProductService {
         }
     }
 
-    #validateProduct(productName, productPrice, imageFile) {
-        if (!imageFile) {
-            throw new Error('Product image is required');
-        }
-
-        // Validate image type
-        if (!imageFile.type.startsWith('image/')) {
-            throw new Error('Please upload an image file');
-        }
-    }
-
     // Handle image upload and return image path
     async #handleImageUpload(imageFile, productId) {
         const bytes = await imageFile.arrayBuffer();
@@ -54,8 +43,6 @@ export class ProductService {
     // Main create product method
     async createProduct(productName, productPrice, imageFile) {
         try {
-            // Validate inputs
-            this.#validateProduct(productName, productPrice, imageFile);
 
             // Check duplicate name
             const existingProduct = await this.productRepo.findByName(productName.trim());

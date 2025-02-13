@@ -5,10 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/app/components/creat_product_dialog/NewProductDialog.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/products/route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/products/route.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/NewProductDialog.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/test/page.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/test/page.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/ProductService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/ProductService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +57,7 @@
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\app\components\creat_product_dialog" />
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
     </key>
   </component>
@@ -156,7 +157,8 @@
       <workItem from="1738051901482" duration="333000" />
       <workItem from="1738933211823" duration="5281000" />
       <workItem from="1739286412715" duration="6431000" />
-      <workItem from="1739350861816" duration="12331000" />
+      <workItem from="1739350861816" duration="16178000" />
+      <workItem from="1739448530955" duration="9693000" />
     </task>
     <servers />
   </component>
