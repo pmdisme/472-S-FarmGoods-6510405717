@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Payment from './Payment'
 import { Dialog, Button, DialogTitle, DialogContent, DialogContentText, Box, Typography } from '@mui/material'
 import CartItem from './CartItem';
-import { useAppSelector } from '@/utile/hooks';
+import { useAppSelector } from '@/utils/hooks';
 
 const OrderSummary = ({ openOrderSummary, handleClose, orderTotal }) => {
 

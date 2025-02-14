@@ -3,7 +3,7 @@ import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Radio, Radio
 import Image from 'next/image'
 import { clearCard } from '@/store/cartSlice';
 
-import { useAppDispatch } from '@/utile/hooks';
+import { useAppDispatch } from '@/utils/hooks';
 
 const Payment = ({ openPayment, orderTotal }) => {
 

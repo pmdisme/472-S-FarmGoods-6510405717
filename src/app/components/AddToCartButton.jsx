@@ -3,7 +3,7 @@
 import { Box, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { useAppDispatch, useAppSelector } from '@/utile/hooks'
+import { useAppDispatch, useAppSelector } from '@/utils/hooks'
 import { addToCart, increaseQuantity, decreaseQuantity } from '@/store/cartSlice'
 import { useAddToCart } from '@/hooks/useAddToCart'
 
