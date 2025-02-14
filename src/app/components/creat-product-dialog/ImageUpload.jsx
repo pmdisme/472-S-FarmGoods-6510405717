@@ -1,5 +1,4 @@
 import React from 'react';
-import { FileIcon } from 'lucide-react';
 import { Button, Box, Typography } from '@mui/material';
 import Image from 'next/image';
 
@@ -60,7 +59,12 @@ export const ImageUpload = ({
 
             {selectedFileName && (
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 1 }}>
-                    <FileIcon width={16} height={16} style={{ color: '#666666', display: 'block', flexShrink: 0 }} />
+                    <Image
+                        src="/images/icons/icon-file.svg"
+                        width={16}
+                        height={16}
+                        alt="file icon"
+                    />
                     <Typography sx={{
                         fontSize: '0.875rem',
                         color: 'text.secondary',

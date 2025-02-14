@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dialog, DialogContent, Typography, Button } from '@mui/material';
-import { CheckCircle2 } from 'lucide-react';
+import Image from "next/image";
 
 export const SuccessDialog = ({ open, onClose }) => (
     <Dialog
@@ -15,10 +15,12 @@ export const SuccessDialog = ({ open, onClose }) => (
             alignItems: 'center',
             py: 4
         }}>
-            <CheckCircle2
-                size={48}
-                color="#48c9b0"
+            <Image
+                src="/images/icons/icon-circle-check.svg"
+                width={48}
+                height={48}
                 style={{ marginBottom: '1rem' }}
+                alt={"circle check icon"}
             />
             <Typography variant="h6" sx={{ mb: 2, color: "#212f3c" }}>
                 Product Created Successfully!

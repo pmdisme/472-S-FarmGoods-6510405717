@@ -1,7 +1,7 @@
 "use client"
 import { useState } from "react";
-import { CirclePlus } from "lucide-react";
 import NewProductDialog from "@/app/components/creat-product-dialog/NewProductDialog";
+import Image from "next/image";
 
 const NewProductButton = ({ onProductCreated }) => {
     const [openCreate, setOpenCreate] = useState(false);
@@ -43,7 +43,12 @@ const NewProductButton = ({ onProductCreated }) => {
                 onMouseLeave={() => setIsHover(false)}
                 onClick={handleClickAddProduct}
             >
-                <CirclePlus size={24} />
+                <Image
+                    src={"images/icons/icon-circle-plus.svg"}
+                    alt={"circle plus icon"}
+                    width={24}
+                    height={24}
+                    />
                 <span style={{ display: 'inline-block', marginTop: "1px" }}>New Product</span>
             </button>
 

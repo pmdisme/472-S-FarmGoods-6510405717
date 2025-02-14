@@ -1,7 +1,6 @@
 import React from 'react'
 import Image from 'next/image';
 import { Box, TextField } from '@mui/material';
-import {SearchIcon} from "lucide-react";
 
 const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
   const handleKeyPress = (event) => {
@@ -62,12 +61,11 @@ const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
             }}
             onClick={handleSearch}
         >
-            <SearchIcon
-                size={24}
-                style={{
-                    color: "white",
-                    strokeWidth: 2.25
-                }}
+            <Image
+                src="/images/icons/icon-search.svg"
+                alt="search icon"
+                width={24}
+                height={24}
             />
         </Box>
 
