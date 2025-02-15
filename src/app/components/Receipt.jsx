@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Dialog, DialogTitle, DialogContent, Box, Typography } from '@mui/material'
-import { useAppSelector } from '@/utile/hooks';
 import { clearCard } from '@/store/cartSlice';
-import { useAppDispatch } from '@/utile/hooks';
 import Image from 'next/image';
-
+import { useAppDispatch, useAppSelector } from '@/utils/hooks';
 
 const Receipt = ({ openReceipt, orderTotal, handleCloseReceipt, paymentMethod }) => {
 
