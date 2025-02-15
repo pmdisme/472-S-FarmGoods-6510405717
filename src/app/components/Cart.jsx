@@ -2,11 +2,12 @@
 
 import { Box, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material'
 import { useState, useEffect } from 'react'
-import { useAppSelector } from '@/utile/hooks'
+import { useAppSelector } from '@/utils/hooks'
 import CartItem from './CartItem'
 import { useCart } from '@/hooks/useCart'
 import Payment from './Payment'
 import OrderSummary from './OrderSummary'
+import Receipt from './Receipt'
 
 const Cart = () => {
   useCart();
@@ -18,6 +19,9 @@ const Cart = () => {
   const [isHover, setIsHover] = useState(false);
   const [openOrderSummary, setOpenOrderSummary] = useState(false);
   const [openPayment, setOpenPayment] = useState(false);
+  const [openReceipt, setOpenReceipt] = useState(false)
+
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('cash'); 
 
   const handleClose = () => setOpen(false);
 
@@ -70,6 +74,16 @@ const Cart = () => {
 
   const handleClosePayment = () => {
     setOpenPayment(false);
+  }
+
+  // set open receipt
+  const handleOpenReceipt = () => {
+    setOpenReceipt(true);
+    setOpenPayment(false);
+  }
+
+  const handleCloseReceipt = () => {
+    setOpenReceipt(false);
   }
 
   return (
@@ -139,6 +153,7 @@ const Cart = () => {
               style={{
                 border: "1px solid #e74c3c",
                 backgroundColor: isHover ? "#cb4335" : "#e74c3c",
+                boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                 borderRadius: "1rem",
                 color: "#ffffff",
                 padding: "0.8rem",
@@ -158,8 +173,9 @@ const Cart = () => {
         </Box>
       </Box>
 
-      <OrderSummary openOrderSummary={openOrderSummary} handleClose={handleCloseOrderSummary} orderTotal={orderTotal} handleOpenPayment={handleOpenPayment}/>
-      <Payment openPayment={openPayment} orderTotal={orderTotal} handleClosePayment={handleClosePayment}/>
+      <OrderSummary openOrderSummary={openOrderSummary} handleClose={handleCloseOrderSummary} orderTotal={orderTotal} handleOpenPayment={handleOpenPayment} setSelectedPaymentMethod={setSelectedPaymentMethod}/>
+      <Payment openPayment={openPayment} orderTotal={orderTotal} handleClosePayment={handleClosePayment} handleOpenReceipt={handleOpenReceipt} selectedPaymentMethod={selectedPaymentMethod} setSelectedPaymentMethod={setSelectedPaymentMethod}/>
+      <Receipt openReceipt={openReceipt} orderTotal={orderTotal} handleCloseReceipt={handleCloseReceipt} paymentMethod={selectedPaymentMethod}/>
     </>
   )
 }

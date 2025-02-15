@@ -3,7 +3,7 @@
 import { Box, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import React, { useState } from 'react'
 import Image from 'next/image'
-import { useAppDispatch, useAppSelector } from '@/utile/hooks'
+import { useAppDispatch, useAppSelector } from '@/utils/hooks'
 import { addToCart, increaseQuantity, decreaseQuantity } from '@/store/cartSlice'
 import { useAddToCart } from '@/hooks/useAddToCart'
 
@@ -92,11 +92,13 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                         <button
                             style={{
                                 backgroundColor: "transparent",
-                                border: "1px solid #FFFFFF",
+                                border: "1.5px solid #FFFFFF",
                                 borderRadius: "4rem",
                                 color: "#FFFFFF",
                                 marginLeft: "0.5rem",
                                 padding: "4px 10px",
+                                fontSize: "1rem",
+                                fontWeight: 600
 
                             }}
                             onClick={handleDecreaseQuantity}
@@ -108,11 +110,14 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
 
                         <button style={{
                             backgroundColor: "transparent",
-                            border: "1px solid #FFFFFF",
+                            border: "1.5px solid #FFFFFF",
                             borderRadius: "4rem",
                             color: "#FFFFFF",
                             marginRight: "0.5rem",
                             padding: "4px 8px",
+                            fontSize: "1rem",
+                            fontWeight: 600
+
                         }}
                             onClick={handleIncreaseQuantity}
                         >

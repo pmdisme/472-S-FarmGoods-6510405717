@@ -2,9 +2,9 @@ import { PrismaClient } from '@prisma/client';
 import {OrderService} from "@/services/OrderService";
 
 jest.mock('@prisma/client');
-jest.mock('../repositories/ProductRepository');
-jest.mock('../repositories/OrderRepository');
-jest.mock('../repositories/OrderDetailRepository');
+jest.mock('../../repositories/ProductRepository');
+jest.mock('../../repositories/OrderRepository');
+jest.mock('../../repositories/OrderDetailRepository');
 
 describe('OrderService', () => {
     let orderService;

@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, Box, Typography } from '@mui/material';
-import Image from 'next/image';
-import { useAppDispatch } from '@/utile/hooks';
-import { clearCard } from '@/store/cartSlice';
 
 const paymentMethods = [
     { id: 'cash', label: 'Cash', icon: '/images/icons/icon-cash.png' },
@@ -10,13 +7,11 @@ const paymentMethods = [
     { id: 'card', label: 'Card', icon: '/images/icons/icon-credit.png' },
 ];
 
-const Payment = ({ openPayment, orderTotal, handleClosePayment }) => {
+const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceipt, selectedPaymentMethod, setSelectedPaymentMethod }) => {
 
-    const [selectedPaymentMethod, setSelectedPaymentMethod] = useState('cash')
+    
     const [isHoverCancel, setIsHoverCancel] = useState(false)
     const [isHover, setIsHover] = useState(false)
-
-    const dispatch = useAppDispatch();
 
     const handlePaymentMethodChange = (method) => {
         setSelectedPaymentMethod(method);
@@ -24,9 +19,7 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment }) => {
     };
 
     const handleConfirm = () => {
-        dispatch(clearCard())
-        handleClosePayment();
-        setSelectedPaymentMethod('cash')
+        handleOpenReceipt(selectedPaymentMethod);
         setIsHover(false)
     }
 
@@ -34,6 +27,7 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment }) => {
         handleClosePayment();
         setIsHoverCancel(false);
     }
+
 
     return (
         <Dialog
@@ -78,7 +72,7 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment }) => {
                                 cursor: "pointer",
                                 transition: "all 0.2s",
                                 '&:hover': {
-                                    borderColor: "grey.500"
+                                    borderColor: "grey.600"
                                 }
                             }}
                         >
@@ -145,12 +139,12 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment }) => {
                         style={{
                             width: "100%",
                             padding: "1rem",
-                            backgroundColor: isHoverCancel ? "#edf4fa" : "white",
-                            border: "1.5px solid #48c9b0",
+                            backgroundColor: isHoverCancel ? "#F5F5F5" : "white",
+                            border: "2px solid #48c9b0",
                             borderRadius: "1rem",
                             fontSize: "1.2rem",
                             fontWeight: 600,
-                            color: "#2a91f9 ",
+                            color: "#48c9b0",
                         }}
                         onMouseEnter={() => setIsHoverCancel(true)}
                         onMouseLeave={() => setIsHoverCancel(false)}
@@ -163,13 +157,13 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment }) => {
                         style={{
                             width: "100%",
                             padding: "1rem",
-                            backgroundColor: isHover ? "#03af9c" : "#48c9b0",
+                            backgroundColor: isHover ? "#3cb39a" : "#48c9b0",
                             border: "none",
                             borderRadius: "1rem",
+                            boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                             fontSize: "1.2rem",
                             fontWeight: 600,
-                            color: "white",
-
+                            color: "white"
                         }}
                         onMouseEnter={() => setIsHover(true)}
                         onMouseLeave={() => setIsHover(false)}
