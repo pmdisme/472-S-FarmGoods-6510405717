@@ -1,53 +1,73 @@
 import React from 'react'
 import Image from 'next/image';
-import { Box, Typography } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 
-const Search = () => {
+const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleSearch(); // trigger search when enter
+    }
+  };
+
   return (
     <Box
       sx={{
-        marginTop: "3rem",
+        marginTop: "1.5rem",
         display: "flex",
-        width: "100%"
+        alignItems: "center",
       }}
     >
-      <Typography component="input" placeholder=" Search somethings... "
+      <TextField 
+        fullWidth
+        variant="outlined"
+        placeholder=" Search for products... "
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        onKeyDown={handleKeyPress}
         sx={{
           height: "3rem",
-          width: "30%",
+          width: "23rem",
           border: 'none',
           color: "text.secondary",
           padding: "0 1rem",
           backgroundColor: "#ffffff",
-          border: "1px",
           borderRadius: "1rem",
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-          border: 'none',
-          '&:focus': {
+          "& .MuiOutlinedInput-root": {
+            "& fieldset": { border: "none" }, 
+            "&:hover fieldset": { border: "none" },
+            "&.Mui-focused fieldset": { border: "none" },
+          },
+          '&:focus-within': {
             outline: 'none',
             boxShadow: '0 0 0 2px rgba(0,0,0,0.1)'
           }
         }}>
-      </Typography>
+      </TextField>
 
-      <Box 
-      sx={{ 
-        backgroundColor: "#98ddc3",
-        height: "3rem",
-        width: "3rem", 
-        border: "1px", 
-        borderRadius: "1rem",
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-        marginLeft: "0.5rem"
-        }}>
-        <Image
-          src="/images/icons/icon-search.svg"
-          alt="Search"
-          width={20}
-          height={20}
-          style={{ margin: "15px"}}
-        />
-      </Box>
+        <Box
+            sx={{
+                backgroundColor: "#79CDCD",
+                height: "3rem",
+                width: "3rem",
+                border: "1px",
+                borderRadius: "1rem",
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                marginLeft: "0.5rem",
+                cursor: "pointer",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center"
+            }}
+            onClick={handleSearch}
+        >
+            <Image
+                src="/images/icons/icon-search.svg"
+                alt="search icon"
+                width={24}
+                height={24}
+            />
+        </Box>
 
     </Box>
   );

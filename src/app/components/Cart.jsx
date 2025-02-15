@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react'
 import { useAppSelector } from '@/utile/hooks'
 import CartItem from './CartItem'
 import { useCart } from '@/hooks/useCart'
-
+import Payment from './Payment'
 import OrderSummary from './OrderSummary'
 
 const Cart = () => {
@@ -17,8 +17,10 @@ const Cart = () => {
   const [open, setOpen] = useState(false);
   const [isHover, setIsHover] = useState(false);
   const [openOrderSummary, setOpenOrderSummary] = useState(false);
+  const [openPayment, setOpenPayment] = useState(false);
 
   const handleClose = () => setOpen(false);
+
 
   // calcuate price
   const getOrderTotal = () => {
@@ -38,6 +40,8 @@ const Cart = () => {
     setNumberOfItem(numberOfItem);
   };
 
+  const isOrderEmpty = numberOfItem === 0;
+
   useEffect(() => {
     getOrderTotal();
     getNumberOfItem();
@@ -49,13 +53,23 @@ const Cart = () => {
     }
   }, [error]);
 
-  // set open payment
+  // set open ordersummary
   const handleClickConfirmOrder = () => {
     setOpenOrderSummary(true);
   };
 
   const handleCloseOrderSummary = () => {
     setOpenOrderSummary(false);
+  }
+
+  // set open payment
+  const handleOpenPayment = () => {
+    setOpenPayment(true);
+    setOpenOrderSummary(false);
+  }
+
+  const handleClosePayment = () => {
+    setOpenPayment(false);
   }
 
   return (
@@ -120,32 +134,32 @@ const Cart = () => {
           </Typography>
         </Box>
         <Box>
-          <button
-            style={{
-              border: "1px solid #e74c3c",
-              backgroundColor: isHover? "#cb4335" :"#e74c3c",
-              borderRadius: "1rem",
-              color: "#ffffff",
-              padding: "0.8rem",
-              width: "100%",
-              fontSize: "1.3rem",
-              fontWeight: 600,
-              alignSelf: "center",
-              transition: "all 0.2s ease-in-out",
-              
-            }}
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
-            onClick={handleClickConfirmOrder}
-          > Confirm Order
-          </button>
+          {!isOrderEmpty && (
+            <button
+              style={{
+                border: "1px solid #e74c3c",
+                backgroundColor: isHover ? "#cb4335" : "#e74c3c",
+                borderRadius: "1rem",
+                color: "#ffffff",
+                padding: "0.8rem",
+                width: "100%",
+                fontSize: "1.3rem",
+                fontWeight: 600,
+                alignSelf: "center",
+                transition: "all 0.2s ease-in-out",
 
+              }}
+              onMouseEnter={() => setIsHover(true)}
+              onMouseLeave={() => setIsHover(false)}
+              onClick={handleClickConfirmOrder}
+            > Confirm Order
+            </button>
+          )}
         </Box>
       </Box>
 
-      
-
-      <OrderSummary openOrderSummary={openOrderSummary} handleClose={handleCloseOrderSummary} orderTotal={orderTotal}/>
+      <OrderSummary openOrderSummary={openOrderSummary} handleClose={handleCloseOrderSummary} orderTotal={orderTotal} handleOpenPayment={handleOpenPayment}/>
+      <Payment openPayment={openPayment} orderTotal={orderTotal} handleClosePayment={handleClosePayment}/>
     </>
   )
 }
