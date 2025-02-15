@@ -2,7 +2,7 @@ import {Box, Dialog, DialogContent, DialogTitle, Typography} from '@mui/material
 import {useAppSelector} from '@/utils/hooks';
 import React, {useState} from 'react'
 
-const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPayment}) => {
+const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPayment, setSelectedPaymentMethod}) => {
 
   const cartItems = useAppSelector((state) => state.cart.cart)
   const [isHover, setIsHover] = useState(false);
@@ -23,6 +23,7 @@ const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPay
 
   const handleClickConfirmPayment = () => {
     handleOpenPayment();
+    setSelectedPaymentMethod('cash');
   }
 
   return (
@@ -94,7 +95,8 @@ const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPay
           width: "100%",
           padding: "1rem",
           marginTop: "1rem",
-          backgroundColor: isHover? "#03af9c":"#48c9b0",
+          backgroundColor: isHover? "#3cb39a":"#48c9b0",
+          boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
           border: "#48c9b0",
           borderRadius: "1rem",
           fontSize: "1.2rem",

@@ -30,7 +30,7 @@ const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
           width: "23rem",
           border: 'none',
           color: "text.secondary",
-          padding: "0 1rem",
+          padding: "0 1rem 4px",
           backgroundColor: "#ffffff",
           borderRadius: "1rem",
           boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
