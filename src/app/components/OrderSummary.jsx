@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
-import Payment from './Payment'
-import { Dialog, Button, DialogTitle, DialogContent, DialogContentText, Box, Typography } from '@mui/material'
-import CartItem from './CartItem';
+import React, { useEffect, useState } from 'react'
+import { Dialog,  DialogTitle, DialogContent, Box, Typography } from '@mui/material'
 import { useAppSelector } from '@/utile/hooks';
 
-const OrderSummary = ({ openOrderSummary, handleClose, orderTotal }) => {
+const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPayment}) => {
 
   const cartItems = useAppSelector((state) => state.cart.cart)
-  const [openPayment, setOpenPayment] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
   const currentDate = new Date();
@@ -24,19 +21,14 @@ const OrderSummary = ({ openOrderSummary, handleClose, orderTotal }) => {
     hour12: true
   });
 
-  const handleOpenPayment = () => {
-    setOpenPayment(true);
+  const handleClickConfirmPayment = () => {
+    handleOpenPayment();
   }
-
-  const handleClosePayment = () => {
-    setOpenPayment(false);
-  }
-
 
   return (
     <Dialog
       open={openOrderSummary}
-      onClick={handleClose}
+      onClose={handleClose}
       maxWidth='xs'
       fullWidth
     >
@@ -111,14 +103,11 @@ const OrderSummary = ({ openOrderSummary, handleClose, orderTotal }) => {
         }}
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
-          onClick={handleOpenPayment}
+          onClick={handleClickConfirmPayment}
+          
         > Confirm Payment
         </button>
-
       </DialogContent>
-
-      <Payment openPayment={openPayment} />
-
     </Dialog>
 
   )
