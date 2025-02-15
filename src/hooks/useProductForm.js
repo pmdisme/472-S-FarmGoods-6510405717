@@ -126,7 +126,11 @@ export const useProductForm = (onSuccess) => {
         }
     };
 
-    const isFormValid = formData.productName && formData.productPrice && formData.productImage;
+    const isFormValid = Boolean(
+        formData.productName.trim() &&
+        formData.productPrice.trim() &&
+        formData.productImage
+    );
 
     const resetForm = () => {
         setFormData({

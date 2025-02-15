@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jest.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/jest.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/images/icons/icon-search.svg" beforeDir="false" afterPath="$PROJECT_DIR$/public/images/icons/icon-search.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/NewProductButton.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/NewProductButton.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Search.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/creat-product-dialog/ImageUpload.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/creat-product-dialog/ImageUpload.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/creat-product-dialog/SuccessDialog.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/creat-product-dialog/SuccessDialog.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/icon-cash.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/icon-credit.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/icons/icon-qrCode.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Cart.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/OrderSummary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/OrderSummary.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Payment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Payment.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,17 +31,31 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Jest.OrderController.test.js.executor": "Run",
     "Jest.OrderDetailRepository.test.js.executor": "Run",
     "Jest.OrderRepository.executor": "Run",
     "Jest.OrderRepository.findById.executor": "Run",
     "Jest.OrderRepository.test.js.executor": "Run",
     "Jest.OrderService.test.js.executor": "Run",
     "Jest.Product.test.jsx.executor": "Run",
+    "Jest.ProductRepository.delete.executor": "Run",
     "Jest.ProductRepository.test.js.executor": "Run",
+    "Jest.ProductService.createProduct.should handle image upload error.executor": "Debug",
+    "Jest.ProductService.delete.executor": "Run",
+    "Jest.ProductService.test.js.executor": "Run",
+    "Jest.Tests in acceptance-test\\.executor": "Run",
+    "Jest.Tests in hooks\\.executor": "Run",
+    "Jest.Tests in repositories\\.executor": "Run",
     "Jest.Tests in unit-test\\.executor": "Run",
+    "Jest.tet.test.js.executor": "Run",
+    "Jest.useAddToCart.test.js.executor": "Run",
+    "Jest.useCart.js.executor": "Run",
+    "Jest.useCart.test.js.executor": "Run",
+    "Jest.useProductForm.test.js.executor": "Run",
+    "Node.js.ProductService.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "develop",
+    "git-widget-placeholder": "Merging feature/add-product-unit-test",
     "last_opened_file_path": "C:/Users/jitla/OneDrive/Documents/3term2/pm/DogGo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -62,49 +73,48 @@
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\unit-test\controllers" />
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\unit-test\services" />
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\unit-test\repositories" />
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\app\components\creat_product_dialog" />
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
     </key>
   </component>
   <component name="RunManager" selected="npm.dev">
-    <configuration name="OrderDetailRepository.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductRepository.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/src/unit-test/OrderDetailRepository.test.js" />
+      <test-file value="$PROJECT_DIR$/src/unit-test/repositories/ProductRepository.test.js" />
       <method v="2" />
     </configuration>
-    <configuration name="OrderRepository.findById" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/unit-test/OrderRepository.test.js" />
-      <test-names>
-        <test-name value="OrderRepository" />
-        <test-name value="findById" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="OrderRepository.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="ProductService.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/src/unit-test/OrderRepository.test.js" />
+      <test-file value="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" />
       <method v="2" />
     </configuration>
-    <configuration name="Product.test.jsx" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Tests in hooks\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/acceptance-test/Product.test.jsx" />
+      <scope-kind value="DIRECTORY" />
+      <test-directory value="$PROJECT_DIR$/src/unit-test/hooks" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in repositories\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="DIRECTORY" />
+      <test-directory value="$PROJECT_DIR$/src/unit-test/repositories" />
       <method v="2" />
     </configuration>
     <configuration name="Tests in unit-test\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
@@ -127,20 +137,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Jest.Product.test.jsx" />
-      <item itemvalue="Jest.OrderDetailRepository.test.js" />
-      <item itemvalue="Jest.OrderRepository.findById" />
-      <item itemvalue="Jest.OrderRepository.test.js" />
+      <item itemvalue="Jest.Tests in hooks\" />
+      <item itemvalue="Jest.Tests in repositories\" />
       <item itemvalue="Jest.Tests in unit-test\" />
+      <item itemvalue="Jest.ProductRepository.test.js" />
+      <item itemvalue="Jest.ProductService.test.js" />
       <item itemvalue="npm.dev" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.Product.test.jsx" />
-        <item itemvalue="Jest.OrderDetailRepository.test.js" />
         <item itemvalue="Jest.Tests in unit-test\" />
-        <item itemvalue="Jest.OrderRepository.findById" />
-        <item itemvalue="Jest.OrderRepository.test.js" />
+        <item itemvalue="Jest.ProductService.test.js" />
+        <item itemvalue="Jest.ProductRepository.test.js" />
+        <item itemvalue="Jest.Tests in repositories\" />
+        <item itemvalue="Jest.Tests in hooks\" />
       </list>
     </recent_temporary>
   </component>
@@ -165,6 +175,7 @@
       <workItem from="1739350861816" duration="16178000" />
       <workItem from="1739448530955" duration="12044000" />
       <workItem from="1739463090072" duration="324000" />
+      <workItem from="1739555990732" duration="7464000" />
     </task>
     <servers />
   </component>
@@ -181,16 +192,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/unit-test/OrderRepository.test.js</url>
-          <line>71</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

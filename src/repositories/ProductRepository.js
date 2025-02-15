@@ -38,4 +38,14 @@ export class ProductRepository {
             data: data
         });
     }
+
+    async delete(productId) {
+        try {
+            await this.prisma.product.delete({
+                where: { productId: productId }
+            });
+        } catch (error) {
+            throw new Error(`Failed to delete product with ID ${productId}: ${error.message}`);
+        }
+    }
 }

@@ -43,7 +43,6 @@ export class ProductService {
     // Main create product method
     async createProduct(productName, productPrice, imageFile) {
         try {
-
             // Check duplicate name
             const existingProduct = await this.productRepo.findByName(productName.trim());
             if (existingProduct) {
@@ -58,13 +57,19 @@ export class ProductService {
             });
 
             // Handle image upload
-            const imagePath = await this.#handleImageUpload(imageFile, newProduct.productId);
+            let imagePath = "";
+            try {
+                imagePath = await this.#handleImageUpload(imageFile, newProduct.productId);
+            } catch (error) {
+                // If image upload fails, delete the created product
+                await this.productRepo.delete(newProduct.productId);
+                throw error;
+            }
 
             // Update product with image path
             return await this.productRepo.update(newProduct.productId, {
                 productImage: imagePath
             });
-
         } catch (error) {
             const errorMessage = error.code ? `Database error: ${error.message}` : error.message;
             throw new Error(`Failed to create product: ${errorMessage}`);

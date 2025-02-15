@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useAppDispatch } from '@/utile/hooks';
+import { useAppDispatch } from '@/utils/hooks';
 import { initializeCart, setLoading, setError } from '@/store/cartSlice';
 
 export const useCart = () => {

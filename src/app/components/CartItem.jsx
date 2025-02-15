@@ -1,6 +1,6 @@
 "use client"
 import { Box, Typography } from '@mui/material';
-import { useAppDispatch } from '@/utile/hooks';
+import { useAppDispatch } from '@/utils/hooks';
 import { removeFromCart } from '@/store/cartSlice';
 import React from 'react'
 

@@ -5,7 +5,7 @@ import React from 'react'
 import AddToCartButton from './AddToCartButton';
 import { Typography } from '@mui/material';
 import Image from 'next/image'
-import { useAppSelector } from '../../utile/hooks';
+import { useAppSelector } from '@/utils/hooks';
 
 
 const Product = ({ id, image, name, price }) => {

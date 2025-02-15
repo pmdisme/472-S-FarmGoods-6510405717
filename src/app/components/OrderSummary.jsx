@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import { Dialog,  DialogTitle, DialogContent, Box, Typography } from '@mui/material'
-import { useAppSelector } from '@/utile/hooks';
+import {Box, Dialog, DialogContent, DialogTitle, Typography} from '@mui/material'
+import {useAppSelector} from '@/utils/hooks';
+import React, {useState} from 'react'
 
 const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPayment}) => {
 

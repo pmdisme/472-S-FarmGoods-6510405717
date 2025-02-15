@@ -2,7 +2,7 @@
 
 import { Box, Typography, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Button } from '@mui/material'
 import { useState, useEffect } from 'react'
-import { useAppSelector } from '@/utile/hooks'
+import { useAppSelector } from '@/utils/hooks'
 import CartItem from './CartItem'
 import { useCart } from '@/hooks/useCart'
 import Payment from './Payment'

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, Box, Typography } from '@mui/material';
 import Image from 'next/image';
-import { useAppDispatch } from '@/utile/hooks';
 import { clearCard } from '@/store/cartSlice';
+import { useAppDispatch } from '@/utils/hooks';
 
 const paymentMethods = [
     { id: 'cash', label: 'Cash', icon: '/images/icons/icon-cash.png' },
