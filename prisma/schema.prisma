@@ -40,5 +40,6 @@ model Product {
   productName     String
   productPrice    Float
   productImage    String
+  isActive        Boolean       @default(true)
   orderDetails    OrderDetail[]
 }
