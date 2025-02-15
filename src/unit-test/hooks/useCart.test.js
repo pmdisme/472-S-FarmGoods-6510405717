@@ -4,7 +4,7 @@ import { useAppDispatch } from '@/utils/hooks';
 import { initializeCart, setLoading, setError } from '@/store/cartSlice';
 
 // Mock dependencies
-jest.mock('@/utils/hooks', () => ({
+jest.mock('../../utils/hooks', () => ({
     useAppDispatch: jest.fn()
 }));
 

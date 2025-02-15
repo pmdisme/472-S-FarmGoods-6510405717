@@ -168,4 +168,33 @@ describe('ProductRepository', () => {
             await expect(productRepository.update(productId, updateData)).rejects.toThrow('Product not found');
         });
     });
+
+    describe('delete', () => {
+        test('should successfully delete an existing product', async () => {
+            const productId = 123;
+
+            prismaTest.product.delete = jest.fn().mockResolvedValue({ productId });
+
+            await productRepository.delete(productId);
+
+            expect(prismaTest.product.delete).toHaveBeenCalledWith({
+                where: { productId: productId }
+            });
+        });
+
+        test('should throw error when product not found', async () => {
+            const productId = 999;
+            const errorMessage = 'Product not found';
+
+            prismaTest.product.delete = jest.fn().mockRejectedValue(new Error(errorMessage));
+
+            await expect(productRepository.delete(productId))
+                .rejects
+                .toThrow(`Failed to delete product with ID ${productId}: ${errorMessage}`);
+
+            expect(prismaTest.product.delete).toHaveBeenCalledWith({
+                where: { productId: productId }
+            });
+        });
+    });
 });

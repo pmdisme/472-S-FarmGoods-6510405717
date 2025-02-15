@@ -1,6 +1,15 @@
 import { ProductService } from "@/services/ProductService";
 import { PrismaClient } from "@prisma/client";
 import path from 'path';
+import fs from "fs";
+
+// Mock fs module
+jest.mock('fs', () => ({
+    promises: {
+        mkdir: jest.fn(() => Promise.resolve()),
+        writeFile: jest.fn(() => Promise.resolve())
+    }
+}));
 
 // Mock dependencies
 jest.mock('@prisma/client', () => {
@@ -17,19 +26,13 @@ jest.mock('@prisma/client', () => {
 jest.mock('../../repositories/ProductRepository', () => {
     return {
         ProductRepository: jest.fn().mockImplementation(() => ({
-            findByName: jest.fn(),
-            create: jest.fn(),
-            update: jest.fn(),
-            delete: jest.fn()
+            findByName: jest.fn().mockImplementation(() => Promise.resolve(null)),
+            create: jest.fn().mockImplementation(() => Promise.resolve({})),
+            update: jest.fn().mockImplementation(() => Promise.resolve({})),
+            delete: jest.fn().mockImplementation(() => Promise.resolve())
         }))
     }
-})
-
-// Mock fs/promises
-jest.mock('fs/promises', () => ({
-    mkdir: jest.fn(() => Promise.resolve()),
-    writeFile: jest.fn(() => Promise.resolve())
-}));
+});
 
 describe('ProductService', () => {
     let productService;
@@ -83,47 +86,40 @@ describe('ProductService', () => {
             arrayBuffer: jest.fn()
         };
 
-        // test('should successfully create a product with image upload', async () => {
-        //     // Prepare mock data
-        //     const productName = 'New Product';
-        //     const productPrice = 19.99;
-        //     const mockBuffer = Buffer.from('mock image data');
-        //     mockImageFile.arrayBuffer.mockResolvedValue(mockBuffer);
-        //
-        //     // Mock repository methods
-        //     productRepoMock.findByName.mockResolvedValue(null);
-        //     productRepoMock.create.mockResolvedValue({
-        //         productId: 1,
-        //         productName: productName,
-        //         productPrice: productPrice
-        //     });
-        //     productRepoMock.update.mockResolvedValue({
-        //         productId: 1,
-        //         productName: productName,
-        //         productPrice: productPrice,
-        //         productImage: '/images/products/1.jpg'
-        //     });
-        //
-        //     // Call the method
-        //     const result = await productService.createProduct(productName, productPrice, mockImageFile);
-        //
-        //     // Assertions
-        //     expect(productRepoMock.findByName).toHaveBeenCalledWith(productName);
-        //     expect(productRepoMock.create).toHaveBeenCalledWith({
-        //         productName: productName,
-        //         productPrice: productPrice,
-        //         productImage: ""
-        //     });
-        //     expect(productRepoMock.update).toHaveBeenCalledWith(1, {
-        //         productImage: '/images/products/1.jpg'
-        //     });
-        //     expect(result).toEqual({
-        //         productId: 1,
-        //         productName: productName,
-        //         productPrice: productPrice,
-        //         productImage: '/images/products/1.jpg'
-        //     });
-        // });
+        test('should successfully create a product with image upload', async () => {
+            const productName = 'New Product';
+            const productPrice = 19.99;
+            const mockBuffer = Buffer.from('mock image data');
+            mockImageFile.arrayBuffer.mockResolvedValue(mockBuffer);
+
+            // แก้ไขการ mock repository methods
+            productRepoMock.findByName.mockResolvedValueOnce(null);
+            productRepoMock.create.mockResolvedValueOnce({
+                productId: 1,
+                productName: productName,
+                productPrice: productPrice
+            });
+            productRepoMock.update.mockResolvedValueOnce({
+                productId: 1,
+                productName: productName,
+                productPrice: productPrice,
+                productImage: '/images/products/1.jpg'
+            });
+
+            const result = await productService.createProduct(productName, productPrice, mockImageFile);
+
+            // เช็คว่า fs operations ถูก mock จริงๆ
+            const fs = require('fs');
+            expect(fs.promises.mkdir).toHaveBeenCalled();
+            expect(fs.promises.writeFile).toHaveBeenCalled();
+
+            expect(result).toEqual({
+                productId: 1,
+                productName: productName,
+                productPrice: productPrice,
+                productImage: '/images/products/1.jpg'
+            });
+        });
 
         test('should throw error when product name already exists', async () => {
             // Prepare mock data
@@ -144,36 +140,32 @@ describe('ProductService', () => {
             // Verify findByName was called
             expect(productRepoMock.findByName).toHaveBeenCalledWith(productName);
         });
-        //
-        // test('should handle image upload error', async () => {
-        //     // Prepare mock data
-        //     const productName = 'New Product';
-        //     const productPrice = 39.99;
-        //     const mockBuffer = Buffer.from('mock image data');
-        //     mockImageFile.arrayBuffer.mockResolvedValue(mockBuffer);
-        //
-        //     // Mock repository and fs methods
-        //     productRepoMock.findByName.mockResolvedValue(null);
-        //     productRepoMock.create.mockResolvedValue({
-        //         productId: 1,
-        //         productName: productName,
-        //         productPrice: productPrice
-        //     });
-        //
-        //     // Mock fs.writeFile to throw an error
-        //     const fsPromises = require('fs/promises');
-        //     fsPromises.writeFile.mockRejectedValue(new Error('File write error'));
-        //
-        //     // Call the method and expect an error
-        //     await expect(
-        //         productService.createProduct(productName, productPrice, mockImageFile)
-        //     ).rejects.toThrow('Failed to create product: File write error');
-        //
-        //     // Verify method calls
-        //     expect(productRepoMock.findByName).toHaveBeenCalledWith(productName);
-        //     expect(productRepoMock.create).toHaveBeenCalled();
-        //     expect(fsPromises.writeFile).toHaveBeenCalled();
-        //     expect(productRepoMock.delete).toHaveBeenCalled();
-        // });
+
+        test('should handle image upload error', async () => {
+            const productName = 'New Product';
+            const productPrice = 39.99;
+            const mockBuffer = Buffer.from('mock image data');
+            mockImageFile.arrayBuffer.mockResolvedValue(mockBuffer);
+
+            productRepoMock.findByName.mockResolvedValueOnce(null);
+            productRepoMock.create.mockResolvedValueOnce({
+                productId: 1,
+                productName: productName,
+                productPrice: productPrice
+            });
+
+            // Mock writeFile ให้ throw error
+            const fs = require('fs');
+            fs.promises.writeFile.mockRejectedValueOnce(new Error('File write error'));
+
+            await expect(
+                productService.createProduct(productName, productPrice, mockImageFile)
+            ).rejects.toThrow('Failed to create product: File write error');
+
+            expect(productRepoMock.findByName).toHaveBeenCalledWith(productName);
+            expect(productRepoMock.create).toHaveBeenCalled();
+            expect(fs.promises.writeFile).toHaveBeenCalled();
+            expect(productRepoMock.delete).toHaveBeenCalled();
+        });
     });
 });
