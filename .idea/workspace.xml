@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/icons/icon-cash.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/icon-credit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/icons/icon-qrCode.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/Cart.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Cart.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/OrderSummary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/OrderSummary.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/components/Payment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Payment.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Product.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Product.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/components/Search.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/components/Search.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,9 +52,12 @@
     "Jest.useCart.test.js.executor": "Run",
     "Jest.useProductForm.test.js.executor": "Run",
     "Node.js.ProductService.js.executor": "Run",
+    "Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search.executor": "Run",
+    "Playwright.Product Search Functionality - UAT.UAT-002: Search by full name.executor": "Run",
+    "Playwright.Search.test.js.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging feature/add-product-unit-test",
+    "git-widget-placeholder": "develop",
     "last_opened_file_path": "C:/Users/jitla/OneDrive/Documents/3term2/pm/DogGo",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -80,16 +82,7 @@
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
-    <configuration name="ProductRepository.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/src/unit-test/repositories/ProductRepository.test.js" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Playwright.Search.test.js">
     <configuration name="ProductService.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -99,24 +92,6 @@
       <test-file value="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" />
       <method v="2" />
     </configuration>
-    <configuration name="Tests in hooks\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="DIRECTORY" />
-      <test-directory value="$PROJECT_DIR$/src/unit-test/hooks" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Tests in repositories\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="DIRECTORY" />
-      <test-directory value="$PROJECT_DIR$/src/unit-test/repositories" />
-      <method v="2" />
-    </configuration>
     <configuration name="Tests in unit-test\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -124,6 +99,41 @@
       <envs />
       <scope-kind value="DIRECTORY" />
       <test-directory value="$PROJECT_DIR$/src/unit-test" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Product Search Functionality - UAT.UAT-002: Partial Product Name Search" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/Search.test.js" />
+      <test-names>
+        <test-name value="Product Search Functionality - UAT" />
+        <test-name value="UAT-002: Partial Product Name Search" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Product Search Functionality - UAT.UAT-002: Search by full name" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/Search.test.js" />
+      <test-names>
+        <test-name value="Product Search Functionality - UAT" />
+        <test-name value="UAT-002: Search by full name" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Search.test.js" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/Search.test.js" />
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
@@ -137,20 +147,20 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Jest.Tests in hooks\" />
-      <item itemvalue="Jest.Tests in repositories\" />
       <item itemvalue="Jest.Tests in unit-test\" />
-      <item itemvalue="Jest.ProductRepository.test.js" />
       <item itemvalue="Jest.ProductService.test.js" />
       <item itemvalue="npm.dev" />
+      <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search" />
+      <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Search by full name" />
+      <item itemvalue="Playwright.Search.test.js" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Playwright.Search.test.js" />
+        <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Search by full name" />
+        <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search" />
         <item itemvalue="Jest.Tests in unit-test\" />
         <item itemvalue="Jest.ProductService.test.js" />
-        <item itemvalue="Jest.ProductRepository.test.js" />
-        <item itemvalue="Jest.Tests in repositories\" />
-        <item itemvalue="Jest.Tests in hooks\" />
       </list>
     </recent_temporary>
   </component>
