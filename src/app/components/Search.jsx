@@ -17,7 +17,8 @@ const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
         alignItems: "center",
       }}
     >
-      <TextField 
+      <TextField
+        aria-label="search"
         fullWidth
         variant="outlined"
         placeholder=" Search for products... "
@@ -46,6 +47,7 @@ const Search = ({ searchTerm, setSearchTerm, handleSearch}) => {
       </TextField>
 
         <Box
+            data-testid="search-button"
             sx={{
                 backgroundColor: "#79CDCD",
                 height: "3rem",

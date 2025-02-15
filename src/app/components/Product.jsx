@@ -16,7 +16,8 @@ const Product = ({ id, image, name, price }) => {
     const isItemInCart = !!cart.find((item) => item.id === id);
 
     return (
-        <Box 
+        <Box
+            data-testid="product-item"
         sx={{ 
             display: "flex", 
             flexDirection: "column",
@@ -46,10 +47,13 @@ const Product = ({ id, image, name, price }) => {
                 price={price}
             />
 
-            <Typography sx={{
-                color: "#283747", fontWeight: 600,
-                alignSelf: "center", marginTop: "0.5rem"
-            }}>
+            <Typography
+                data-testid="product-name"
+                sx={{
+                    color: "#283747", fontWeight: 600,
+                    alignSelf: "center", marginTop: "0.5rem"
+            }}
+            >
                 {name}
             </Typography>
             <Typography sx={{ color: "#e74c3c", fontWeight: 600, alignSelf: "center" }}>
