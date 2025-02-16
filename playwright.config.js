@@ -2,6 +2,11 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
     testDir: './acceptance-test',
+
+    testMatch: [
+        "**/?(*.)+(spec).js?(x)"
+    ],
+
     use: {
         // Record video for all tests
         video: 'on',
