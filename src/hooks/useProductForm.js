@@ -101,7 +101,7 @@ export const useProductForm = (onSuccess) => {
             formDataToSend.append('productPrice', formData.productPrice);
             formDataToSend.append('productImage', formData.productImage);
 
-            const response = await fetch('/api/products', {
+            const response = await fetch('/api/products/create', {
                 method: 'POST',
                 body: formDataToSend,
             });

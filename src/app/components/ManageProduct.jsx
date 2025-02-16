@@ -6,16 +6,15 @@ import ManageProductDialog from "./ManageProductDialog";
 import Image from 'next/image';
 import React from "react";
 
-const ManageProduct = () => {
+const ManageProduct = ({ open, onClose }) => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
-    const [openManage, setOpenManage] = useState(false);
     const [openConfirm, setOpenConfirm] = useState(false);
     const [updatedProducts, setUpdatedProducts] = useState([]);
 
     useEffect(() => {
-        if (openManage) {
+        if (open) {
             fetch("/api/products")
                 .then(response => response.json())
                 .then(data => {
@@ -24,7 +23,7 @@ const ManageProduct = () => {
                 })
                 .catch(error => console.error("Error fetching products:", error));
         }
-    }, [openManage]);
+    }, [open]);
 
     const handleSearchHide = () => {
         const trimmedSearchTerm = searchTerm.trim().toLowerCase();
@@ -34,7 +33,7 @@ const ManageProduct = () => {
         }
 
         const filtered = products.filter(product =>
-            product.name.toLowerCase().includes(trimmedSearchTerm) || 
+            product.name.toLowerCase().includes(trimmedSearchTerm) ||
             product.id.toString().includes(trimmedSearchTerm)
         );
 
@@ -81,186 +80,158 @@ const ManageProduct = () => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ updatedProducts })
         })
-        .then(response => response.json())
-        .then(() => {
-            setOpenConfirm(false);
-            setUpdatedProducts([]);
-        })
-        .catch(error => console.error("Failed to update product status:", error));
+            .then(response => response.json())
+            .then(() => {
+                setOpenConfirm(false);
+                setUpdatedProducts([]);
+                onClose(); // Close the manage dialog after successful update
+            })
+            .catch(error => console.error("Failed to update product status:", error));
     };
 
     return (
         <>
-            <Box sx={{ marginLeft: "1rem" }}>
-                <Button
-                    style={{
-                        marginTop: "1.5rem",
-                        backgroundColor: "#cc0000",
-                        height: "3rem",
-                        width: "10rem",
-                        border: "none",
-                        borderRadius: "1rem",
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                        marginLeft: "0.5rem",
-                        cursor: "pointer",
-                        fontSize: "1rem",
-                        fontWeight: 525,
-                        color: "white",
-                        transition: "all 0.2s ease",
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        padding: "0 1rem",
-                        lineHeight: "1",
-                        gap: "0.35rem"
-                    }}
-                    onClick={() => setOpenManage(true)}
-                >
-                    Hide Product
-                </Button>
-            </Box>
-
             <Dialog
-                open={openManage}
-                onClose={() => setOpenManage(false)}
+                open={open}
+                onClose={onClose}
                 fullWidth
                 maxWidth="sm"
                 sx={{
                     "& .MuiDialog-paper": {
                         minHeight: "500px",
-                        height: "500px",    
-                        maxHeight: "500px", 
-                        padding: "1rem"     
+                        height: "500px",
+                        maxHeight: "500px",
+                        padding: "1rem"
                     }
                 }}
             >
                 <DialogTitle sx={{
-                                marginTop: '1rem',
-                                textAlign: 'center',
-                                fontSize: '1.6rem',
-                                fontWeight: 600,
-                                color: "#212f3c",
-                            }}>
-                                Manage Products
-                            </DialogTitle>
+                    marginTop: '1rem',
+                    textAlign: 'center',
+                    fontSize: '1.6rem',
+                    fontWeight: 600,
+                    color: "#212f3c",
+                }}>
+                    Manage Products
+                </DialogTitle>
                 <DialogContent>
                     <Box
-                          sx={{
+                        sx={{
                             marginTop: "0.5rem",
                             marginBottom: "1rem",
                             display: "flex",
                             alignItems: "center",
-                          }}
-                    >
-                    <TextField
-                        fullWidth
-                        variant="outlined"
-                        placeholder="Search for products..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        onKeyDown={handleKeyPress}
-                        sx={{
-                            height: "3rem",
-                            width: "28rem",
-                            marginLeft: "0.5rem",
-                            border: 'none',
-                            color: "text.secondary",
-                            padding: "0 1rem 4px",
-                            backgroundColor: "#ffffff",
-                            borderRadius: "1rem",
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                            "& .MuiOutlinedInput-root": {
-                              "& fieldset": { border: "none" }, 
-                              "&:hover fieldset": { border: "none" },
-                              "&.Mui-focused fieldset": { border: "none" },
-                            },
-                            '&:focus-within': {
-                              outline: 'none',
-                              boxShadow: '0 0 0 2px rgba(0,0,0,0.1)'
-                            }
-                          }}   
-                    />
-                    <Box
-                        data-testid="search-button"
-                        sx={{
-                            backgroundColor: "#79CDCD",
-                            height: "3rem",
-                            width: "3rem",
-                            border: "1px",
-                            borderRadius: "1rem",
-                            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-                            marginLeft: "0.5rem",
-                            cursor: "pointer",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center"
                         }}
-                        onClick={handleSearchHide}
                     >
-                        <Image
-                            src="/images/icons/icon-search.svg"
-                            alt="search icon"
-                            width={24}
-                            height={24}
+                        <TextField
+                            fullWidth
+                            variant="outlined"
+                            placeholder="Search for products..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onKeyDown={handleKeyPress}
+                            sx={{
+                                height: "3rem",
+                                width: "28rem",
+                                marginLeft: "0.5rem",
+                                border: 'none',
+                                color: "text.secondary",
+                                padding: "0 1rem 4px",
+                                backgroundColor: "#ffffff",
+                                borderRadius: "1rem",
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                                "& .MuiOutlinedInput-root": {
+                                    "& fieldset": { border: "none" },
+                                    "&:hover fieldset": { border: "none" },
+                                    "&.Mui-focused fieldset": { border: "none" },
+                                },
+                                '&:focus-within': {
+                                    outline: 'none',
+                                    boxShadow: '0 0 0 2px rgba(0,0,0,0.1)'
+                                }
+                            }}
                         />
-                    </Box>
+                        <Box
+                            data-testid="search-button"
+                            sx={{
+                                backgroundColor: "#79CDCD",
+                                height: "3rem",
+                                width: "3rem",
+                                border: "1px",
+                                borderRadius: "1rem",
+                                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                                marginLeft: "0.5rem",
+                                cursor: "pointer",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center"
+                            }}
+                            onClick={handleSearchHide}
+                        >
+                            <Image
+                                src="/images/icons/icon-search.svg"
+                                alt="search icon"
+                                width={24}
+                                height={24}
+                            />
+                        </Box>
                     </Box>
                     {filteredProducts
-                        .sort((a, b) => a.id - b.id) // Sort by ID
+                        .sort((a, b) => a.id - b.id)
                         .map(product => (
                             <Box key={product.id} sx={{ display: "block" }}>
                                 <FormControlLabel
                                     control={
                                         <Checkbox
-                                            checked={product.isActive} // isActive=false products unchecked
+                                            checked={product.isActive}
                                             onChange={() => handleToggleStatus(product.id)}
                                         />
                                     }
                                     label={`${product.name} (ID: ${product.id})`}
                                 />
                             </Box>
-                    ))}
+                        ))}
                 </DialogContent>
 
                 <DialogActions>
                     <Button
-                    onClick={() => setOpenManage(false)}
-                    sx={{
-                        width: 100,
-                        height: 40,
-                        backgroundColor: '#FFFFFF',
-                        '&:hover': {
-                            backgroundColor: '#F5F5F5'
-                        },
-                        borderRadius: "1rem",
-                        borderWidth: '2px',
-                        borderColor: '#48c9b0',
-                        borderStyle: 'solid',
-                        fontSize: '1rem',
-                        fontWeight: 600,
-                        color: '#48c9b0',
-                    }}
+                        onClick={onClose}
+                        sx={{
+                            width: 100,
+                            height: 40,
+                            backgroundColor: '#FFFFFF',
+                            '&:hover': {
+                                backgroundColor: '#F5F5F5'
+                            },
+                            borderRadius: "1rem",
+                            borderWidth: '2px',
+                            borderColor: '#48c9b0',
+                            borderStyle: 'solid',
+                            fontSize: '1rem',
+                            fontWeight: 600,
+                            color: '#48c9b0',
+                        }}
                     >
                         Cancel
                     </Button>
 
                     <Button
-                    onClick={() => setOpenConfirm(true)}
-                    sx={{
-                        width: 100,
-                        height: 40,
-                        backgroundColor: '#48c9b0',
-                        '&:hover': {
-                            backgroundColor: '#3cb39a'
-                        },
-                        borderRadius: "1rem",
-                        borderWidth: '2px',
-                        borderColor: '#48c9b0',
-                        borderStyle: 'solid',
-                        fontSize: '1rem',
-                        fontWeight: 600,
-                        color: '#FFFFFF',
-                    }}
+                        onClick={() => setOpenConfirm(true)}
+                        sx={{
+                            width: 100,
+                            height: 40,
+                            backgroundColor: '#48c9b0',
+                            '&:hover': {
+                                backgroundColor: '#3cb39a'
+                            },
+                            borderRadius: "1rem",
+                            borderWidth: '2px',
+                            borderColor: '#48c9b0',
+                            borderStyle: 'solid',
+                            fontSize: '1rem',
+                            fontWeight: 600,
+                            color: '#FFFFFF',
+                        }}
                     >
                         Update
                     </Button>
