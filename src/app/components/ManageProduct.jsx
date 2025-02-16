@@ -36,7 +36,10 @@ const ManageProduct = ({ open, onClose }) => {
         await handleConfirmUpdate();
         setOpenConfirm(false);
         onClose();
-        window.location.reload(); // Refresh the page after update
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
     };
 
     return (
