@@ -9,6 +9,7 @@ import Product from "../app/components/Product";
 import Cart from "./components/Cart";
 import Search from "./components/Search";
 import NewProductButton from "@/app/components/NewProductButton";
+import MoreActionDropdown from "@/app/components/MoreActionDropdown";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -102,7 +103,7 @@ const Home = () => {
                     setSearchTerm={setSearchTerm}
                     handleSearch={handleSearch}
                 />
-                <NewProductButton onProductCreated={handleAddNewProduct} />
+                <MoreActionDropdown />
             </Box>
 
             <Box sx={{display: "flex", justifyContent: "space-between"}}>
