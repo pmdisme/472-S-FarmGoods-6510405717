@@ -42,4 +42,14 @@ export class ProductController {
             }, { status: 500 });
         }
     }
+
+    async toggleProductStatus(req, res) {
+        try {
+            const { productId, isActive } = req.body;
+            const updatedProduct = await this.productService.toggleProductStatus(productId, isActive);
+            return res.status(200).json(updatedProduct);
+        } catch (error) {
+            return res.status(500).json({ error: "Failed to update product status" });
+        }
+    }    
 }
