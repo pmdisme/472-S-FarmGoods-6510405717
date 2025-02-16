@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import {Button, Container} from "@mui/material";
+import {Button, Container, default as DialogActions} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Product from "../app/components/Product";
 import Cart from "./components/Cart";
 import Search from "./components/Search";
 import NewProductButton from "@/app/components/NewProductButton";
+import ManageProduct from "@/app/components/ManageProduct";
+import React from "react";
 
 const Home = () => {
     const [products, setProducts] = useState([]);
@@ -23,8 +25,9 @@ const Home = () => {
             const data = await response.json();
 
             if (data.success) {
-                setProducts(data.data);
-                setFilteredProducts(data.data);
+                const activeProducts = data.data.filter(product => product.isActive);
+                setProducts(activeProducts);
+                setFilteredProducts(activeProducts);
             } else {
                 setError(data.error || "Failed to fetch products")
             }
@@ -37,7 +40,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchProducts();
-    }, []);
+    }, []);          
 
     const handleAddNewProduct = (newProduct) => {
         const formattedProduct = {
@@ -76,6 +79,12 @@ const Home = () => {
         setFilteredProducts(filtered);
     };
 
+    const handleUpdateProductList = (updatedProducts) => {
+        const activeProducts = updatedProducts.filter(product => product.isActive);
+        setProducts(activeProducts);
+        setFilteredProducts(activeProducts);
+    };
+
     return (
         <Container>
             <Box sx={{
@@ -103,6 +112,7 @@ const Home = () => {
                     handleSearch={handleSearch}
                 />
                 <NewProductButton onProductCreated={handleAddNewProduct} />
+                <ManageProduct onProductCreated={handleUpdateProductList} />
             </Box>
 
             <Box sx={{display: "flex", justifyContent: "space-between"}}>
