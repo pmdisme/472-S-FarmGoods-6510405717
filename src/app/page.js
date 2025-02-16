@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import {Button, Container, default as DialogActions} from "@mui/material";
+import { Container } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Product from "../app/components/Product";
 import Cart from "./components/Cart";
 import Search from "./components/Search";
-import NewProductButton from "@/app/components/NewProductButton";
-import ManageProduct from "@/app/components/ManageProduct";
+import MoreActionDropdown from "@/app/components/MoreActionDropdown";
 import React from "react";
 
 const Home = () => {
@@ -40,7 +39,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchProducts();
-    }, []);          
+    }, []);
 
     const handleAddNewProduct = (newProduct) => {
         const formattedProduct = {
@@ -79,12 +78,6 @@ const Home = () => {
         setFilteredProducts(filtered);
     };
 
-    const handleUpdateProductList = (updatedProducts) => {
-        const activeProducts = updatedProducts.filter(product => product.isActive);
-        setProducts(activeProducts);
-        setFilteredProducts(activeProducts);
-    };
-
     return (
         <Container>
             <Box sx={{
@@ -111,8 +104,7 @@ const Home = () => {
                     setSearchTerm={setSearchTerm}
                     handleSearch={handleSearch}
                 />
-                <NewProductButton onProductCreated={handleAddNewProduct} />
-                <ManageProduct onProductCreated={handleUpdateProductList} />
+                <MoreActionDropdown onProductCreated={handleAddNewProduct} />
             </Box>
 
             <Box sx={{display: "flex", justifyContent: "space-between"}}>

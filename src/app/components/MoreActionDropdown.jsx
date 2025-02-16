@@ -1,8 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Image from "next/image";
+import NewProductDialog from "./creat-product-dialog/NewProductDialog";
+import ManageProduct from "@/app/components/ManageProduct";
 
-const CustomDropdown = () => {
+const CustomDropdown = ({ onProductCreated }) => {
     const [isOpen, setIsOpen] = useState(false);
+    const [openCreate, setOpenCreate] = useState(false);
+    const [openManage, setOpenManage] = useState(false);
     const dropdownRef = useRef(null);
 
     const commonStyles = {
@@ -66,7 +70,6 @@ const CustomDropdown = () => {
         gap: "0.5rem",
     };
 
-    // ปิด dropdown เมื่อคลิกนอกพื้นที่
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -80,14 +83,20 @@ const CustomDropdown = () => {
 
     const handleOptionClick = (value) => {
         if (value === 'new') {
-            console.log('Creating new product...');
-            // เพิ่มโค้ดสร้างสินค้าใหม่ตรงนี้
+            setOpenCreate(true);
         }
         else if (value === 'hide') {
-            console.log('Hiding product...');
-            // เพิ่มโค้ดซ่อนสินค้าตรงนี้
+            setOpenManage(true);
         }
         setIsOpen(false);
+    };
+
+    const handleCloseAddProduct = () => {
+        setOpenCreate(false);
+    };
+
+    const handleCloseManage = () => {
+        setOpenManage(false);
     };
 
     return (
@@ -109,7 +118,6 @@ const CustomDropdown = () => {
                 </svg>
             </button>
 
-            {/* Dropdown Options */}
             {isOpen && (
                 <div style={dropdownMenuStyles}>
                     <div
@@ -119,15 +127,14 @@ const CustomDropdown = () => {
                         onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'}
                     >
                         <Image
-                            src={"images/icons/icon-circle-plus.svg"}
-                            alt={"circle plus icon"}
+                            src="/images/icons/icon-circle-plus.svg"
+                            alt="circle plus icon"
                             width={22}
                             height={22}
                         />
-                        <div className={"color-transparent"}>
+                        <div className="color-transparent">
                             New Product
                         </div>
-
                     </div>
 
                     <div
@@ -137,18 +144,30 @@ const CustomDropdown = () => {
                         onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'}
                     >
                         <Image
-                            src={"images/icons/icon-eye-off.svg"}
-                            alt={"circle plus icon"}
+                            src="/images/icons/icon-eye-off.svg"
+                            alt="circle plus icon"
                             width={22}
                             height={22}
                         />
-                        <div className={"color-transparent"}>
+                        <div className="color-transparent">
                             Hide Product
                         </div>
-
                     </div>
                 </div>
             )}
+
+            {/* New Product Dialog */}
+            <NewProductDialog
+                open={openCreate}
+                handleClose={handleCloseAddProduct}
+                onProductCreated={onProductCreated}
+            />
+
+            {/* Hide Product (Manage Product) */}
+            <ManageProduct
+                open={openManage}
+                onClose={handleCloseManage}
+            />
         </div>
     );
 };
