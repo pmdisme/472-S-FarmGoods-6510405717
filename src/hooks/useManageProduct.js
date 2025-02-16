@@ -7,6 +7,7 @@ export const useManageProduct = (open, onClose) => {
     const [openConfirm, setOpenConfirm] = useState(false);
     const [confirmAction, setConfirmAction] = useState("");
     const [showSuccess, setShowSuccess] = useState(false);
+    const [updatedProducts, setUpdatedProducts] = useState([]);
 
     useEffect(() => {
         if (open) {
@@ -15,6 +16,7 @@ export const useManageProduct = (open, onClose) => {
                 .then(data => {
                     setProducts(data.data);
                     setFilteredProducts(data.data);
+                    setUpdatedProducts([]);
                 })
                 .catch(error => console.error("Error fetching products:", error));
         }
@@ -38,9 +40,19 @@ export const useManageProduct = (open, onClose) => {
 
     const handleToggleStatus = (productId) => {
         setProducts(prevProducts =>
-            prevProducts.map(product =>
-                product.id === productId ? { ...product, isActive: !product.isActive } : product
-            )
+            prevProducts.map(product => {
+                if (product.id === productId) {
+                    const updatedProduct = { ...product, isActive: !product.isActive };
+                    setUpdatedProducts(prev => {
+                        const exists = prev.find(p => p.id === productId);
+                        return exists
+                            ? prev.map(p => (p.id === productId ? updatedProduct : p))
+                            : [...prev, updatedProduct];
+                    });
+                    return updatedProduct;
+                }
+                return product;
+            })
         );
 
         setFilteredProducts(prevFiltered =>
@@ -51,14 +63,21 @@ export const useManageProduct = (open, onClose) => {
     };
 
     const handleConfirmUpdate = () => {
+        if (updatedProducts.length === 0) {
+            setOpenConfirm(false);
+            return;
+        }
+
         fetch("/api/products/update", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ updatedProducts: products })
+            body: JSON.stringify({ updatedProducts })
         })
         .then(response => response.json())
-        .then(() => {
+        .then((data) => {
             setOpenConfirm(false);
+            setShowSuccess(true);
+            setUpdatedProducts([]);
             onClose();
         })
         .catch(error => console.error("Failed to update product status:", error));
@@ -66,6 +85,7 @@ export const useManageProduct = (open, onClose) => {
 
     const handleCancel = () => {
         setFilteredProducts(products);
+        setUpdatedProducts([]); 
         onClose();
     };
 

@@ -83,9 +83,9 @@ export class ProductService {
                     data: { isActive: product.isActive }
                 });
             }
-            return { success: true, message: "Products updated successfully" };
+            return { success: true, message: "Updated modified products only" };
         } catch (error) {
             throw new Error("Failed to update product status");
         }
-    }  
+    } 
 }

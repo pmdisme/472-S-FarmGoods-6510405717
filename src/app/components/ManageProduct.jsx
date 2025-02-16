@@ -19,9 +19,9 @@ const ManageProduct = ({ open, onClose }) => {
         openConfirm,
         setOpenConfirm,
         handleCancel,
-        handleCloseSuccess
+        showSuccess
     } = useManageProduct(open, onClose);
-
+    
     return (
         <>
             <Dialog
