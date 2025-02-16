@@ -1,7 +1,17 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Dialog, DialogTitle, DialogContent, TextField, FormControlLabel, Checkbox, Button, DialogActions, Box } from "@mui/material";
+import {
+    Dialog,
+    DialogTitle,
+    DialogContent,
+    TextField,
+    FormControlLabel,
+    Checkbox,
+    Button,
+    DialogActions,
+    Box
+} from "@mui/material";
 import ManageProductDialog from "./ManageProductDialog";
 import { useManageProduct } from "@/hooks/useManageProduct";
 import Image from 'next/image';
@@ -21,7 +31,14 @@ const ManageProduct = ({ open, onClose }) => {
         handleCancel,
         showSuccess
     } = useManageProduct(open, onClose);
-    
+
+    const handleUpdate = async () => {
+        await handleConfirmUpdate();
+        setOpenConfirm(false);
+        onClose();
+        window.location.reload(); // Refresh the page after update
+    };
+
     return (
         <>
             <Dialog
@@ -110,18 +127,18 @@ const ManageProduct = ({ open, onClose }) => {
                         </Box>
                     </Box>
                     {filteredProducts.sort((a, b) => a.id - b.id).map(product => (
-                            <Box key={product.id} sx={{ display: "block" }}>
-                                <FormControlLabel
-                                    control={
-                                        <Checkbox
-                                            checked={product.isActive}
-                                            onChange={() => handleToggleStatus(product.id)}
-                                        />
-                                    }
-                                    label={`${product.name} (ID: ${product.id})`}
-                                />
-                            </Box>
-                        ))}
+                        <Box key={product.id} sx={{ display: "block" }}>
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        checked={product.isActive}
+                                        onChange={() => handleToggleStatus(product.id)}
+                                    />
+                                }
+                                label={`${product.name} (ID: ${product.id})`}
+                            />
+                        </Box>
+                    ))}
                 </DialogContent>
 
                 <DialogActions>
@@ -172,7 +189,7 @@ const ManageProduct = ({ open, onClose }) => {
             <ManageProductDialog
                 open={openConfirm}
                 onClose={() => setOpenConfirm(false)}
-                onConfirm={handleConfirmUpdate}
+                onConfirm={handleUpdate}
             />
         </>
     );
