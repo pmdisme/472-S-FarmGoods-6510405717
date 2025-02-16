@@ -75,10 +75,17 @@ export class ProductService {
         }
     }
 
-    async toggleProductStatus(productId, isActive) {
-        return await this.prisma.product.update({
-            where: { id: productId },
-            data: { isActive },
-        });
-    }    
+    async updateProductStatus(updatedProducts) {
+        try {
+            for (const product of updatedProducts) {
+                await this.prisma.product.update({
+                    where: { productId: product.id },
+                    data: { isActive: product.isActive }
+                });
+            }
+            return { success: true, message: "Products updated successfully" };
+        } catch (error) {
+            throw new Error("Failed to update product status");
+        }
+    }  
 }

@@ -3,91 +3,24 @@
 import { useState, useEffect } from "react";
 import { Dialog, DialogTitle, DialogContent, TextField, FormControlLabel, Checkbox, Button, DialogActions, Box } from "@mui/material";
 import ManageProductDialog from "./ManageProductDialog";
+import { useManageProduct } from "@/hooks/useManageProduct";
 import Image from 'next/image';
 import React from "react";
 
 const ManageProduct = ({ open, onClose }) => {
-    const [products, setProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
-    const [searchTerm, setSearchTerm] = useState("");
-    const [openConfirm, setOpenConfirm] = useState(false);
-    const [updatedProducts, setUpdatedProducts] = useState([]);
-
-    useEffect(() => {
-        if (open) {
-            fetch("/api/products")
-                .then(response => response.json())
-                .then(data => {
-                    setProducts(data.data);
-                    setFilteredProducts(data.data);
-                })
-                .catch(error => console.error("Error fetching products:", error));
-        }
-    }, [open]);
-
-    const handleSearchHide = () => {
-        const trimmedSearchTerm = searchTerm.trim().toLowerCase();
-        if (trimmedSearchTerm === "") {
-            setFilteredProducts(products);
-            return;
-        }
-
-        const filtered = products.filter(product =>
-            product.name.toLowerCase().includes(trimmedSearchTerm) ||
-            product.id.toString().includes(trimmedSearchTerm)
-        );
-
-        setFilteredProducts(filtered);
-    };
-
-    const handleKeyPress = (event) => {
-        if (event.key === "Enter") {
-            handleSearchHide();
-        }
-    };
-
-    const handleToggleStatus = (productId) => {
-        setProducts(prevProducts =>
-            prevProducts.map(product =>
-                product.id === productId ? { ...product, isActive: !product.isActive } : product
-            )
-        );
-
-        setFilteredProducts(prevFiltered =>
-            prevFiltered.map(product =>
-                product.id === productId ? { ...product, isActive: !product.isActive } : product
-            )
-        );
-
-        setUpdatedProducts(prevUpdated => {
-            const updated = [...prevUpdated];
-            const index = updated.findIndex(p => p.id === productId);
-            if (index !== -1) {
-                updated[index].isActive = !updated[index].isActive;
-            } else {
-                const productToUpdate = products.find(p => p.id === productId);
-                if (productToUpdate) {
-                    updated.push({ ...productToUpdate, isActive: !productToUpdate.isActive });
-                }
-            }
-            return updated;
-        });
-    };
-
-    const handleConfirmUpdate = () => {
-        fetch("/api/products", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ updatedProducts })
-        })
-            .then(response => response.json())
-            .then(() => {
-                setOpenConfirm(false);
-                setUpdatedProducts([]);
-                onClose(); // Close the manage dialog after successful update
-            })
-            .catch(error => console.error("Failed to update product status:", error));
-    };
+    const {
+        searchTerm,
+        setSearchTerm,
+        handleSearchHide,
+        handleKeyPress,
+        filteredProducts,
+        handleToggleStatus,
+        handleConfirmUpdate,
+        openConfirm,
+        setOpenConfirm,
+        handleCancel,
+        handleCloseSuccess
+    } = useManageProduct(open, onClose);
 
     return (
         <>
@@ -176,9 +109,7 @@ const ManageProduct = ({ open, onClose }) => {
                             />
                         </Box>
                     </Box>
-                    {filteredProducts
-                        .sort((a, b) => a.id - b.id)
-                        .map(product => (
+                    {filteredProducts.sort((a, b) => a.id - b.id).map(product => (
                             <Box key={product.id} sx={{ display: "block" }}>
                                 <FormControlLabel
                                     control={
@@ -195,7 +126,7 @@ const ManageProduct = ({ open, onClose }) => {
 
                 <DialogActions>
                     <Button
-                        onClick={onClose}
+                        onClick={handleCancel}
                         sx={{
                             width: 100,
                             height: 40,

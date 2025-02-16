@@ -29,22 +29,3 @@ export async function GET() {
         }, { status: 500 });
     }
 }
-
-export async function POST(request) {
-    const requestBody = await request.json();
-    if (requestBody.updatedProducts) {
-        for (const product of requestBody.updatedProducts) {
-            await prisma.product.update({
-                where: { productId: product.id },
-                data: { isActive: product.isActive },
-            });
-        }
-
-        return Response.json({
-            success: true,
-            message: "Products updated successfully"
-        }, { status: 200 });
-    }
-
-    return await productController.createProduct(request)
-}

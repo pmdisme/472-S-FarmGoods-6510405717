@@ -43,13 +43,13 @@ export class ProductController {
         }
     }
 
-    async toggleProductStatus(req, res) {
+    async updateProductStatus(req) {
         try {
-            const { productId, isActive } = req.body;
-            const updatedProduct = await this.productService.toggleProductStatus(productId, isActive);
-            return res.status(200).json(updatedProduct);
+            const { updatedProducts } = await req.json();
+            const result = await this.productService.updateProductStatus(updatedProducts);
+            return Response.json(result, { status: 200 });
         } catch (error) {
-            return res.status(500).json({ error: "Failed to update product status" });
+            return Response.json({ error: "Failed to update product status" }, { status: 500 });
         }
-    }    
+    }  
 }
