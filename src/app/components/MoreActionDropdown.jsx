@@ -1,9 +1,84 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import Image from "next/image";
 
-const ActionDropdown = () => {
-    const handleChange = (e) => {
-        const value = e.target.value;
+const CustomDropdown = () => {
+    const [isOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
+    const commonStyles = {
+        fontFamily: "'Arial', sans-serif",
+        fontWeight: 500,
+    };
+
+    const containerStyles = {
+        position: 'relative',
+        display: 'inline-block',
+        ...commonStyles
+    };
+
+    const buttonStyles = {
+        ...commonStyles,
+        fontSize: "1.1rem",
+        marginTop: "1.5rem",
+        backgroundColor: "#79CDCD",
+        height: "3rem",
+        width: "10rem",
+        border: "none",
+        borderRadius: "1rem",
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        cursor: "pointer",
+        color: "white",
+        transition: "all 0.2s ease",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 1rem",
+        lineHeight: "1",
+    };
+
+    const arrowIconStyles = {
+        transform: isOpen ? 'rotate(180deg)' : 'rotate(0)',
+        transition: 'transform 0.2s ease',
+    };
+
+    const dropdownMenuStyles = {
+        ...commonStyles,
+        position: 'absolute',
+        top: "calc(100% + 0.5rem)",
+        width: "10rem",
+        backgroundColor: "white",
+        borderRadius: "1rem",
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        overflow: 'hidden',
+        zIndex: 1000
+    };
+
+    const optionStyles = {
+        ...commonStyles,
+        fontSize: "1rem",
+        padding: "1rem",
+        cursor: "pointer",
+        color: "#79CDCD",
+        transition: "background-color 0.2s ease",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        gap: "0.5rem",
+    };
+
+    // ปิด dropdown เมื่อคลิกนอกพื้นที่
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const handleOptionClick = (value) => {
         if (value === 'new') {
             console.log('Creating new product...');
             // เพิ่มโค้ดสร้างสินค้าใหม่ตรงนี้
@@ -12,63 +87,70 @@ const ActionDropdown = () => {
             console.log('Hiding product...');
             // เพิ่มโค้ดซ่อนสินค้าตรงนี้
         }
-
-        // รีเซ็ตค่า select กลับเป็น default
-        e.target.value = 'more';
+        setIsOpen(false);
     };
 
     return (
-        <div style={{ position: 'relative' }}>
-            <select
-                onChange={handleChange}
-                defaultValue="more"
-                style={selectStyle}
-            >
-                <option value="more" disabled hidden>More Actions</option>
-                <option value="Hide Product">Hide Product</option>
-                <option value="New Product">New Product</option>
-            </select>
-            <style>{`
-                select option {
-                    background-color: white;
-                    color: #79CDCD;
-                    height: "3rem",
-                    width: "9.25rem",
-                }
-                
-                select option:hover {
-                    background-color: #79CDCD;
-                }
-            `}</style>
+        <div ref={dropdownRef} style={containerStyles}>
+            <button onClick={() => setIsOpen(!isOpen)} style={buttonStyles}>
+                <span>More Actions</span>
+                <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="white"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    style={arrowIconStyles}
+                >
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+
+            {/* Dropdown Options */}
+            {isOpen && (
+                <div style={dropdownMenuStyles}>
+                    <div
+                        style={optionStyles}
+                        onClick={() => handleOptionClick('new')}
+                        onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f9f9'}
+                        onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'}
+                    >
+                        <Image
+                            src={"images/icons/icon-circle-plus.svg"}
+                            alt={"circle plus icon"}
+                            width={22}
+                            height={22}
+                        />
+                        <div className={"color-transparent"}>
+                            New Product
+                        </div>
+
+                    </div>
+
+                    <div
+                        style={optionStyles}
+                        onClick={() => handleOptionClick('hide')}
+                        onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#f0f9f9'}
+                        onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'white'}
+                    >
+                        <Image
+                            src={"images/icons/icon-eye-off.svg"}
+                            alt={"circle plus icon"}
+                            width={22}
+                            height={22}
+                        />
+                        <div className={"color-transparent"}>
+                            Hide Product
+                        </div>
+
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
 
-const selectStyle = {
-    marginTop: "1.5rem",
-    backgroundColor: "#79CDCD",
-    height: "3rem",
-    width: "9.25rem",
-    border: "none",
-    borderRadius: "1rem",
-    boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-    marginLeft: "0.5rem",
-    cursor: "pointer",
-    fontSize: "1rem",
-    fontWeight: 525,
-    color: "white",
-    transition: "all 0.2s ease",
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: "0 1rem",
-    lineHeight: "1",
-    appearance: "none",
-    backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-    backgroundRepeat: "no-repeat",
-    backgroundPosition: "right 0.8rem center",
-    backgroundSize: "1.25rem",
-    paddingRight: "0.5rem"
-};
-
-export default ActionDropdown;
+export default CustomDropdown;
