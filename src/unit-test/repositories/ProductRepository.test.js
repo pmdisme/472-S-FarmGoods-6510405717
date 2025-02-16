@@ -1,5 +1,4 @@
-import { ProductRepository } from '@/repositories/ProductRepository'
-import { PrismaClient } from "@prisma/client";
+import {ProductRepository} from '@/repositories/ProductRepository'
 
 // Mock Prisma Client to prevent actual database connections
 jest.mock('@prisma/client', () => {
@@ -11,7 +10,7 @@ jest.mock('@prisma/client', () => {
             update: jest.fn()
         }
     }
-    return { PrismaClient: jest.fn(() => testPrisma) }
+    return {PrismaClient: jest.fn(() => testPrisma)}
 })
 
 describe('ProductRepository', () => {
@@ -29,7 +28,7 @@ describe('ProductRepository', () => {
 
     describe('findById', () => {
         test('should return product found by id', async () => {
-            const testProduct = { productId: 123, productName: 'Apple' };
+            const testProduct = {productId: 123, productName: 'Apple'};
 
             prismaTest.product.findUnique.mockResolvedValue(testProduct);
 
@@ -37,7 +36,7 @@ describe('ProductRepository', () => {
 
             expect(result).toEqual(testProduct);
             expect(prismaTest.product.findUnique).toHaveBeenCalledWith({
-                where: { productId: 123 }
+                where: {productId: 123}
             });
         });
 
@@ -48,7 +47,7 @@ describe('ProductRepository', () => {
 
             expect(result).toBeNull();
             expect(prismaTest.product.findUnique).toHaveBeenCalledWith({
-                where: { productId: 999 }
+                where: {productId: 999}
             });
         });
     });
@@ -152,7 +151,7 @@ describe('ProductRepository', () => {
 
             expect(result).toEqual(updatedProduct);
             expect(prismaTest.product.update).toHaveBeenCalledWith({
-                where: { productId: 123 },
+                where: {productId: 123},
                 data: updateData
             });
         });
@@ -173,12 +172,12 @@ describe('ProductRepository', () => {
         test('should successfully delete an existing product', async () => {
             const productId = 123;
 
-            prismaTest.product.delete = jest.fn().mockResolvedValue({ productId });
+            prismaTest.product.delete = jest.fn().mockResolvedValue({productId});
 
             await productRepository.delete(productId);
 
             expect(prismaTest.product.delete).toHaveBeenCalledWith({
-                where: { productId: productId }
+                where: {productId: productId}
             });
         });
 
@@ -193,7 +192,7 @@ describe('ProductRepository', () => {
                 .toThrow(`Failed to delete product with ID ${productId}: ${errorMessage}`);
 
             expect(prismaTest.product.delete).toHaveBeenCalledWith({
-                where: { productId: productId }
+                where: {productId: productId}
             });
         });
     });

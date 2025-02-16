@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import {PrismaClient} from '@prisma/client';
 import {OrderService} from "@/services/OrderService";
 
 jest.mock('@prisma/client');
@@ -32,7 +32,7 @@ describe('OrderService', () => {
 
     describe('getActiveCart', () => {
         it('should return active cart from order repository', async () => {
-            const mockCart = { orderId: 1, orderStatus: 0 };
+            const mockCart = {orderId: 1, orderStatus: 0};
             orderService.orderRepository.findByStatusEqualO.mockResolvedValue(mockCart);
 
             const result = await orderService.getActiveCart();
@@ -58,8 +58,8 @@ describe('OrderService', () => {
 
         it('should create new cart and add product when no active cart exists', async () => {
             const quantity = 2;
-            const mockNewCart = { orderId: 1, orderStatus: 0 };
-            const mockOrderDetail = { orderDetailId: 1, quantity, orderTotalAmount: 200 };
+            const mockNewCart = {orderId: 1, orderStatus: 0};
+            const mockOrderDetail = {orderDetailId: 1, quantity, orderTotalAmount: 200};
 
             orderService.productRepository.findById.mockResolvedValue(mockProduct);
             orderService.orderRepository.findByStatusEqualO.mockResolvedValue(null);
@@ -82,7 +82,7 @@ describe('OrderService', () => {
 
         it('should update existing order detail when product already in cart', async () => {
             const quantity = 2;
-            const existingCart = { orderId: 1, orderStatus: 0 };
+            const existingCart = {orderId: 1, orderStatus: 0};
             const existingDetail = {
                 orderDetailId: 1,
                 quantity: 1,
@@ -102,7 +102,7 @@ describe('OrderService', () => {
             const result = await orderService.addToCart(mockProduct.productId, quantity);
 
             expect(mockPrismaOrderDetail.update).toHaveBeenCalledWith({
-                where: { orderDetailId: existingDetail.orderDetailId },
+                where: {orderDetailId: existingDetail.orderDetailId},
                 data: {
                     quantity: existingDetail.quantity + quantity,
                     orderTotalAmount: existingDetail.orderTotalAmount + (mockProduct.productPrice * quantity)

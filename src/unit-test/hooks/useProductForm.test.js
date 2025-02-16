@@ -1,5 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
-import { useProductForm } from '@/hooks/useProductForm';
+import {act, renderHook} from '@testing-library/react';
+import {useProductForm} from '@/hooks/useProductForm';
 
 // Mock global URL
 global.URL.createObjectURL = jest.fn();
@@ -18,7 +18,7 @@ describe('useProductForm', () => {
     });
 
     test('initial state is correct', () => {
-        const { result } = renderHook(() => useProductForm(mockOnSuccess));
+        const {result} = renderHook(() => useProductForm(mockOnSuccess));
 
         expect(result.current.formData).toEqual({
             productName: '',
@@ -35,7 +35,7 @@ describe('useProductForm', () => {
     });
 
     test('handleInputChange updates form data and clears errors', () => {
-        const { result } = renderHook(() => useProductForm(mockOnSuccess));
+        const {result} = renderHook(() => useProductForm(mockOnSuccess));
 
         const mockEvent = {
             target: {
@@ -54,10 +54,10 @@ describe('useProductForm', () => {
     });
 
     test('handleImageChange with valid image', () => {
-        const { result } = renderHook(() => useProductForm(mockOnSuccess));
+        const {result} = renderHook(() => useProductForm(mockOnSuccess));
 
         // Create mock file
-        const mockFile = new File(['test'], 'test.jpg', { type: 'image/jpeg' });
+        const mockFile = new File(['test'], 'test.jpg', {type: 'image/jpeg'});
         const mockEvent = {
             target: {
                 files: [mockFile],
@@ -79,10 +79,10 @@ describe('useProductForm', () => {
     });
 
     test('handleImageChange with invalid file type', () => {
-        const { result } = renderHook(() => useProductForm(mockOnSuccess));
+        const {result} = renderHook(() => useProductForm(mockOnSuccess));
 
         // Create mock file with invalid type
-        const mockFile = new File(['test'], 'test.gif', { type: 'image/gif' });
+        const mockFile = new File(['test'], 'test.gif', {type: 'image/gif'});
         const mockEvent = {
             target: {
                 files: [mockFile],
@@ -101,17 +101,17 @@ describe('useProductForm', () => {
     });
 
     test('handleSubmit with successful product creation', async () => {
-        const { result } = renderHook(() => useProductForm(mockOnSuccess));
+        const {result} = renderHook(() => useProductForm(mockOnSuccess));
 
         // Prepare form data
-        const mockFile = new File(['test'], 'test.jpg', { type: 'image/jpeg' });
+        const mockFile = new File(['test'], 'test.jpg', {type: 'image/jpeg'});
 
         act(() => {
             result.current.handleInputChange({
-                target: { name: 'productName', value: 'New Product' }
+                target: {name: 'productName', value: 'New Product'}
             });
             result.current.handleInputChange({
-                target: { name: 'productPrice', value: '19.99' }
+                target: {name: 'productPrice', value: '19.99'}
             });
             result.current.formData.productImage = mockFile;
         });
@@ -120,7 +120,7 @@ describe('useProductForm', () => {
         fetch.mockResolvedValueOnce({
             json: () => Promise.resolve({
                 success: true,
-                data: { id: 1, productName: 'New Product' }
+                data: {id: 1, productName: 'New Product'}
             })
         });
 
@@ -136,17 +136,17 @@ describe('useProductForm', () => {
     });
 
     test('handleSubmit with product name error', async () => {
-        const { result } = renderHook(() => useProductForm(mockOnSuccess));
+        const {result} = renderHook(() => useProductForm(mockOnSuccess));
 
         // Prepare form data
-        const mockFile = new File(['test'], 'test.jpg', { type: 'image/jpeg' });
+        const mockFile = new File(['test'], 'test.jpg', {type: 'image/jpeg'});
 
         act(() => {
             result.current.handleInputChange({
-                target: { name: 'productName', value: 'Existing Product' }
+                target: {name: 'productName', value: 'Existing Product'}
             });
             result.current.handleInputChange({
-                target: { name: 'productPrice', value: '19.99' }
+                target: {name: 'productPrice', value: '19.99'}
             });
             result.current.formData.productImage = mockFile;
         });
@@ -168,15 +168,15 @@ describe('useProductForm', () => {
     });
 
     test('resetForm clears all form data', () => {
-        const { result } = renderHook(() => useProductForm(mockOnSuccess));
+        const {result} = renderHook(() => useProductForm(mockOnSuccess));
 
         // Set some initial data
         act(() => {
             result.current.handleInputChange({
-                target: { name: 'productName', value: 'Test Product' }
+                target: {name: 'productName', value: 'Test Product'}
             });
             result.current.handleInputChange({
-                target: { name: 'productPrice', value: '19.99' }
+                target: {name: 'productPrice', value: '19.99'}
             });
         });
 

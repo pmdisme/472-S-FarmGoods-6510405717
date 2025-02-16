@@ -1,4 +1,4 @@
-import { OrderRepository } from "@/repositories/OrderRepository";
+import {OrderRepository} from "@/repositories/OrderRepository";
 
 let mockFindFirst;
 let mockFindUnique;
@@ -48,7 +48,7 @@ describe('OrderRepository', () => {
             const result = await orderRepository.findByStatusEqualO();
 
             expect(mockFindFirst).toHaveBeenCalledWith({
-                where: { orderStatus: 0 },
+                where: {orderStatus: 0},
                 include: {
                     orderDetails: {
                         include: {
@@ -81,7 +81,7 @@ describe('OrderRepository', () => {
 
             expect(mockFindUnique).toHaveBeenCalledWith({
                 where: {
-                    where: { orderId: 1 }
+                    where: {orderId: 1}
                 }
             });
             expect(result).toEqual(mockOrder);
@@ -101,7 +101,7 @@ describe('OrderRepository', () => {
 
             expect(mockFindUnique).toHaveBeenCalledWith({
                 where: {
-                    where: { orderId: NaN }
+                    where: {orderId: NaN}
                 }
             });
             expect(result).toBeNull();

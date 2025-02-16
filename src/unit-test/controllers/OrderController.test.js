@@ -1,5 +1,5 @@
-import { OrderController } from '@/controllers/OrderController';
-import { OrderService } from '@/services/OrderService';
+import {OrderController} from '@/controllers/OrderController';
+import {OrderService} from '@/services/OrderService';
 
 // Mock OrderService
 jest.mock('../../services/OrderService');
@@ -78,7 +78,7 @@ describe('OrderController', () => {
 
             // Assert
             expect(response.status).toBe(404);
-            expect(data).toEqual({ error: 'Product not found' });
+            expect(data).toEqual({error: 'Product not found'});
         });
 
         it('should return 500 on general error', async () => {
@@ -96,7 +96,7 @@ describe('OrderController', () => {
             const data = await response.json();
 
             expect(response.status).toBe(500);
-            expect(data).toEqual({ error: 'Database error' });
+            expect(data).toEqual({error: 'Database error'});
         });
     });
 
@@ -135,7 +135,7 @@ describe('OrderController', () => {
             const data = await response.json();
 
             expect(response.status).toBe(404);
-            expect(data).toEqual({ message: 'No active cart found' });
+            expect(data).toEqual({message: 'No active cart found'});
         });
 
         it('should return 500 on general error', async () => {
@@ -145,7 +145,7 @@ describe('OrderController', () => {
             const data = await response.json();
 
             expect(response.status).toBe(500);
-            expect(data).toEqual({ error: 'Database error' });
+            expect(data).toEqual({error: 'Database error'});
         });
     });
 });

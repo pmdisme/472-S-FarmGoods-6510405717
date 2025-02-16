@@ -1,4 +1,4 @@
-import { OrderDetailRepository } from "@/repositories/OrderDetailRepository";
+import {OrderDetailRepository} from "@/repositories/OrderDetailRepository";
 
 let mockFindFirst;
 

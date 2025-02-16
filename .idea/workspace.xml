@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acceptance-test/Search.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/acceptance-test/Search.spec.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unit-test/controllers/ProductController.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/unit-test/controllers/ProductController.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,48 +26,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Jest.OrderController.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.OrderDetailRepository.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.OrderRepository.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.OrderRepository.findById.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.OrderRepository.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.OrderService.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.Product.test.jsx.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.ProductRepository.delete.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.ProductRepository.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.ProductService.createProduct.should handle image upload error.executor&quot;: &quot;Debug&quot;,
-    &quot;Jest.ProductService.delete.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.ProductService.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.Tests in acceptance-test\\.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.Tests in hooks\\.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.Tests in repositories\\.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.Tests in unit-test\\.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.tet.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.useAddToCart.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.useCart.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.useCart.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Jest.useProductForm.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;Node.js.ProductService.js.executor&quot;: &quot;Run&quot;,
-    &quot;Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search.executor&quot;: &quot;Run&quot;,
-    &quot;Playwright.Product Search Functionality - UAT.UAT-002: Search by full name.executor&quot;: &quot;Run&quot;,
-    &quot;Playwright.Search.test.js.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jitla/OneDrive/Documents/3term2/pm/DogGo&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs.jest.jest_package&quot;: &quot;C:/Users/jitla/OneDrive/Documents/3term2/agile/472-FarmGoods-Sprints-and-Giggles/node_modules/jest&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\jitla\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Jest.OrderController.test.js.executor": "Run",
+    "Jest.OrderDetailRepository.test.js.executor": "Run",
+    "Jest.OrderRepository.executor": "Run",
+    "Jest.OrderRepository.findById.executor": "Run",
+    "Jest.OrderRepository.test.js.executor": "Run",
+    "Jest.OrderService.test.js.executor": "Run",
+    "Jest.Product.test.jsx.executor": "Run",
+    "Jest.ProductController.test.js.executor": "Run",
+    "Jest.ProductRepository.delete.executor": "Run",
+    "Jest.ProductRepository.test.js.executor": "Run",
+    "Jest.ProductService.createProduct.should handle image upload error.executor": "Debug",
+    "Jest.ProductService.delete.executor": "Run",
+    "Jest.ProductService.test.js.executor": "Run",
+    "Jest.Tests in acceptance-test\\.executor": "Run",
+    "Jest.Tests in hooks\\.executor": "Run",
+    "Jest.Tests in repositories\\.executor": "Run",
+    "Jest.Tests in unit-test\\.executor": "Run",
+    "Jest.tet.test.js.executor": "Run",
+    "Jest.useAddToCart.test.js.executor": "Run",
+    "Jest.useCart.js.executor": "Run",
+    "Jest.useCart.test.js.executor": "Run",
+    "Jest.useProductForm.test.js.executor": "Run",
+    "Node.js.ProductService.js.executor": "Run",
+    "Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search.executor": "Run",
+    "Playwright.Product Search Functionality - UAT.UAT-002: Search by full name.executor": "Run",
+    "Playwright.Search.test.js.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/unit-testing-disabling-product",
+    "last_opened_file_path": "C:/Users/jitla/OneDrive/Documents/3term2/pm/DogGo",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs.jest.jest_package": "C:/Users/jitla/OneDrive/Documents/3term2/agile/472-FarmGoods-Sprints-and-Giggles/node_modules/jest",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "C:\\Users\\jitla\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
@@ -80,7 +81,16 @@
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\app\components\creat_product_dialog" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="Jest.ProductService.test.js">
+    <configuration name="ProductController.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/unit-test/controllers/ProductController.test.js" />
+      <method v="2" />
+    </configuration>
     <configuration name="ProductService.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -88,15 +98,6 @@
       <envs />
       <scope-kind value="TEST_FILE" />
       <test-file value="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Tests in unit-test\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="DIRECTORY" />
-      <test-directory value="$PROJECT_DIR$/src/unit-test" />
       <method v="2" />
     </configuration>
     <configuration name="Product Search Functionality - UAT.UAT-002: Partial Product Name Search" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
@@ -145,7 +146,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Jest.Tests in unit-test\" />
+      <item itemvalue="Jest.ProductController.test.js" />
       <item itemvalue="Jest.ProductService.test.js" />
       <item itemvalue="npm.dev" />
       <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search" />
@@ -154,11 +155,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.ProductService.test.js" />
+        <item itemvalue="Jest.ProductController.test.js" />
         <item itemvalue="Playwright.Search.test.js" />
         <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Search by full name" />
         <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search" />
-        <item itemvalue="Jest.Tests in unit-test\" />
-        <item itemvalue="Jest.ProductService.test.js" />
       </list>
     </recent_temporary>
   </component>

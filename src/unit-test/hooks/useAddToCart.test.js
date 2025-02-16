@@ -1,5 +1,5 @@
-import { renderHook, act } from '@testing-library/react';
-import { useAddToCart } from '@/hooks/useAddToCart';
+import {act, renderHook} from '@testing-library/react';
+import {useAddToCart} from '@/hooks/useAddToCart';
 
 // Mock fetch
 global.fetch = jest.fn();
@@ -17,7 +17,7 @@ describe('useAddToCart', () => {
             json: () => Promise.resolve({}),
         });
 
-        const { result } = renderHook(() => useAddToCart());
+        const {result} = renderHook(() => useAddToCart());
 
         // Use act to wrap state updates
         const addResult = await act(async () => {
@@ -45,7 +45,7 @@ describe('useAddToCart', () => {
             json: () => Promise.resolve({}),
         });
 
-        const { result } = renderHook(() => useAddToCart());
+        const {result} = renderHook(() => useAddToCart());
 
         const addResult = await act(async () => {
             return await result.current.addItemToCart(1);
@@ -58,12 +58,13 @@ describe('useAddToCart', () => {
 
     test('should handle network errors', async () => {
         // Mock console.error
-        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {
+        });
 
         // Mock network error
         fetch.mockRejectedValueOnce(new Error('Network error'));
 
-        const { result } = renderHook(() => useAddToCart());
+        const {result} = renderHook(() => useAddToCart());
 
         const addResult = await act(async () => {
             return await result.current.addItemToCart(1);

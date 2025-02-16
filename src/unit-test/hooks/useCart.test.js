@@ -1,7 +1,7 @@
-import { renderHook } from '@testing-library/react';
-import { useCart } from '@/hooks/useCart';
-import { useAppDispatch } from '@/utils/hooks';
-import { initializeCart, setLoading, setError } from '@/store/cartSlice';
+import {renderHook} from '@testing-library/react';
+import {useCart} from '@/hooks/useCart';
+import {useAppDispatch} from '@/utils/hooks';
+import {initializeCart, setError, setLoading} from '@/store/cartSlice';
 
 // Mock dependencies
 jest.mock('../../utils/hooks', () => ({
@@ -43,7 +43,7 @@ describe('useCart hook', () => {
         fetch.mockResolvedValueOnce({
             ok: true,
             status: 200,
-            json: () => Promise.resolve({ products: mockProducts })
+            json: () => Promise.resolve({products: mockProducts})
         });
 
         // Render the hook
@@ -88,7 +88,8 @@ describe('useCart hook', () => {
         fetch.mockRejectedValueOnce(new Error('Network error'));
 
         // Spy on console.error to prevent actual error logging
-        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+        const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {
+        });
 
         renderHook(() => useCart());
 
