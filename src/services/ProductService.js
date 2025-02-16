@@ -75,4 +75,11 @@ export class ProductService {
             throw new Error(`Failed to create product: ${errorMessage}`);
         }
     }
+
+    async toggleProductStatus(productId, isActive) {
+        return await this.prisma.product.update({
+            where: { id: productId },
+            data: { isActive },
+        });
+    }    
 }
