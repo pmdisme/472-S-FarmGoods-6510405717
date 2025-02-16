@@ -25,7 +25,7 @@ const Home = () => {
             const data = await response.json();
 
             if (data.success) {
-                const activeProducts = data.data.filter(product => product.isActive); // ✅ Only keep active products
+                const activeProducts = data.data.filter(product => product.isActive);
                 setProducts(activeProducts);
                 setFilteredProducts(activeProducts);
             } else {

@@ -7,7 +7,6 @@ export class ProductService {
         this.productRepo = new ProductRepository()
     }
 
-    // get products
     async getAllProducts() {
         try {
             return await this.prisma.product.findMany({
