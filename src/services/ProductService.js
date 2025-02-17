@@ -1,5 +1,5 @@
-import {PrismaClient} from '@prisma/client'
-import {ProductRepository} from '@/repositories/ProductRepository'
+import { PrismaClient } from '@prisma/client'
+import { ProductRepository } from '@/repositories/ProductRepository'
 
 export class ProductService {
     constructor() {
@@ -9,13 +9,23 @@ export class ProductService {
 
     async getAllProducts() {
         try {
-            return await this.prisma.product.findMany({
-                orderBy: { productName: 'asc' }
-            })
+            const products = await this.prisma.product.findMany({
+                orderBy: { productName: "asc" }
+            });
+        
+            return products.map(product => ({
+                id: product.productId,
+                name: product.productName,
+                price: product.productPrice,
+                image: product.productImage,
+                isActive: product.isActive
+            }));
+    
         } catch (error) {
-            throw new Error("Failed to fetch products")
+            console.error("Error fetching products:", error);
+            throw new Error("Failed to fetch products");
         }
-    }
+    }    
 
     // Handle image upload and return image path
     async #handleImageUpload(imageFile, productId) {
