@@ -51,28 +51,39 @@ describe('ProductService', () => {
     // Tests for getAllProducts
     describe('getAllProducts', () => {
         test('should return products sorted by name', async () => {
-            const testProducts = [
-                {productId: 1, productName: 'Apple'},
-                {productId: 2, productName: 'Banana'},
-                {productId: 3, productName: 'Watermelon'}
+            // Products returned by prisma
+            const prismaProducts = [
+                { productId: 1, productName: 'Apple' },
+                { productId: 2, productName: 'Banana' },
+                { productId: 3, productName: 'Watermelon' }
             ];
-
-            prismaTest.product.findMany.mockResolvedValue(testProducts);
-
+    
+            const expectedProducts = [
+                { id: 1, name: 'Apple', image: undefined, isActive: undefined, price: undefined },
+                { id: 2, name: 'Banana', image: undefined, isActive: undefined, price: undefined },
+                { id: 3, name: 'Watermelon', image: undefined, isActive: undefined, price: undefined }
+            ];
+    
+            prismaTest.product.findMany.mockResolvedValue(prismaProducts);
+    
             const result = await productService.getAllProducts();
-
-            expect(result).toEqual(testProducts);
+    
+            expect(result).toEqual(expectedProducts);
             expect(prismaTest.product.findMany).toHaveBeenCalledWith({
-                orderBy: {productName: 'asc'}
+                orderBy: { productName: 'asc' }
             });
         });
 
         test('should throw an error when cannot fetch products', async () => {
-            prismaTest.product.findMany.mockRejectedValue(new Error("Database Error"));
+            const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
 
+            prismaTest.product.findMany.mockRejectedValue(new Error("Database Error"));
+        
             await expect(productService.getAllProducts()).rejects.toThrow("Failed to fetch products");
             expect(prismaTest.product.findMany).toHaveBeenCalledTimes(1);
-        });
+        
+            consoleErrorSpy.mockRestore();
+        });        
     });
 
     // Tests for createProduct method
