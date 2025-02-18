@@ -33,6 +33,7 @@ model Order {
   orderStatus      Int           @default(0)
   orderDetails     OrderDetail[]
   purchaseOption   Int?
+  paymentMethods   String        @default("cash")
 }
 
 model Product {
