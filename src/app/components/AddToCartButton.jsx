@@ -18,27 +18,18 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
     const itemIndex = cart.findIndex(isItem)
 
     const handleAddToCart = async () => {
-        const success = await addItemToCart(id, 1)
-
-        if (success) {
-            dispatch(addToCart({
+        
+        dispatch(addToCart({
                 id: id,
                 price: price,
                 name: name,
                 quantity: 1
             }))
-        } else {
-            setOpen(true)
-        }
+        
     }
 
     const handleIncreaseQuantity = async () => {
-        const success = await addItemToCart(id, 1)
-        if (success) {
-            dispatch(increaseQuantity(itemIndex))
-        } else {
-            setOpen(true)
-        }
+        dispatch(increaseQuantity(itemIndex))
     }
 
     const handleDecreaseQuantity = () => {

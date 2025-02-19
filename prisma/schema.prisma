@@ -32,8 +32,7 @@ model Order {
   purchaseDatetime DateTime?
   orderStatus      Int           @default(0)
   orderDetails     OrderDetail[]
-  purchaseOption   Int?
-  paymentMethods   String        @default("cash")
+  paymentMethods   PaymentMethods?       
 }
 
 model Product {
@@ -43,4 +42,10 @@ model Product {
   productImage    String
   isActive        Boolean       @default(true)
   orderDetails    OrderDetail[]
+}
+
+enum PaymentMethods {
+  cash
+  qr
+  card
 }
