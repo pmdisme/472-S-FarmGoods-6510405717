@@ -101,4 +101,15 @@ export class OrderService {
 
         return this.#transformCartToDetails(cart);
     }
+
+    async addOrder(paymentMethod, cartItem) {
+        const orderDetail = cartItem.map(item => ({
+                productId : item.id,
+                quantity: item.quantity,
+                orderTotalAmount : item.quantity * item.price})
+        )
+        console.log(orderDetail)
+        return await this.orderRepository.addOrder(paymentMethod, orderDetail);
+        
+    }
 }

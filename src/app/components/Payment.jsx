@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, Box, Typography } from '@mui/material';
+import { useAddOrder } from '@/hooks/useAddOrder';
+import { useAppSelector } from '@/utils/hooks';
 
 const paymentMethods = [
     { id: 'cash', label: 'Cash', icon: '/images/icons/icon-cash.png' },
@@ -9,18 +11,26 @@ const paymentMethods = [
 
 const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceipt, selectedPaymentMethod, setSelectedPaymentMethod }) => {
 
-    
+   
     const [isHoverCancel, setIsHoverCancel] = useState(false)
     const [isHover, setIsHover] = useState(false)
+    const { addOrder } = useAddOrder();
 
     const handlePaymentMethodChange = (method) => {
         setSelectedPaymentMethod(method);
         localStorage.setItem('selectedPaymentMethod', method);
     };
 
-    const handleConfirm = () => {
-        handleOpenReceipt(selectedPaymentMethod);
-        setIsHover(false)
+    const handleConfirm = async () => {
+        
+        try {
+            await addOrder(selectedPaymentMethod);
+            handleOpenReceipt(selectedPaymentMethod);
+            setIsHover(false)
+        } catch (error) {
+            console.log(error)
+        }
+
     }
 
     const handleCancel = () => {
@@ -77,7 +87,7 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
                             }}
                         >
                             <Box
-                            component="img"
+                                component="img"
                                 src={method.icon}
                                 alt={method.label}
                                 sx={{ width: 40, height: 40, marginBottom: "5px" }}
