@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, PaymentMethods } from '@prisma/client'
 import { ProductRepository } from '@/repositories/ProductRepository'
 import { OrderRepository } from '@/repositories/OrderRepository'
 import { OrderDetailRepository } from '@/repositories/OrderDetailRepository'
@@ -41,28 +41,7 @@ export class OrderService {
         })
     }
 
-    async updateOrCreateOrderDetail(orderId, productId, quantity, totalAmount) {
-        const existingDetail = await this.orderDetailRepository.findByProductIdAndOrderId(orderId, productId)
-        
-        if (existingDetail) {
-            return await this.prisma.orderDetail.update({
-                where: { orderDetailId: existingDetail.orderDetailId },
-                data: {
-                    quantity: existingDetail.quantity + quantity,
-                    orderTotalAmount: existingDetail.orderTotalAmount + totalAmount
-                }
-            })
-        }
 
-        return await this.prisma.orderDetail.create({
-            data: {
-                orderId,
-                productId,
-                quantity,
-                orderTotalAmount: totalAmount
-            }
-        })
-    }
 
     #transformCartToDetails(cart) {
         return {
@@ -77,14 +56,14 @@ export class OrderService {
                 quantity: detail.quantity,
                 totalAmount: detail.orderTotalAmount
             })),
-            totalCartAmount: cart.orderDetails.reduce((total, detail) => 
+            totalCartAmount: cart.orderDetails.reduce((total, detail) =>
                 total + detail.orderTotalAmount, 0)
         };
     }
 
     async getOrderDetails(orderId) {
         const cart = await this.orderRepository.findById(orderId);
-        
+
         if (!cart) {
             return null;
         }
@@ -94,7 +73,7 @@ export class OrderService {
 
     async getCartDetails() {
         const cart = await this.getActiveCart();
-        
+
         if (!cart) {
             return null;
         }
@@ -102,14 +81,22 @@ export class OrderService {
         return this.#transformCartToDetails(cart);
     }
 
-    async addOrder(paymentMethod, cartItem) {
+    async addOrder(cartItem) {
         const orderDetail = cartItem.map(item => ({
-                productId : item.id,
-                quantity: item.quantity,
-                orderTotalAmount : item.quantity * item.price})
+            productId: item.id,
+            quantity: item.quantity,
+            orderTotalAmount: item.quantity * item.price
+        })
         )
+
+
         console.log(orderDetail)
-        return await this.orderRepository.addOrder(paymentMethod, orderDetail);
-        
+        return await this.orderRepository.addOrder(orderDetail);
+
+    }
+
+    async updateStatusOrder(orderId, paymentMethod) {
+
+        return await this.orderRepository.updateStatusOrder(orderId, paymentMethod);
     }
 }

@@ -49,8 +49,8 @@ export class OrderController {
   
         try {
 
-            const { paymentMethod, cartItems } = await request.json()
-            const order = await this.orderService.addOrder(paymentMethod, cartItems)
+            const { cartItems } = await request.json()
+            const order = await this.orderService.addOrder(cartItems)
             return Response.json(order)
             
         } catch (error) {
@@ -62,4 +62,23 @@ export class OrderController {
         }
 
     }
+
+    async updateStatusOrder(request) {
+  
+        try {
+
+            const { orderId, paymentMethod } = await request.json()
+            const order = await this.orderService.updateStatusOrder(orderId, paymentMethod)
+            return Response.json(order)
+            
+        } catch (error) {
+            console.log(error.message)
+            return Response.json(
+                { error: error.message || "Failed to add order" },
+                { status: 500 }
+            )
+        }
+
+    }
+
 }

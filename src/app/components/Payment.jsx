@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, Box, Typography } from '@mui/material';
-import { useAddOrder } from '@/hooks/useAddOrder';
+import { useOrder,  } from '@/hooks/useOrder';
 import { useAppSelector } from '@/utils/hooks';
 
 const paymentMethods = [
@@ -11,10 +11,10 @@ const paymentMethods = [
 
 const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceipt, selectedPaymentMethod, setSelectedPaymentMethod }) => {
 
-   
+
     const [isHoverCancel, setIsHoverCancel] = useState(false)
     const [isHover, setIsHover] = useState(false)
-    const { addOrder } = useAddOrder();
+    const { updateStatusOrder } = useOrder();
 
     const handlePaymentMethodChange = (method) => {
         setSelectedPaymentMethod(method);
@@ -22,13 +22,12 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
     };
 
     const handleConfirm = async () => {
-        
         try {
-            await addOrder(selectedPaymentMethod);
+            await updateStatusOrder(selectedPaymentMethod);
             handleOpenReceipt(selectedPaymentMethod);
             setIsHover(false)
         } catch (error) {
-            console.log(error)
+
         }
 
     }
