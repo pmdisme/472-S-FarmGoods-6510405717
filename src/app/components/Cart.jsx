@@ -4,13 +4,11 @@ import { Box, Typography, Dialog, DialogTitle, DialogContent, DialogContentText,
 import { useState, useEffect } from 'react'
 import { useAppSelector } from '@/utils/hooks'
 import CartItem from './CartItem'
-import { useCart } from '@/hooks/useCart'
 import Payment from './Payment'
 import OrderSummary from './OrderSummary'
 import Receipt from './Receipt'
 
 const Cart = () => {
-  useCart();
   const cartItems = useAppSelector((state) => state.cart.cart);
   const error = useAppSelector(state => state.cart.error);
   const [orderTotal, setOrderTotal] = useState(0);

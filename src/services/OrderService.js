@@ -81,7 +81,7 @@ export class OrderService {
         return this.#transformCartToDetails(cart);
     }
 
-    async addOrder(cartItem) {
+    async addOrder(cartItem, paymentMethods) {
         const orderDetail = cartItem.map(item => ({
             productId: item.id,
             quantity: item.quantity,
@@ -91,12 +91,8 @@ export class OrderService {
 
 
         console.log(orderDetail)
-        return await this.orderRepository.addOrder(orderDetail);
+        return await this.orderRepository.addOrder(orderDetail, paymentMethods);
 
     }
 
-    async updateStatusOrder(orderId, paymentMethod) {
-
-        return await this.orderRepository.updateStatusOrder(orderId, paymentMethod);
-    }
 }

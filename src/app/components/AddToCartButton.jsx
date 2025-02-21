@@ -5,12 +5,11 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import { useAppDispatch, useAppSelector } from '@/utils/hooks'
 import { addToCart, increaseQuantity, decreaseQuantity } from '@/store/cartSlice'
-import { useAddToCart } from '@/hooks/useAddToCart'
 
 const AddToCartButton = ({ isItemInCart, id, price, name }) => {
     const dispatch = useAppDispatch()
     const { cart } = useAppSelector((state) => state.cart)
-    const { addItemToCart } = useAddToCart()
+    
     const [open, setOpen] = useState(false)
 
     const handleClose = () => setOpen(false)

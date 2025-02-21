@@ -7,11 +7,10 @@ export const useOrder = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const cartItems = useAppSelector((state) => state.cart.cart)
-    const orderId = useAppSelector((state) => state.order.orderId)
 
     const dispatch = useAppDispatch();
 
-    const addOrder = async () => {
+    const addOrder = async (paymentMethods) => {
         setIsLoading(true);
         setError(null);
         
@@ -21,7 +20,7 @@ export const useOrder = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ cartItems }),
+                body: JSON.stringify({ paymentMethods, cartItems }),
             });
 
             if (!response.ok) {
@@ -41,31 +40,7 @@ export const useOrder = () => {
     };
 
 
-    const updateStatusOrder = async (paymentMethod) => {
-        setIsLoading(true);
-        setError(null);
-        
-        try {
-            const response = await fetch('/api/payment', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ orderId, paymentMethod }),
-            });
+    
 
-            if (!response.ok) {
-                throw new Error('Failed to complete order');
-            }
-            
-            return await response.json();
-        } catch (err) {
-            setError(err.message);
-            throw err;
-        } finally {
-            setIsLoading(false);
-        }
-    };
-
-    return { addOrder , updateStatusOrder, isLoading, error };
+    return { addOrder, isLoading, error };
 };
