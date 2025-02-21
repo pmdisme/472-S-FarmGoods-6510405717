@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +27,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Jest.Add-Disable.test.jsx.executor": "Run",
+    "Jest.Confirm-Payment.test.jsx.executor": "Run",
     "Jest.OrderController.test.js.executor": "Run",
     "Jest.OrderDetailRepository.test.js.executor": "Run",
     "Jest.OrderRepository.executor": "Run",
@@ -80,7 +81,7 @@
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\app\components\creat_product_dialog" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.ProductService.test.js">
+  <component name="RunManager" selected="Jest.Confirm-Payment.test.jsx">
     <configuration name="Add-Disable.test.jsx" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
@@ -88,6 +89,15 @@
       <envs />
       <scope-kind value="TEST_FILE" />
       <test-file value="$PROJECT_DIR$/acceptance-test/Add-Disable.test.jsx" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Confirm-Payment.test.jsx" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/Confirm-Payment.test.jsx" />
       <method v="2" />
     </configuration>
     <configuration name="ProductController.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
@@ -106,19 +116,6 @@
       <envs />
       <scope-kind value="TEST_FILE" />
       <test-file value="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Product Search Functionality - UAT.UAT-002: Search by full name" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/acceptance-test/Search.test.js" />
-      <test-names>
-        <test-name value="Product Search Functionality - UAT" />
-        <test-name value="UAT-002: Search by full name" />
-      </test-names>
       <method v="2" />
     </configuration>
     <configuration name="Search.test.js" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
@@ -141,27 +138,27 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Jest.Confirm-Payment.test.jsx" />
       <item itemvalue="Jest.Add-Disable.test.jsx" />
       <item itemvalue="Jest.ProductController.test.js" />
       <item itemvalue="Jest.ProductService.test.js" />
       <item itemvalue="npm.dev" />
-      <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Search by full name" />
       <item itemvalue="Playwright.Search.test.js" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Jest.Confirm-Payment.test.jsx" />
         <item itemvalue="Jest.ProductService.test.js" />
         <item itemvalue="Jest.Add-Disable.test.jsx" />
         <item itemvalue="Jest.ProductController.test.js" />
         <item itemvalue="Playwright.Search.test.js" />
-        <item itemvalue="Playwright.Product Search Functionality - UAT.UAT-002: Search by full name" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
       </set>
     </attachedChunks>
   </component>
@@ -181,6 +178,7 @@
       <workItem from="1739463090072" duration="324000" />
       <workItem from="1739555990732" duration="7464000" />
       <workItem from="1739695649691" duration="2806000" />
+      <workItem from="1740122978008" duration="2277000" />
     </task>
     <servers />
   </component>
