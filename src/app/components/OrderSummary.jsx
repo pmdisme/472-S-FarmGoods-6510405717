@@ -22,18 +22,13 @@ const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPay
     hour12: true
   });
   
-  const {addOrder} = useOrder();
 
   const handleClickConfirmPayment = async() => {
-    console.log("ออกมั้ยจ๊ะ")
-    try {
-      await addOrder();
+   
       handleOpenPayment();
       setSelectedPaymentMethod('cash');
       
-    } catch (error) {
-      
-    }
+    
     
   }
 

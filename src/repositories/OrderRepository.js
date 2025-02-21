@@ -26,24 +26,14 @@ export class OrderRepository {
         })
     }
 
-    async addOrder(cartItem) {
+    async addOrder(cartItem, paymentMethods) {
         return await this.prisma.order.create({
             data: {
-                orderStatus: 0,
-                orderDetails: {create: cartItem},
+                orderDetails: {create: cartItem}, paymentMethods,
                 purchaseDatetime: new Date()
             }
         });
     }
 
-    async updateStatusOrder(orderId, paymentMethod){
-        return await this.prisma.order.update({
-            where: {orderId},
-            data: {
-                orderStatus: 1,
-                paymentMethods: paymentMethod,
-            }
-        });
-    }
 
 }

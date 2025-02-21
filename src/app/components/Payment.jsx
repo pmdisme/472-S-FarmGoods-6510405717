@@ -14,7 +14,7 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
 
     const [isHoverCancel, setIsHoverCancel] = useState(false)
     const [isHover, setIsHover] = useState(false)
-    const { updateStatusOrder } = useOrder();
+    const { addOrder } = useOrder();
 
     const handlePaymentMethodChange = (method) => {
         setSelectedPaymentMethod(method);
@@ -23,7 +23,7 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
 
     const handleConfirm = async () => {
         try {
-            await updateStatusOrder(selectedPaymentMethod);
+            await addOrder(selectedPaymentMethod);
             handleOpenReceipt(selectedPaymentMethod);
             setIsHover(false)
         } catch (error) {

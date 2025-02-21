@@ -30,7 +30,6 @@ model OrderDetail {
 model Order {
   orderId          Int           @id @default(autoincrement())
   purchaseDatetime DateTime?
-  orderStatus      Int           @default(0)
   orderDetails     OrderDetail[]
   paymentMethods   PaymentMethods?       
 }
