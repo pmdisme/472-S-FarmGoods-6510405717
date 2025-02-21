@@ -2,15 +2,18 @@ import {OrderRepository} from "@/repositories/OrderRepository";
 
 let mockFindFirst;
 let mockFindUnique;
+let mockCreate;
 
 jest.mock('@prisma/client', () => {
     return {
         PrismaClient: jest.fn().mockImplementation(() => {
             mockFindFirst = jest.fn();
             mockFindUnique = jest.fn();
+            mockCreate = jest.fn();
 
             return {
                 order: {
+                    create: mockCreate,
                     findFirst: mockFindFirst,
                     findUnique: mockFindUnique
                 }
@@ -105,6 +108,32 @@ describe('OrderRepository', () => {
                 }
             });
             expect(result).toBeNull();
+        });
+    });
+
+    describe('addOrder', () => {
+        it('should create new order with cart items and payment method', async () => {
+            const mockCartItem = [
+                { productId: 1, quantity: 2, orderTotalAmount: 200 }
+            ];
+            const mockPaymentMethods = 'CREDIT_CARD';
+            const mockCreatedOrder = {
+                orderId: 1,
+                orderStatus: 1
+            };
+
+            mockCreate.mockResolvedValue(mockCreatedOrder);
+
+            const result = await orderRepository.addOrder(mockCartItem, mockPaymentMethods);
+
+            expect(result).toEqual(mockCreatedOrder);
+            expect(mockCreate).toHaveBeenCalledWith({
+                data: {
+                    orderDetails: {create: mockCartItem},
+                    paymentMethods: mockPaymentMethods,
+                    purchaseDatetime: expect.any(Date)
+                }
+            });
         });
     });
 });

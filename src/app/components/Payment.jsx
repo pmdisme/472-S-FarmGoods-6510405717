@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, Box, Typography } from '@mui/material';
 import { useOrder,  } from '@/hooks/useOrder';
-import { useAppSelector } from '@/utils/hooks';
 
 const paymentMethods = [
     { id: 'cash', label: 'Cash', icon: '/images/icons/icon-cash.png' },

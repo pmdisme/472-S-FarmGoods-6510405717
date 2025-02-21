@@ -7,7 +7,6 @@ export const useOrder = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const cartItems = useAppSelector((state) => state.cart.cart)
-    const orderId = useAppSelector((state) => state.order.orderId)
 
     const dispatch = useAppDispatch();
 

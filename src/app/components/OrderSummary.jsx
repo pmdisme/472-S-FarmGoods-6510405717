@@ -1,7 +1,6 @@
 import {Box, Dialog, DialogContent, DialogTitle, Typography} from '@mui/material'
 import {useAppSelector} from '@/utils/hooks';
 import React, {useState} from 'react'
-import { useOrder } from '@/hooks/useOrder';
 
 const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPayment, setSelectedPaymentMethod}) => {
 
@@ -24,12 +23,8 @@ const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPay
   
 
   const handleClickConfirmPayment = async() => {
-   
       handleOpenPayment();
       setSelectedPaymentMethod('cash');
-      
-    
-    
   }
 
   return (
