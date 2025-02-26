@@ -24,7 +24,7 @@ const CartItem = ({ id, name, price, quantity }) => {
                     {name}
                 </Typography>
                 <Box sx={{ display: "flex" }}>
-                    <Typography sx={{ color: "#C73B0F", fontWeight: "600", paddingRight: "1rem"}}>{quantity}x</Typography>
+                    <Typography sx={{ color: "#C73B0F", fontWeight: "600", paddingRight: "1rem"}}>{quantity} Qty</Typography>
                     <Typography sx={{ color: "#708090", fontWeight: "600" }}>฿{totalPrice.toFixed(2)}</Typography>
                 </Box>
             </Box>
