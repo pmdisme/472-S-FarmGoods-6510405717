@@ -102,7 +102,8 @@ const OrderSummary = ({ openOrderSummary, handleClose, orderTotal, handleOpenPay
           borderRadius: "1rem",
           fontSize: "1.2rem",
           fontWeight: 600,
-          color: "#ffffff"
+          color: "#ffffff",
+          cursor: isHover ? 'pointer' : 'default'
         }}
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}

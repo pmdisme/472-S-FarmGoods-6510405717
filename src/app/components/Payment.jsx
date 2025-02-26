@@ -153,6 +153,7 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
                             fontSize: "1.2rem",
                             fontWeight: 600,
                             color: "#48c9b0",
+                            cursor: isHoverCancel ? 'pointer' : 'default'
                         }}
                         onMouseEnter={() => setIsHoverCancel(true)}
                         onMouseLeave={() => setIsHoverCancel(false)}
@@ -171,7 +172,8 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
                             boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
                             fontSize: "1.2rem",
                             fontWeight: 600,
-                            color: "white"
+                            color: "white",
+                            cursor: isHover ? 'pointer' : 'default'
                         }}
                         onMouseEnter={() => setIsHover(true)}
                         onMouseLeave={() => setIsHover(false)}

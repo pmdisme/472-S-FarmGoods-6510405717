@@ -6,13 +6,13 @@ export class ProductRepository {
     }
 
     async findById(productId) {
-        return await this.prisma.product.findUnique({
+        return this.prisma.product.findUnique({
             where: {productId: parseInt(productId)}
-        })
+        });
     }
 
     async findByName(productName) {
-        return await this.prisma.product.findFirst({
+        return this.prisma.product.findFirst({
             where: {
                 productName: {
                     equals: productName,
@@ -23,7 +23,7 @@ export class ProductRepository {
     }
 
     async create(productData) {
-        return await this.prisma.product.create({
+        return this.prisma.product.create({
             data: {
                 productName: productData.productName,
                 productPrice: productData.productPrice,
@@ -33,7 +33,7 @@ export class ProductRepository {
     }
 
     async update(productId, data) {
-        return await this.prisma.product.update({
+        return this.prisma.product.update({
             where: { productId },
             data: data
         });

@@ -22,7 +22,12 @@ export const cartSlice = createSlice({
             state.cart[action.payload].quantity += 1;
         },
         decreaseQuantity: (state, action) => {
-            state.cart[action.payload].quantity -= 1;
+            if (state.cart[action.payload].quantity > 1) {
+                state.cart[action.payload].quantity -= 1;
+            } else {
+                // If quantity is 1 and decreasing, remove item from cart
+                state.cart = state.cart.filter((_, index) => index !== action.payload);
+            }
         },
         clearCard: (state) => {
             state.cart = [];
@@ -35,7 +40,7 @@ export const cartSlice = createSlice({
         }
     },
 })
-  
+
 export const {
     initializeCart,
     addToCart,
@@ -46,8 +51,8 @@ export const {
     setLoading,
     setError
 } = cartSlice.actions
-  
-  
+
+
 export const selectCart = (state) => state.cart
-  
+
 export default cartSlice.reducer
