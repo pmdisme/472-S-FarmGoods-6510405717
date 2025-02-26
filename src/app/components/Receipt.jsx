@@ -47,7 +47,6 @@ const Receipt = ({ openReceipt, orderTotal, handleCloseReceipt, paymentMethod })
                         alignItems: "center",
                         borderBottom: "0.5px solid #cacfd2",
                         flexDirection: 'column',
-                        alignItems: 'center',
                         padding: '3px 0',
                         display: 'flex'
                     }}>
@@ -140,7 +139,8 @@ const Receipt = ({ openReceipt, orderTotal, handleCloseReceipt, paymentMethod })
                     borderRadius: "1rem",
                     fontSize: "1.2rem",
                     fontWeight: 600,
-                    color: "#ffffff"
+                    color: "#ffffff",
+                    cursor: isHover ? 'pointer' : 'default'
                 }}
                     onMouseEnter={() => setIsHover(true)}
                     onMouseLeave={() => setIsHover(false)}

@@ -160,7 +160,7 @@ const Cart = () => {
                 fontWeight: 600,
                 alignSelf: "center",
                 transition: "all 0.2s ease-in-out",
-
+                cursor: isHover ? 'pointer' : 'default'
               }}
               onMouseEnter={() => setIsHover(true)}
               onMouseLeave={() => setIsHover(false)}

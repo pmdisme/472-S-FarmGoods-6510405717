@@ -89,8 +89,6 @@ export class OrderService {
         })
         )
 
-
-        console.log(orderDetail)
         return await this.orderRepository.addOrder(orderDetail, paymentMethods);
 
     }
