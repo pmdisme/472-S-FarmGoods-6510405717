@@ -6,42 +6,12 @@ import { OrderDetailRepository } from '@/repositories/OrderDetailRepository'
 export class OrderService {
     constructor() {
         this.prisma = new PrismaClient()
-        this.productRepository = new ProductRepository()
         this.orderRepository = new OrderRepository()
-        this.orderDetailRepository = new OrderDetailRepository()
     }
 
     async getActiveCart() {
         return await this.orderRepository.findByStatusEqualO()
     }
-
-    async addToCart(productId, quantity) {
-        const product = await this.productRepository.findById(productId)
-
-        if (!product) {
-            throw new Error("Product not found")
-        }
-
-        let cart = await this.getActiveCart()
-
-        if (!cart) {
-            cart = await this.createNewCart()
-        }
-
-        const totalAmount = product.productPrice * quantity
-        return await this.updateOrCreateOrderDetail(cart.orderId, product.productId, quantity, totalAmount)
-    }
-
-    async createNewCart() {
-        return await this.prisma.order.create({
-            data: {
-                orderStatus: 0,
-                purchaseDatetime: new Date()
-            }
-        })
-    }
-
-
 
     #transformCartToDetails(cart) {
         return {

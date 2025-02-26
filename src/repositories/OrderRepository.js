@@ -6,8 +6,8 @@ export class OrderRepository {
     }
 
     async findByStatusEqualO() {
-        return await this.prisma.order.findFirst({
-            where: { orderStatus: 0 },
+        return this.prisma.order.findFirst({
+            where: {orderStatus: 0},
             include: {
                 orderDetails: {
                     include: {
@@ -15,19 +15,19 @@ export class OrderRepository {
                     }
                 }
             }
-        })
+        });
     }
 
     async findById(orderId) {
-        return await this.prisma.order.findUnique({
+        return this.prisma.order.findUnique({
             where: {
-                where: { orderId: parseInt(orderId) }       
+                where: {orderId: parseInt(orderId)}
             }
-        })
+        });
     }
 
     async addOrder(cartItem, paymentMethods) {
-        return await this.prisma.order.create({
+        return this.prisma.order.create({
             data: {
                 orderDetails: {create: cartItem}, paymentMethods,
                 purchaseDatetime: new Date()
