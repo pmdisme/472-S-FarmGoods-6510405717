@@ -22,16 +22,29 @@ const CalculateChange = ({ open, onClose, orderTotal, handleOpenReceipt }) => {
     };
 
     const handleConfirm = () => {
-        if (change === null) {
-            alert('Please calculate change first');
+        // Check if amount paid is still valid when confirming
+        const paid = parseFloat(amountPaid);
+        if (isNaN(paid) || paid === 0 || amountPaid === '') {
+            alert('Please enter a valid amount paid');
             return;
+        }
+        
+        // Recalculate change to ensure it's still valid
+        const calculatedChange = paid - orderTotal;
+        if (calculatedChange < 0) {
+            alert('Amount paid is less than the order total');
+            return;
+        }
+        
+        // If change hasn't been calculated yet, calculate it now
+        if (change === null) {
+            setChange(calculatedChange.toFixed(2));
         }
         
         setAmountPaid('');
         setChange(null);
         onClose();
         
-        // Open receipt after closing the change calculator
         if (handleOpenReceipt) {
             handleOpenReceipt('cash');
         }
@@ -83,7 +96,13 @@ const CalculateChange = ({ open, onClose, orderTotal, handleOpenReceipt }) => {
                         variant="outlined"
                         type="number"
                         value={amountPaid}
-                        onChange={(e) => setAmountPaid(e.target.value)}
+                        onChange={(e) => {
+                            setAmountPaid(e.target.value);
+                            // Reset change when amount paid changes
+                            if (change !== null) {
+                                setChange(null);
+                            }
+                        }}
                         sx={{ marginBottom: 2 }}
                         onKeyDown={handleKeyPress}
                     />
