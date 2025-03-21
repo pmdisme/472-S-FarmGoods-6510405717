@@ -69,7 +69,7 @@ const CalculateChange = ({ open, onClose, orderTotal, handleOpenReceipt }) => {
             <DialogContent sx={{ padding: "2rem" }}>
                 <Box sx={{ textAlign: "center", marginBottom: 3 }}>
                     <Typography sx={{ fontSize: "1.2rem", marginBottom: 1 }}>
-                        Order Total:
+                        Order Total
                     </Typography>
                     <Typography sx={{ color: "#e74c3c", fontSize: "2rem", fontWeight: 600, marginBottom: "10px" }}>
                         {orderTotal.toFixed(2)}฿
@@ -113,7 +113,7 @@ const CalculateChange = ({ open, onClose, orderTotal, handleOpenReceipt }) => {
                 {change !== null && (
                     <Box sx={{ textAlign: "center", marginBottom: 3, padding: 2, border: "1px solid #e0e0e0", borderRadius: 2 }}>
                         <Typography sx={{ fontSize: "1.2rem", marginBottom: 1 }}>
-                            Change:
+                            Change
                         </Typography>
                         <Typography sx={{ color: "#27ae60", fontSize: "2rem", fontWeight: 600 }}>
                             {change}฿
