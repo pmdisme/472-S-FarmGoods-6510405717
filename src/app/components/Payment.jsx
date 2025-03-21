@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, Box, Typography } from '@mui/material';
-import { useOrder,  } from '@/hooks/useOrder';
+import { useOrder } from '@/hooks/useOrder';
+import CalculateChange from './CalculateChange';
 
 const paymentMethods = [
     { id: 'cash', label: 'Cash', icon: '/images/icons/icon-cash.png' },
@@ -9,11 +10,10 @@ const paymentMethods = [
 ];
 
 const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceipt, selectedPaymentMethod, setSelectedPaymentMethod }) => {
-
-
-    const [isHoverCancel, setIsHoverCancel] = useState(false)
-    const [isHover, setIsHover] = useState(false)
+    const [isHoverCancel, setIsHoverCancel] = useState(false);
+    const [isHover, setIsHover] = useState(false);
     const { addOrder } = useOrder();
+    const [openCalculateChange, setOpenCalculateChange] = useState(false);
 
     const handlePaymentMethodChange = (method) => {
         setSelectedPaymentMethod(method);
@@ -23,19 +23,25 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
     const handleConfirm = async () => {
         try {
             await addOrder(selectedPaymentMethod);
-            handleOpenReceipt(selectedPaymentMethod);
-            setIsHover(false)
+            if (selectedPaymentMethod === 'cash') {
+                setOpenCalculateChange(true);
+            } else {
+                handleOpenReceipt(selectedPaymentMethod);
+            }
+            setIsHover(false);
         } catch (error) {
-
+            console.error(error);
         }
-
-    }
+    };
 
     const handleCancel = () => {
         handleClosePayment();
         setIsHoverCancel(false);
-    }
+    };
 
+    const handleCloseCalculateChange = () => {
+        setOpenCalculateChange(false);
+    };
 
     return (
         <Dialog
@@ -43,6 +49,14 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
             maxWidth="xs"
             fullWidth
         >
+            {/* Pass handleOpenReceipt to CalculateChange */}
+            <CalculateChange
+                open={openCalculateChange}
+                onClose={handleCloseCalculateChange}
+                orderTotal={orderTotal}
+                handleOpenReceipt={handleOpenReceipt}
+            />
+            
             <DialogTitle sx={{
                 fontSize: "1.3rem",
                 fontWeight: 600,
@@ -55,14 +69,12 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
             </DialogTitle>
 
             <DialogContent sx={{ padding: "2rem" }}>
-
                 {/* Payment Method Selection */}
                 <Box sx={{
                     display: "flex",
                     gap: "1rem",
                     mb: 4
-                }}
-                >
+                }}>
                     {paymentMethods.map((method) => (
                         <Box
                             key={method.id}
@@ -96,15 +108,12 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
                 </Box>
 
                 {/* Payment Method Content */}
-
                 <Box sx={{ marginBottom: 4 }}>
                     {selectedPaymentMethod === 'cash' && (
                         <Box sx={{ textAlign: "center" }}>
-
                             <Typography sx={{ color: "#e74c3c", fontSize: "2rem", fontWeight: 600, marginBottom: "10px" }}>
                                 {orderTotal.toFixed(2)}฿
                             </Typography>
-
                             <Box
                                 component="img"
                                 src="/images/icons/icon-cash.png"
@@ -116,11 +125,9 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
 
                     {selectedPaymentMethod === 'qr' && (
                         <Box sx={{ textAlign: "center" }}>
-
                             <Typography sx={{ color: "#e74c3c", fontSize: "2rem", fontWeight: 600, marginBottom: "10px" }}>
                                 {orderTotal.toFixed(2)}฿
                             </Typography>
-
                             <Box
                                 component="img"
                                 src="/images/icons/payment.png"
@@ -135,11 +142,8 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
                             <Typography sx={{ color: "#e74c3c", fontSize: "2rem", fontWeight: 600, marginBottom: "10px" }}>
                                 {orderTotal.toFixed(2)}฿
                             </Typography>
-
                         </Box>
                     )}
-
-
                 </Box>
 
                 <Box sx={{ display: "flex", gap: 2, alignItems: "center" }}>
@@ -178,13 +182,11 @@ const Payment = ({ openPayment, orderTotal, handleClosePayment, handleOpenReceip
                         onMouseEnter={() => setIsHover(true)}
                         onMouseLeave={() => setIsHover(false)}
                         onClick={handleConfirm}
-
                     >
                         Confirm
                     </button>
                 </Box>
             </DialogContent>
-
         </Dialog>
     );
 };
