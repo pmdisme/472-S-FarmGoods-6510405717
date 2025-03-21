@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unit-test/store/cartSlice.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/unit-test/frontend-logic/cartSlice.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,13 +28,20 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Jest.Add-Disable.test.jsx.executor": "Run",
+    "Jest.AddDisable.test.jsx.executor": "Run",
+    "Jest.CalculateChange.test.js (1).executor": "Run",
+    "Jest.CalculateChange.test.js.executor": "Run",
+    "Jest.Cart.test.jsx.executor": "Run",
     "Jest.Confirm-Payment.test.jsx.executor": "Run",
+    "Jest.ConfirmPayment.test.jsx.executor": "Run",
+    "Jest.ModifyProduct.test.js.executor": "Run",
     "Jest.OrderController.test.js.executor": "Run",
     "Jest.OrderDetailRepository.test.js.executor": "Run",
     "Jest.OrderRepository.executor": "Run",
     "Jest.OrderRepository.findById.executor": "Run",
     "Jest.OrderRepository.test.js.executor": "Run",
     "Jest.OrderService.test.js.executor": "Run",
+    "Jest.Payment.test.jsx.executor": "Run",
     "Jest.Product.test.jsx.executor": "Run",
     "Jest.ProductController.test.js.executor": "Run",
     "Jest.ProductRepository.delete.executor": "Run",
@@ -41,10 +49,13 @@
     "Jest.ProductService.createProduct.should handle image upload error.executor": "Debug",
     "Jest.ProductService.delete.executor": "Run",
     "Jest.ProductService.test.js.executor": "Run",
+    "Jest.S.test.js.executor": "Run",
+    "Jest.Search.test.js.executor": "Run",
     "Jest.Tests in acceptance-test\\.executor": "Run",
     "Jest.Tests in hooks\\.executor": "Run",
     "Jest.Tests in repositories\\.executor": "Run",
     "Jest.Tests in unit-test\\.executor": "Run",
+    "Jest.cartSlice.test.js.executor": "Run",
     "Jest.tet.test.js.executor": "Run",
     "Jest.useAddToCart.test.js.executor": "Run",
     "Jest.useCart.js.executor": "Run",
@@ -54,6 +65,7 @@
     "Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search.executor": "Run",
     "Playwright.Product Search Functionality - UAT.UAT-002: Search by full name.executor": "Run",
     "Playwright.Search.test.js.executor": "Run",
+    "Playwright.Tests in acceptance-test\\.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "develop",
@@ -62,7 +74,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/Users/natty/Documents/DevOps/472-FarmGoods-Sprints-and-Giggles/node_modules/jest",
+    "nodejs.jest.jest_package": "D:/472-FarmGoods-Sprints-and-Giggles/node_modules/jest",
     "nodejs_package_manager_path": "npm",
     "npm.dev.executor": "Run",
     "ts.external.directory.path": "C:\\Users\\jitla\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
@@ -81,50 +93,50 @@
       <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\app\components\creat_product_dialog" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.Confirm-Payment.test.jsx">
-    <configuration name="Add-Disable.test.jsx" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.CalculateChange.test.js">
+    <configuration name="CalculateChange.test.js (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/acceptance-test/Add-Disable.test.jsx" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/CalculateChange.test.js" />
       <method v="2" />
     </configuration>
-    <configuration name="Confirm-Payment.test.jsx" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculateChange.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/acceptance-test/Confirm-Payment.test.jsx" />
+      <test-file value="$PROJECT_DIR$/src/unit-test/CalculateChange.test.js" />
       <method v="2" />
     </configuration>
-    <configuration name="ProductController.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="S.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/src/unit-test/controllers/ProductController.test.js" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/S.test.js" />
       <method v="2" />
     </configuration>
-    <configuration name="ProductService.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="Search.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <jest-package value="$PROJECT_DIR$/node_modules/jest" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/src/unit-test/services/ProductService.test.js" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Search.test.js" type="JavaScriptTestRunnerPlaywright" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST_FILE" />
       <test-file value="$PROJECT_DIR$/acceptance-test/Search.test.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in acceptance-test\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="DIRECTORY" />
+      <test-directory value="$PROJECT_DIR$/acceptance-test" />
       <method v="2" />
     </configuration>
     <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
@@ -138,27 +150,27 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Jest.Confirm-Payment.test.jsx" />
-      <item itemvalue="Jest.Add-Disable.test.jsx" />
-      <item itemvalue="Jest.ProductController.test.js" />
-      <item itemvalue="Jest.ProductService.test.js" />
+      <item itemvalue="Jest.CalculateChange.test.js" />
+      <item itemvalue="Jest.CalculateChange.test.js (1)" />
+      <item itemvalue="Jest.S.test.js" />
+      <item itemvalue="Jest.Search.test.js" />
+      <item itemvalue="Jest.Tests in acceptance-test\" />
       <item itemvalue="npm.dev" />
-      <item itemvalue="Playwright.Search.test.js" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.Confirm-Payment.test.jsx" />
-        <item itemvalue="Jest.ProductService.test.js" />
-        <item itemvalue="Jest.Add-Disable.test.jsx" />
-        <item itemvalue="Jest.ProductController.test.js" />
-        <item itemvalue="Playwright.Search.test.js" />
+        <item itemvalue="Jest.CalculateChange.test.js" />
+        <item itemvalue="Jest.CalculateChange.test.js (1)" />
+        <item itemvalue="Jest.Search.test.js" />
+        <item itemvalue="Jest.Tests in acceptance-test\" />
+        <item itemvalue="Jest.S.test.js" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-WS-243.23654.157" />
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
       </set>
     </attachedChunks>
   </component>
@@ -179,6 +191,9 @@
       <workItem from="1739555990732" duration="7464000" />
       <workItem from="1739695649691" duration="2806000" />
       <workItem from="1740122978008" duration="2277000" />
+      <workItem from="1740568109904" duration="17000" />
+      <workItem from="1742553135932" duration="311000" />
+      <workItem from="1742554234927" duration="1081000" />
     </task>
     <servers />
   </component>
