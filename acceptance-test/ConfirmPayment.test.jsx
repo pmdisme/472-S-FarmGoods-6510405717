@@ -6,10 +6,17 @@ import React, { useState } from 'react';
 import OrderSummary from "@/app/components/OrderSummary";
 import Payment from "@/app/components/Payment";
 
+// Mock เรียกใช้ addOrder และ updateStatusOrder
+const mockAddOrder = jest.fn().mockResolvedValue(true);
+const mockUpdateStatusOrder = jest.fn().mockResolvedValue(true);
+
+// Mock useOrder hook
 jest.mock('../src/hooks/useOrder', () => ({
     useOrder: () => ({
-        updateStatusOrder: jest.fn().mockResolvedValue(true),
-        addOrder: jest.fn().mockResolvedValue(true),
+        updateStatusOrder: mockUpdateStatusOrder,
+        addOrder: mockAddOrder,
+        isLoading: false,
+        error: null
     }),
 }));
 
@@ -115,8 +122,13 @@ describe("Order and Payment Acceptance Tests", () => {
                 ).toBeInTheDocument();
             });
 
-            // Click confirm
-            fireEvent.click(screen.getByRole('button', { name: /confirm/i }));
+            // Click confirm - จะเปิด CalculateChange dialog
+            fireEvent.click(screen.getByText(/confirm/i));
+
+            // ตรวจสอบว่า addOrder ถูกเรียก
+            await waitFor(() => {
+                expect(mockAddOrder).toHaveBeenCalledWith('cash');
+            });
         });
     });
 
@@ -124,7 +136,7 @@ describe("Order and Payment Acceptance Tests", () => {
         test("When the transaction is successful then should receive a receipt", async () => {
             const handleOpenReceipt = jest.fn();
 
-            // selectedPaymentMethod เป็น cash
+            // Render with selectedPaymentMethod เป็น 'cash'
             renderWithProvider(
                 <Payment
                     openPayment={true}
@@ -137,12 +149,82 @@ describe("Order and Payment Acceptance Tests", () => {
             );
 
             // Click confirm
-            fireEvent.click(screen.getByRole('button', { name: /confirm/i }));
+            fireEvent.click(screen.getByText(/confirm/i));
 
+            // ตรวจสอบว่า addOrder ถูกเรียก
             await waitFor(() => {
-                // verify handleOpenReceipt was called.
-                expect(handleOpenReceipt).toHaveBeenCalled();
+                expect(mockAddOrder).toHaveBeenCalledWith('cash');
             });
+
+            // ตรวจสอบว่า CalculateChange dialog ถูกแสดง
+            expect(screen.getByText('Calculate Change')).toBeInTheDocument();
+
+            // ใส่จำนวนเงินที่จ่าย
+            const amountPaidInput = screen.getByLabelText('Amount Paid');
+            fireEvent.change(amountPaidInput, { target: { value: '200' } });
+
+            // กดปุ่ม Confirm ใน CalculateChange dialog
+            const calculateChangeConfirmButton = screen.getAllByText('Confirm')[1]; // ปุ่มที่ 2
+            fireEvent.click(calculateChangeConfirmButton);
+
+            // ตรวจสอบว่า handleOpenReceipt ถูกเรียก
+            await waitFor(() => {
+                expect(handleOpenReceipt).toHaveBeenCalledWith('cash');
+            });
+        });
+
+        test("QR Code payment should directly trigger receipt without calculate change", async () => {
+            const handleOpenReceipt = jest.fn();
+
+            renderWithProvider(
+                <Payment
+                    openPayment={true}
+                    orderTotal={sampleOrder.total}
+                    handleClosePayment={() => {}}
+                    handleOpenReceipt={handleOpenReceipt}
+                    selectedPaymentMethod="qr"
+                    setSelectedPaymentMethod={() => {}}
+                />
+            );
+
+            // Click confirm
+            fireEvent.click(screen.getByText(/confirm/i));
+
+            // สำหรับ QR Code ควรเรียก handleOpenReceipt โดยตรง
+            await waitFor(() => {
+                expect(mockAddOrder).toHaveBeenCalledWith('qr');
+                expect(handleOpenReceipt).toHaveBeenCalledWith('qr');
+            });
+
+            // ตรวจสอบว่าไม่มี CalculateChange dialog
+            expect(screen.queryByText('Calculate Change')).not.toBeInTheDocument();
+        });
+
+        test("Card payment should directly trigger receipt without calculate change", async () => {
+            const handleOpenReceipt = jest.fn();
+
+            renderWithProvider(
+                <Payment
+                    openPayment={true}
+                    orderTotal={sampleOrder.total}
+                    handleClosePayment={() => {}}
+                    handleOpenReceipt={handleOpenReceipt}
+                    selectedPaymentMethod="card"
+                    setSelectedPaymentMethod={() => {}}
+                />
+            );
+
+            // Click confirm
+            fireEvent.click(screen.getByText(/confirm/i));
+
+            // สำหรับ Card ควรเรียก handleOpenReceipt โดยตรง
+            await waitFor(() => {
+                expect(mockAddOrder).toHaveBeenCalledWith('card');
+                expect(handleOpenReceipt).toHaveBeenCalledWith('card');
+            });
+
+            // ตรวจสอบว่าไม่มี CalculateChange dialog
+            expect(screen.queryByText('Calculate Change')).not.toBeInTheDocument();
         });
     });
 });
