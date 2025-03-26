@@ -30,9 +30,8 @@ model OrderDetail {
 model Order {
   orderId          Int           @id @default(autoincrement())
   purchaseDatetime DateTime?
-  orderStatus      Int           @default(0)
   orderDetails     OrderDetail[]
-  purchaseOption   Int?
+  paymentMethods   PaymentMethods?       
 }
 
 model Product {
@@ -40,5 +39,12 @@ model Product {
   productName     String
   productPrice    Float
   productImage    String
+  isActive        Boolean       @default(true)
   orderDetails    OrderDetail[]
+}
+
+enum PaymentMethods {
+  cash
+  qr
+  card
 }

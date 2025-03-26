@@ -1,11 +1,11 @@
-'use client'
+"use client"
 
 import { Box } from '@mui/system';
 import React from 'react'
 import AddToCartButton from './AddToCartButton';
 import { Typography } from '@mui/material';
 import Image from 'next/image'
-import { useAppSelector } from '../../utile/hooks';
+import { useAppSelector } from '@/utils/hooks';
 
 
 const Product = ({ id, image, name, price }) => {
@@ -16,13 +16,28 @@ const Product = ({ id, image, name, price }) => {
     const isItemInCart = !!cart.find((item) => item.id === id);
 
     return (
-        <Box sx={{ display: "flex", flexDirection: "column", marginTop: "4rem" }}>
+        <Box
+            data-testid="product-item"
+        sx={{ 
+            display: "flex", 
+            flexDirection: "column",
+            alignItems: "center",
+            minWidth: "200px",
+            backgroundColor: "#f5f5f5",
+            border: "1px solid #9ac4e9",
+            borderRadius: "1rem",
+            padding: "1rem",
+            }}>
             <Image
                 src={image}
                 alt="product-image"
-                height={200}
-                width={200}
-                style={{ borderRadius: "0.5rem"}}
+                height={170}
+                width={170}
+                style={{ 
+                    borderRadius: "0.5rem", 
+                    marginBottom: "1rem",
+                    objectFit: "contain"
+                }}
             />
 
             <AddToCartButton
@@ -32,10 +47,13 @@ const Product = ({ id, image, name, price }) => {
                 price={price}
             />
 
-            <Typography sx={{
-                color: "#283747", fontWeight: 600,
-                alignSelf: "center", marginTop: "0.5rem"
-            }}>
+            <Typography
+                data-testid="product-name"
+                sx={{
+                    color: "#283747", fontWeight: 600,
+                    alignSelf: "center", marginTop: "0.5rem"
+            }}
+            >
                 {name}
             </Typography>
             <Typography sx={{ color: "#e74c3c", fontWeight: 600, alignSelf: "center" }}>

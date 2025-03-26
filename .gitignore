@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+unit-test-jest/
 
 # next.js
 /.next/

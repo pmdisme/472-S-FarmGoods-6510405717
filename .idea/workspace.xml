@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="" />
+    <list default="true" id="9a1d441d-ed4d-4db7-80dd-10f34ce3d4cf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/unit-test/store/cartSlice.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/unit-test/frontend-logic/cartSlice.test.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,28 +16,157 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 0
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
   <component name="ProjectId" id="2sFWeXHbrvKGIRraIFcyPOAcpXF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.Add-Disable.test.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.AddDisable.test.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.CalculateChange.test.js (1).executor&quot;: &quot;Run&quot;,
+    &quot;Jest.CalculateChange.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Cart.test.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Confirm-Payment.test.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ConfirmPayment.test.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ModifyProduct.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderController.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderDetailRepository.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderRepository.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderRepository.findById.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderRepository.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.OrderService.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Payment.test.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Product.test.jsx.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ProductController.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ProductRepository.delete.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ProductRepository.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ProductService.createProduct.should handle image upload error.executor&quot;: &quot;Debug&quot;,
+    &quot;Jest.ProductService.delete.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.ProductService.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.S.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Search.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Tests in acceptance-test\\.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Tests in hooks\\.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Tests in repositories\\.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.Tests in unit-test\\.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.cartSlice.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.tet.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.useAddToCart.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.useCart.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.useCart.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Jest.useProductForm.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.ProductService.js.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.Product Search Functionality - UAT.UAT-002: Partial Product Name Search.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.Product Search Functionality - UAT.UAT-002: Search by full name.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.Search.test.js.executor&quot;: &quot;Run&quot;,
+    &quot;Playwright.Tests in acceptance-test\\.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jitla/OneDrive/Documents/3term2/pm/DogGo&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;D:/472-FarmGoods-Sprints-and-Giggles/node_modules/jest&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\jitla\\AppData\\Local\\Programs\\WebStorm\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\public\images\products" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\472-FarmGoods-Sprints-and-Giggles\src\unit-test\frontend-logic" />
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\app\components" />
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\unit-test\controllers" />
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\unit-test\services" />
+      <recent name="C:\Users\jitla\OneDrive\Documents\3term2\agile\472-FarmGoods-Sprints-and-Giggles\src\unit-test\repositories" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Jest.CalculateChange.test.js">
+    <configuration name="CalculateChange.test.js (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/CalculateChange.test.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CalculateChange.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/src/unit-test/CalculateChange.test.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="S.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/S.test.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Search.test.js" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/acceptance-test/Search.test.js" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Tests in acceptance-test\" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <jest-package value="$PROJECT_DIR$/node_modules/jest" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="DIRECTORY" />
+      <test-directory value="$PROJECT_DIR$/acceptance-test" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dev" type="js.build_tools.npm" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Jest.CalculateChange.test.js" />
+      <item itemvalue="Jest.CalculateChange.test.js (1)" />
+      <item itemvalue="Jest.S.test.js" />
+      <item itemvalue="Jest.Search.test.js" />
+      <item itemvalue="Jest.Tests in acceptance-test\" />
+      <item itemvalue="npm.dev" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.CalculateChange.test.js" />
+        <item itemvalue="Jest.CalculateChange.test.js (1)" />
+        <item itemvalue="Jest.Search.test.js" />
+        <item itemvalue="Jest.Tests in acceptance-test\" />
+        <item itemvalue="Jest.S.test.js" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -51,10 +183,32 @@
       <option name="presentableId" value="Default" />
       <updated>1738051899976</updated>
       <workItem from="1738051901482" duration="333000" />
+      <workItem from="1738933211823" duration="5281000" />
+      <workItem from="1739286412715" duration="6431000" />
+      <workItem from="1739350861816" duration="16178000" />
+      <workItem from="1739448530955" duration="12044000" />
+      <workItem from="1739463090072" duration="324000" />
+      <workItem from="1739555990732" duration="7464000" />
+      <workItem from="1739695649691" duration="2806000" />
+      <workItem from="1740122978008" duration="2277000" />
+      <workItem from="1740568109904" duration="17000" />
+      <workItem from="1742553135932" duration="311000" />
+      <workItem from="1742554234927" duration="1081000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

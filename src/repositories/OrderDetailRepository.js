@@ -6,11 +6,11 @@ export class OrderDetailRepository {
     }
 
     async findByProductIdAndOrderId(orderId, productId) {
-        return await this.prisma.orderDetail.findFirst({
+        return this.prisma.orderDetail.findFirst({
             where: {
                 orderId,
                 productId
             }
-        })
+        });
     }
 }
