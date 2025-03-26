@@ -51,15 +51,6 @@ export const {
     setLoading,
     setError
 } = cartSlice.actions
-<<<<<<< HEAD
-  
-  
-export const selectCart = (state) => state.cart
-  
-=======
-
 
 export const selectCart = (state) => state.cart
-
->>>>>>> develop
 export default cartSlice.reducer

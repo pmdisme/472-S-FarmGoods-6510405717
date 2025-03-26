@@ -3,14 +3,8 @@
 import { Box, Button, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material'
 import React, { useState } from 'react'
 import Image from 'next/image'
-<<<<<<< HEAD
-import { useAppDispatch, useAppSelector } from '@/utile/hooks'
-import { addToCart, increaseQuantity, decreaseQuantity } from '@/store/cartSlice'
-import { useAddToCart } from '@/hooks/useAddToCart'
-=======
 import { useAppDispatch, useAppSelector } from '@/utils/hooks'
 import { addToCart, increaseQuantity, decreaseQuantity } from '@/store/cartSlice'
->>>>>>> develop
 
 const AddToCartButton = ({ isItemInCart, id, price, name }) => {
     const dispatch = useAppDispatch()
@@ -115,11 +109,7 @@ const AddToCartButton = ({ isItemInCart, id, price, name }) => {
                             fontWeight: 600
 
                         }}
-<<<<<<< HEAD
-                        onClick={handleIncreaseQuantity}
-=======
                             onClick={handleIncreaseQuantity}
->>>>>>> develop
                         >
                             +
                         </button>
